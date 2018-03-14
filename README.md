@@ -1,13 +1,16 @@
 Recipe App
 
 # Config File
-- Create a config file for storing user and database information. 
+- Create a config.js file in the db directory within the server directory for storing user and database information. 
 
 ``` JS
-  db: {
+Use template below in config.js
+
+module.exports ={
+
     user: 'insertuser',
-    passowrd: 'insertpassword',
+    password: 'insertpassword',
     database: 'insertdatabase'
   }
-}
+
 ```
