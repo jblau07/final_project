@@ -1,15 +1,17 @@
 // Update with your config settings.
 
+const database = require('./db/config');
+const path = require('path');
+
 module.exports = {
 
-  development: {
     development: {
       client: "pg",
       connection: {
         host: "localhost",
-        user: config.db.user,
-        password: config.db.password,
-        database: config.db.database,
+        user: database.user,
+        password: database.password,
+        database: database.database,
         charset: "utf8"
       },
       migrations: {
