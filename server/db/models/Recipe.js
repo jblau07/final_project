@@ -8,4 +8,4 @@ class Recipe extends bookshelf.Model{
   }
 }
 
-module.exports = bookshelf.Model('Recipe',Recipe);
+module.exports = bookshelf.model('Recipe',Recipe);
