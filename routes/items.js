@@ -20,10 +20,14 @@ router.route('/')
 .post((req,res)=>{
   let data = {} = req.body;
   return new Item(data)
+  .save()
   .then(ingredient => {
-    return res.       
+    return res.json(ingredient.toJSON());
   })
-
+  .catch(err => {
+    console.log({err:err.message});
+    return res.json({err:err.message});
+  })
 })
 
 router.route('/:id')
