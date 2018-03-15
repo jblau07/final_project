@@ -20,8 +20,10 @@ router.route('/true')
         })
         itemArray = itemArray.join("%20")
         console.log(`${itemArray}`);
-         res.redirect(`/${url}${itemArray}`)
-        return res.json(selectedItems.toJSON())
+         return res.redirect(`https://api.edamam.com/${url}${itemArray}`)
+         .then(result => {
+           console.log('AEWHAEIUHFWEUIFHEWFAEWFUEHFIAUEJEWAJFIEOWJFI',result);
+         })
       })
       .catch(err => {
         console.log({ err: err.message });
