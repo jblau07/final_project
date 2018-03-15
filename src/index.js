@@ -5,7 +5,8 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
 import "./index.css";
-import App from "./containers/App";
+import rootReducer from './reducers';
+import App from "./containers/App/App";
 import registerServiceWorker from "./registerServiceWorker";
 
 const boundCompose = compose.bind(null, applyMiddleware(thunk));
