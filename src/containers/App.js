@@ -1,13 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import logo from "./logo.svg";
-import "./App.css";
-
-import BarcodeScanner from "../../components/BarcodeScanner";
-import { loadRecipes, setActiveRecipe } from "../../actions";
-import ActiveRecipe from "../../components/ActiveRecipe";
-import RecipesList from "../../components/RecipeList";
+import { loadRecipes, setActiveRecipe } from "../actions/ItemsAction";
+import ActiveRecipe from "../components/ActiveRecipe";
+import RecipesList from "../components/RecipeList";
 
 class App extends Component {
   constructor(props) {
@@ -16,9 +12,9 @@ class App extends Component {
     this.recipeClickHandler = this.recipeClickHandler.bind(this);
     this.findRecipeByName = this.findRecipeByName.bind(this);
   }
-  componentDidMount() {
-    this.props.loadRecipe();
-  }
+  // componentDidMount() {
+  //   this.props.loadRecipe();
+  // }
 
   recipeClickHandler(event) {
     const recipeName = event.currentTarget.dataset.recipeName;
@@ -42,21 +38,25 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">FINAL PROJECT WOO</h1>
         </header>
-        <ActiveRecipe planet={this.props.activeRecipe} />
-        <p className="App-intro">
+        {/* <ActiveRecipe planet={this.props.activeRecipe} /> */}
+        {/* <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <RecipesList
+        </p> */}
+        {/* <RecipesList
           planets={this.props.recipes}
           recipeClickHandler={this.recipeClickHandler}
+<<<<<<< HEAD:src/containers/App/App.js
         />
         <BarcodeScanner />
+=======
+        /> */}
+        >>>>>>> 0254132529008f37637ae8887565233b26bff53c:src/containers/App.js
       </div>
     );
   }
 }
 
-export default connect(mapStateToProp, mapDispatchToProps)(App);
+// export default connect(mapStateToProp, mapDispatchToProps)(App);
+export default App;

@@ -7,7 +7,7 @@ const RecipeList = ({ recipes, recipeClickHandler }) => {
     return (
       <RecipeListItem
         key={idx}
-        {...planet}
+        {...recipe}
         recipeClickHandler={recipeClickHandler}
       />
     );

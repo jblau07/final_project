@@ -1,6 +1,16 @@
 const express = require('express');
 const router = express.Router();
 
+const User = require('../server/db/models/User');
+const Recipe = require('../server/db/models/Recipe');
+const url = '/search?app_id=4774d0c5&app_key=a56469a8e5c8652660440e595a4f5b90&q=';
+
+router.route(`/`)
+.get((req,res) => {
+
+
+
+})
 
 
 
@@ -13,4 +23,4 @@ const router = express.Router();
 
 
 
-module.exports = Router;
+module.exports = router;
