@@ -1,15 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-function getSuggestions(value) {
-  return
-  [{name: "asparagus"}, {name: "broccoli"}, {name: "carrot"}, {name: "celery"}, {name: "cucumber"},
-    {name: "corn"}, {name: "lettuce"}, {name: "cabbage"}, {name: "mushroom"}, {name: "onion"}, {name: "pepper"}]
-}
-
-function getSuggestionValue(suggestion) {
-  return suggestion.name
-}
 
 class SuggestItem extends Component {
   constructor(props) {
@@ -21,45 +12,32 @@ class SuggestItem extends Component {
     }
   }
 
-  onChange = (event, { newValue }) => {
-    this.setState({
-      value: newValue
+  updateSearch(event) {
+    this.setState({value: event.target.value});
+    let filteredIngredients = this.props.searchIngredients.filter(ingredient => {
+      return ingredient.name.indexOf(this.state.value) !== -1
     })
+    this.state.suggestions.push(filteredIngredients)
   }
 
-  onSuggestionsFetchRequested = ({value}) => {
-    this.setState({suggestions: getSuggestions(value)})
+  handleSubmit(event) {
+
   }
 
-  onSuggestionsClearRequested = () => {
-    this.setState({suggestions: []})
-  }
 
   render () {
-    const { value, suggestions } = this.state;
-    const inputProps = {
-      placeholder: 'Type',
-      onChange: this.onChange,
-      value,
-    };
+    
 
     return (
-      <div></div>
+      <div className="search-container">
+      <form className="search-form">
+        <div className="search-row">
+          <input type="text"
+          placeholder="search"
+          onChange={this.updateSearch.bind(this)} />
+        </div>
+      </form>
+      </div>
     )
-  }
-
-
-
-  // suggestItems(event) {
-  //   this.setState({search: event.target.value});
-  //   let filterItems = this.props.searchItems.filter(item => {
-  //     return item.indexOf(this.state.search) !== -1
-  //   });
-  //   this.state.suggested.push(filterItems)
-  // }
-
-  handleSubmit (event) {
-    event.preventDefault();
-
   }
 }
