@@ -5,7 +5,7 @@ const User = require('./db/models/User');
 const PORT = process.env.PORT || 8080;
 
 const userRoute = require('../routes/users');
-const itemRoute = require('../routes/items');
+const ingredientsRoute = require('../routes/ingredients');
 const recipeRoute = require('../routes/recipes');
 
 const app = express();
@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use('/api/users',userRoute);
-app.use('/api/items',itemRoute);
+app.use('/api/ingredients',ingredientsRoute);
 app.use('https://api.edamam.com',recipeRoute);
 
 app.post('/api/register', (req, res) => {
