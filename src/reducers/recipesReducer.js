@@ -1,4 +1,4 @@
-import { LOAD_RECIPES, SET_ACTIVE_RECIPE } from "../actions";
+import { LOAD_RECIPES, SET_ACTIVE_RECIPE } from "../actions/ItemsAction";
 
 const initialState = {
   recipes: [],
