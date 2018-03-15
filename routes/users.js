@@ -12,4 +12,4 @@ const router = express.Router();
 
 
 
-module.exports = Router;
+module.exports = router;

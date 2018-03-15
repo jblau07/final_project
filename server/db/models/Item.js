@@ -8,4 +8,5 @@ class Item extends bookshelf.Model{
   }
 }
 
+
 module.exports = bookshelf.model('Item',Item);
