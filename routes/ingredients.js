@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const Item = require('../server/db/models/Item');
+const ingredient = require('../server/db/models/Ingredient');
 
 const url = '/search?app_id=4774d0c5&app_key=a56469a8e5c8652660440e595a4f5b90&q=';
 
@@ -20,8 +20,10 @@ router.route('/true')
         })
         itemArray = itemArray.join("%20")
         console.log(`${itemArray}`);
-         res.redirect(`/${url}${itemArray}`)
-        return res.json(selectedItems.toJSON())
+         return res.redirect(`https://api.edamam.com/${url}${itemArray}`)
+         .then(result => {
+           console.log('AEWHAEIUHFWEUIFHEWFAEWFUEHFIAUEJEWAJFIEOWJFI',result);
+         })
       })
       .catch(err => {
         console.log({ err: err.message });
@@ -68,7 +70,6 @@ router.route('/:id')
         return res.json({ err: err.message });
       })
   })
-
 
 router.route('/')
   .get((req, res) => {
