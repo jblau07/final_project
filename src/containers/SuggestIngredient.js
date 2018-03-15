@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 
-class SuggestItem extends Component {
+class SuggestIngredient extends Component {
   constructor(props) {
     super(props) 
     

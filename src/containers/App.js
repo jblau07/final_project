@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import "./App.css";
-
-import { loadRecipes, setActiveRecipe } from "../../actions/ItemsAction";
-import ActiveRecipe from "../../components/ActiveRecipe";
-import RecipesList from "../../components/RecipeList";
+import { loadRecipes, setActiveRecipe } from "../actions/ItemsAction";
+import ActiveRecipe from "../components/ActiveRecipe";
+import RecipesList from "../components/RecipeList";
 
 class App extends Component {
   constructor(props) {
