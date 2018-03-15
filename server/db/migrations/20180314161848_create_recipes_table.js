@@ -6,7 +6,6 @@ exports.up = function(knex, Promise) {
     table.string('ingredients');
     table.string('url').notNullable();
     table.string('image');
-    table.integer('user_id').references('id').inTable('users');
     table.timestamp('created_at').defaultTo(knex.fn.now());
     table.timestamp('updated_at').defaultTo(knex.fn.now());
   })
