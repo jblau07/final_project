@@ -7,6 +7,7 @@ const Fridge = require('../server/db/models/Fridge');
 
 
 router.route('/:id')
+//Get Ingredient by ID (Not Necessary)
   .get((req, res) => {
     let id = req.params.id;
     return new Ingredient()
@@ -20,6 +21,7 @@ router.route('/:id')
         return res.json({ err: err.message });
       })
   })
+  //Edit Ingredient (Not Necessary)
   .put((req, res) => {
     let id = req.params.id;
     let data = {} = req.body;
@@ -33,6 +35,7 @@ router.route('/:id')
         res.json({ err: err.message })
       })
   })
+  //Delete Ingredient (Not Necessary)
   .delete((req, res) => {
     let id = req.params.id;
     return new Ingredient({ id: id })
@@ -47,9 +50,8 @@ router.route('/:id')
   })
 
 router.route('/')
-
+  //Get All Ingredients for Fuzzy Search
   .get((req, res) => {
-
     return new Ingredient()
       .fetchAll()
       .then(ingredients => {
@@ -62,6 +64,8 @@ router.route('/')
   })
 
   //Pass the local storage from front-end to the backend so it can be added into user_id
+  //If Ingredients doesnt exist, add into Ingredients table and fridge table
+  //If Ingredients already exists, find ID and add into fridge table
   .post((req, res) => {
     let data = { name } = req.body;
     console.log('data', req.body.id)

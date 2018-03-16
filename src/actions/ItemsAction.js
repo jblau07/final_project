@@ -16,8 +16,9 @@ export const setActiveRecipe = recipe => {
 
 export const loadRecipes = () => {
   return dispatch => {
-    return fetch(`${EDAMAM}/recipes`)
+    return fetch(`/recipes/getRecipes`)
       .then(res => {
+        console.log(res);
         return res.json();
       })
       .then(json => {

@@ -6,7 +6,7 @@ const Cookbook = require('../server/db/models/Cookbook');
 
 
 router.route('/:userId/:recipeId')
-
+//Delete Recipe Associated with User from Fridge
   .delete((req, res) => {
     let user_id = req.params.userId;
     let recipe_id = req.params.recipeId;
@@ -24,12 +24,12 @@ router.route('/:userId/:recipeId')
 
 
 router.route(`/:userId`)
+//Get all Recipes Associated with Specific User
   .get((req, res) => {
-
     let id = req.params.userId;
     return new Cookbook()
-      .where({ id: id })
-      .fetch({withRelated:['users','recipes']})
+      .where({ user_id: id })
+      .fetchAll({withRelated:['users','recipes']})
       .then(result => {
         return res.json(result.toJSON());
       })
