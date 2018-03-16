@@ -5,14 +5,9 @@ class Ingredient extends bookshelf.Model{
     return 'ingredients'
   }
 
-  users(){
-    return this.belongsTo('User');
+  ingredients(){
+    return this.belongsToMany('User').through('Fridge')
   }
-
-  fridge(){
-    return this.belongsTo('Fridge');
-  }
-
 }
 
 module.exports = bookshelf.model('Ingredient',Ingredient)

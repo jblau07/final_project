@@ -7,6 +7,8 @@ const PORT = process.env.PORT || 8080;
 const userRoute = require('../routes/users');
 const ingredientsRoute = require('../routes/ingredients');
 const recipeRoute = require('../routes/recipes');
+const fridgeRoute = require('../routes/fridge');
+const cookbookRoute = require('../routes/cookbook');
 
 const app = express();
 app.use(bodyParser.json());
@@ -17,7 +19,9 @@ app.use(bodyParser.urlencoded({
 
 app.use('/api/users',userRoute);
 app.use('/api/ingredients',ingredientsRoute);
-app.use('https://api.edamam.com',recipeRoute);
+app.use('/api/recipes',recipeRoute);
+app.use('/api/fridge',fridgeRoute);
+app.use('/api/cookbook',cookbookRoute);
 
 app.post('/api/register', (req, res) => {
   let data = {username, password} = req.body;
