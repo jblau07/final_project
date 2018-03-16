@@ -61,7 +61,7 @@ class ImageRecognition extends Component {
     context.fillStyle = '#FFF';
     context.fillRect(0, 0, width, height);
 
-    const data = canvas.toDataURL('image/png');
+    const data = canvas.toDataURL('image/jpeg', 1.0);
     photo.setAttribute('src', data);
   }
 
@@ -76,7 +76,7 @@ class ImageRecognition extends Component {
     canvas.height = height;
     context.drawImage(video, 0, 0, width, height);
 
-    const data = canvas.toDataURL('image/png');
+    const data = canvas.toDataURL('image/jpeg', 1.0);
     photo.setAttribute('src', data);
 
     this.setState({ didTakePicture: true });
