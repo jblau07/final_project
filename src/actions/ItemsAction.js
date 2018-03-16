@@ -3,7 +3,7 @@ import "axios";
 const EDAMAM = "https://developer.edamam.com/edamam-docs-recipe-api";
 
 export const LOAD_RECIPES = "LOAD_RECIPES";
-export const SET_ACTIVE_RECIPES = "LOAD_RECIPES";
+export const SET_ACTIVE_RECIPES = "SET_ACTIVE_RECIPES";
 
 export const setActiveRecipe = recipe => {
   if (recipe) {

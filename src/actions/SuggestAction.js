@@ -4,7 +4,6 @@ export const LOAD_INGREDIENTS = 'LOAD_INGREDIENTS';
 export const ADD_INGREDIENT = 'ADD_INGREDIENT';
 
 export const loadIngredients = () => {
-  console.log('ggggg')
   return dispatch => {
     return axios.get('/api/ingredients')
     .then(data => {
