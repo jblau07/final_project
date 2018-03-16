@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadIngredients } from '../actions/SuggestAction' ;
+import { loadIngredients, addIngredient } from '../actions/SuggestAction' ;
 import Autosuggest from 'react-autosuggest';
 
 
@@ -58,6 +58,13 @@ class SuggestIngredient extends Component {
     });
   };
 
+  handleOnSubmit (event) {
+    event.preventDefault();
+    this.props.addIngredient(this.state.value);
+    console.log('handle', this.state.value)
+    this.setState({value: ''})
+  }
+
   render () {
 
     const { value, suggestions} = this.state;
@@ -68,8 +75,11 @@ class SuggestIngredient extends Component {
       onChange: this.onChange
     }
     
+    console.log('props', this.props)
+    console.log('state', this.state)
     return (
 
+    <form className="new-ing-form" onSubmit = {this.handleOnSubmit.bind(this)}>
       <Autosuggest
       suggestions={suggestions}
       onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
@@ -78,13 +88,18 @@ class SuggestIngredient extends Component {
       renderSuggestion={renderSuggestion}
       inputProps={inputProps}
     />
+    <div className="add-ing">
+      <button className="form-submit" type="submit">Submit</button>
+    </div>
+    </form>
     )
   }
 }
 
 const mapStateToProps = state => {
   return {
-    ingredients: state.suggest.ingredients
+    ingredients: state.suggest.ingredients,
+    singleIngredient: state.suggest.singleIngredient
   }
 }
 
@@ -92,6 +107,9 @@ const mapDispatchToProps = dispatch => {
   return {
     loadIngredients: function () {
       dispatch(loadIngredients());
+    },
+    addIngredient: function (name) {
+      dispatch(addIngredient(name));
     }
   }
 }
