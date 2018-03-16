@@ -38,30 +38,4 @@ router.route('/:userId/:ingredientId')
       })
   })
 
-// router.route('/selected')
-//   .get((req, res) => {
-//     return new Fridge()
-//       .where({ selected: true })
-//       .fetchAll({ withRelated: ['users'] })
-//       .then(selectedItems => {
-//         let item = selectedItems.toJSON();
-//         let itemArray = [];
-//         item.map(elem => {
-//           itemArray.push(elem.name);
-//           return itemArray;
-//         })
-//         itemArray = itemArray.join("%20")
-//         console.log(`${itemArray}`);
-//          return res.redirect(`https://api.edamam.com/${url}${itemArray}`)
-//          .then(result => {
-//            console.log('AEWHAEIUHFWEUIFHEWFAEWFUEHFIAUEJEWAJFIEOWJFI',result);
-//          })
-//       })
-//       .catch(err => {
-//         console.log({ err: err.message });
-//         return res.json({ err: err.message });
-//       })
-//   })
-
-
 module.exports = router;

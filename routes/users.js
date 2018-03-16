@@ -21,8 +21,8 @@ router.route('/:id')
 })
 .put( (req,res)=>{
   let id = req.params.id;
-  let data = {username,password} = req.params;
-  return new User(data)
+  let data = {username,password} = req.body;
+  return new User()
   .where({id:id})
   .save(data,{patch:true})
   .then(user => {

@@ -12,6 +12,17 @@ class User extends bookshelf.Model {
     return this.belongsToMany('Recipe').through('Cookbook');
   }
 
+  cookbook(){
+    return this.hasOne('Cookbook');
+  }
+
+  // ingredients(){
+  //   return this.hasMany('Ingredient');
+  // }
+ 
+  // fridge(){
+  //   return this.hasOne('Fridge');
+  // }
   // cookbook(){
   //   return this.hasOne('Cookbook');
   // }
