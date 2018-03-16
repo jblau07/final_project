@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { loadIngredients } from '../actions/SuggestAction' ;
+import Autosuggest from 'react-autosuggest';
 
+
+const getSuggestionValue = suggestion => suggestion.name;
+
+function renderSuggestion(suggestion) {
+  return <span>{suggestion.name}</span>;
+}
+
+function escapeRegexCharacters(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
 
 class SuggestIngredient extends Component {
   constructor(props) {
@@ -12,32 +24,76 @@ class SuggestIngredient extends Component {
     }
   }
 
-  updateSearch(event) {
-    this.setState({value: event.target.value});
-    let filteredIngredients = this.props.searchIngredients.filter(ingredient => {
-      return ingredient.name.indexOf(this.state.value) !== -1
+  componentDidMount(props) {
+    this.props.loadIngredients()
+  }
+
+  onChange = (event, {newValue}) => {
+    this.setState({
+      value: newValue
     })
-    this.state.suggestions.push(filteredIngredients)
   }
+  getSuggestions = (value, array) => {
 
-  handleSubmit(event) {
+    const escapedValue = escapeRegexCharacters(value.trim());
 
+    if (escapedValue === '') {
+      return [];
+    }
+
+    const regex = new RegExp('^' + escapedValue, 'i');
+
+    return array.filter(item => regex.test(item.name));
+  };
+
+  onSuggestionsFetchRequested = ({value}) => {
+    this.setState({
+      suggestions: this.getSuggestions(value, this.props.ingredients.data)
+    })
   }
-
+  
+  onSuggestionsClearRequested = () => {
+    this.setState({
+      suggestions: []
+    });
+  };
 
   render () {
-    
 
+    const { value, suggestions} = this.state;
+
+    const inputProps = {
+      placeholder: 'search',
+      value,
+      onChange: this.onChange
+    }
+    
     return (
-      <div className="search-container">
-      <form className="search-form">
-        <div className="search-row">
-          <input type="text"
-          placeholder="search"
-          onChange={this.updateSearch.bind(this)} />
-        </div>
-      </form>
-      </div>
+
+      <Autosuggest
+      suggestions={suggestions}
+      onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+      onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+      getSuggestionValue={getSuggestionValue}
+      renderSuggestion={renderSuggestion}
+      inputProps={inputProps}
+    />
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    ingredients: state.suggest.ingredients
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loadIngredients: function () {
+      dispatch(loadIngredients());
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SuggestIngredient)
