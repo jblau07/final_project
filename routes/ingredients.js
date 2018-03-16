@@ -5,7 +5,6 @@ const Ingredient = require('../server/db/models/Ingredient');
 const User = require('../server/db/models/User');
 const Fridge = require('../server/db/models/Fridge');
 
-const url = '/search?app_id=4774d0c5&app_key=a56469a8e5c8652660440e595a4f5b90&q=';
 
 router.route('/:id')
   .get((req, res) => {
@@ -48,6 +47,7 @@ router.route('/:id')
   })
 
 router.route('/')
+
   .get((req, res) => {
 
     return new Ingredient()
@@ -64,13 +64,15 @@ router.route('/')
   //Pass the local storage from front-end to the backend so it can be added into user_id
   .post((req, res) => {
     let data = { name } = req.body;
+    console.log('data', req.body.id)
     let userId;
     userId = 1;
     let ingr;
     let id;
-    return new Ingredient(data)
-      .save()
+    return new Ingredient()
+      .save(data)
       .then(ingredient => {
+        console.log('ingredient', ingredient)
         ingr = ingredient.toJSON();
         id = ingr.id;
 
@@ -79,7 +81,7 @@ router.route('/')
           .save()
           .then(result => {
             console.log(result);
-            return res.json(result.toJSON());
+            return res.json({'fridge':result.toJSON()});
           })
           .catch(err => {
             console.log('fridge',{ err: err.message });
@@ -95,6 +97,7 @@ router.route('/')
         .fetch()
         .then(ingredient => {
          console.log('FOUND INGREDIENT')
+         console.log('thisingredient', ingredient)
          ingr = ingredient.toJSON();
          id = ingr.id;
   
