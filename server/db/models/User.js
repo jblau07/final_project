@@ -5,16 +5,27 @@ class User extends bookshelf.Model {
     return 'users'
   }
 
-  ingredients(){
-    return this.hasMany('Ingredient');
+  users(){
+    return this.belongsToMany('Ingredient').through('Fridge')
+  }
+  user(){
+    return this.belongsToMany('Recipe').through('Cookbook');
   }
 
-  fridge(){
-    return this.hasOne('Fridge');
-  }
   cookbook(){
     return this.hasOne('Cookbook');
   }
+
+  // ingredients(){
+  //   return this.hasMany('Ingredient');
+  // }
+ 
+  // fridge(){
+  //   return this.hasOne('Fridge');
+  // }
+  // cookbook(){
+  //   return this.hasOne('Cookbook');
+  // }
 
 
 

@@ -86,7 +86,7 @@ class BarcodeScanner extends Component {
     // };
   }
   componentDidUpdate() {
-    console.log("       ", this.state);
+    console.log("this.state", this.state);
     console.log("this.props", this.props.ingredient);
   }
   handleUpcSubmit() {
