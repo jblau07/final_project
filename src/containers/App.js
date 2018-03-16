@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { loadRecipes, setActiveRecipe } from "../actions/ItemsAction";
 import ActiveRecipe from "../components/ActiveRecipe";
 import RecipesList from "../components/RecipeList";
+import ImageRecognition from '../containers/ImageRecognition';
 
 class App extends Component {
   constructor(props) {
@@ -48,6 +49,7 @@ class App extends Component {
           planets={this.props.recipes}
           recipeClickHandler={this.recipeClickHandler}
         /> */}
+        <ImageRecognition />
       </div>
     );
   }
