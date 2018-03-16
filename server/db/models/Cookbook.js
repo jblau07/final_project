@@ -10,7 +10,7 @@ class Cookbook extends bookshelf.Model{
   }
 
   recipes(){
-    return this.hasMany('recipes');
+    return this.belongsTo('Recipe');
   }
 
 }
