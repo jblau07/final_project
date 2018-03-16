@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadIngredients } from '../actions/SuggestAction' ;
+import { loadIngredients, addIngredient } from '../actions/SuggestAction' ;
 import Autosuggest from 'react-autosuggest';
-
 
 const getSuggestionValue = suggestion => suggestion.name;
 
@@ -16,12 +15,14 @@ function escapeRegexCharacters(str) {
 
 class SuggestIngredient extends Component {
   constructor(props) {
-    super(props) 
+    super(props);
     
     this.state = {
       value: '',
       suggestions: []
     }
+
+    this.handleOnSubmit = this.handleOnSubmit.bind(this);
   }
 
   componentDidMount(props) {
@@ -33,8 +34,8 @@ class SuggestIngredient extends Component {
       value: newValue
     })
   }
-  getSuggestions = (value, array) => {
 
+  getSuggestions = (value, array) => {
     const escapedValue = escapeRegexCharacters(value.trim());
 
     if (escapedValue === '') {
@@ -42,7 +43,6 @@ class SuggestIngredient extends Component {
     }
 
     const regex = new RegExp('^' + escapedValue, 'i');
-
     return array.filter(item => regex.test(item.name));
   };
 
@@ -58,8 +58,14 @@ class SuggestIngredient extends Component {
     });
   };
 
-  render () {
+  handleOnSubmit (event) {
+    event.preventDefault();
+    this.props.addIngredient(this.state.value);
+    console.log('handle', this.state.value)
+    this.setState({value: ''})
+  }
 
+  render () {
     const { value, suggestions} = this.state;
 
     const inputProps = {
@@ -68,32 +74,43 @@ class SuggestIngredient extends Component {
       onChange: this.onChange
     }
     
+    console.log('props', this.props)
+    console.log('state', this.state)
     return (
 
-      <Autosuggest
-      suggestions={suggestions}
-      onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-      onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-      getSuggestionValue={getSuggestionValue}
-      renderSuggestion={renderSuggestion}
-      inputProps={inputProps}
-    />
+      <form className="new-ing-form" onSubmit={this.handleOnSubmit}>
+        <Autosuggest
+          suggestions={suggestions}
+          onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+          onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+          getSuggestionValue={getSuggestionValue}
+          renderSuggestion={renderSuggestion}
+          inputProps={inputProps}
+        />
+        <div className="add-ing">
+          <button className="form-submit" type="submit">Submit</button>
+        </div>
+      </form>
     )
   }
 }
 
 const mapStateToProps = state => {
   return {
-    ingredients: state.suggest.ingredients
+    ingredients: state.suggest.ingredients,
+    singleIngredient: state.suggest.singleIngredient
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadIngredients: function () {
+    loadIngredients: () => {
       dispatch(loadIngredients());
+    },
+    addIngredient: (name) => {
+      dispatch(addIngredient(name));
     }
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SuggestIngredient)
+export default connect(mapStateToProps, mapDispatchToProps)(SuggestIngredient);

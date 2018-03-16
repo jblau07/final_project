@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import BarcodeScanner from "../components/BarcodeScanner";
 import { loadRecipes, setActiveRecipe } from "../actions/ItemsAction";
 import ActiveRecipe from "../components/ActiveRecipe";
 import RecipesList from "../components/RecipeList";
@@ -49,7 +50,11 @@ class App extends Component {
         {/* <RecipesList
           planets={this.props.recipes}
           recipeClickHandler={this.recipeClickHandler}
-        /> */}
+
+        />
+        
+      /> */}
+        <BarcodeScanner />
       </div>
     );
   }
