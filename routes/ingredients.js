@@ -90,7 +90,8 @@ router.route('/')
   //Pass the local storage from front-end to the backend so it can be added into user_id
   .post((req, res) => {
     let data = { name } = req.body;
-
+    let userId;
+    userId = 1;
     let ingr;
     let id;
     return new Ingredient(data)
@@ -99,7 +100,7 @@ router.route('/')
         ingr = ingredient.toJSON();
         id = ingr.id;
 
-        let newData = {ingredient_id : id}
+        let newData = {ingredient_id : id, user_id:userId}
         return new Fridge(newData)
           .save()
           .then(result => {
@@ -110,12 +111,32 @@ router.route('/')
             console.log('fridge',{ err: err.message });
             return res.json({ err: err.message });
           })
+        return res.json(ingredient.toJSON());
       })
 
-      .catch(result => {
+      .catch(err => {
 
-        return new Fridge(newData)
-        console.log('ingr',{ err: err.message });
+        return new Ingredient()
+        .where({name:req.body.name})
+        .then(ingredient => {
+         console.log('FOUND INGREDIENT')
+         ingr = ingredient.toJSON();
+         id = ingr.id;
+  
+          newData = {ingredient_id : id, user_id:userId}
+          return new Fridge(newData)
+            .save()
+            .then(result => {
+              console.log(result);
+              return res.json(result.toJSON());
+            })
+            .catch(err => {
+              console.log('fridge',{ err: err.message });
+              return res.json({ err: err.message });
+            })
+          return res.json(ingredient.toJSON());
+        })
+      
         return res.json({ err: err.message });
       })
   })
