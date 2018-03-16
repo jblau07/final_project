@@ -1,11 +1,21 @@
 import React, { Component } from "react";
-import Scandit from "scandit-sdk";
+import { configure, BarcodePicker, ScanSettings, Barcode } from "scandit-sdk";
+import { getByUpc } from "../actions/BarcodeAction";
+import { connect } from "react-redux";
 
 class BarcodeScanner extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      scannedUpc: null,
+      scannedName: []
+    };
+    this.handleUpcSubmit = this.handleUpcSubmit.bind(this);
+  }
   componentDidMount() {
     const engineLocation = "https://unpkg.com/scandit-sdk/build";
-    Scandit.configure(
-      "AXwrWT7LJXCLBRvfhh7ad0c9J06lD9UlAmBgaFJLoKYUQf7SqXBrid9VVZMrfBzDXzfmpERkuXcebQL3BW2JuV1IKSkIIe+OACUvQB1QWBrCVVhajGPVq51xuARna/3gSHVPYwlBSOfnXPrQ106OIVB39JobeZ5kbi0G4ch+23wcZ+9X9WX2KF15/+pYZxr3CkJterlHVmSdejzbNG5hlNN8VtYXM8tC716NmUtl3F2zLeyPXFKviA0yqSB7UvER/Xhv/393Dwi2Uy6mPlHq4VdWwDPVS6d9onLeLQtoQW9IfBLGMmBm2F5TA4e8YfqtGFAjdm4Wd8pJKMyS6DDlon6H+/I3EXUzMVuDQlSGHEXM72/w+1hqwRKJqTSTIIVPsESsLFoKxpWKmvbWydLoJSYwfqvgqCHfYvee9NsiQx11jYOAKThs8II0SkcmBeIFnFYxWzkKWxvp7QdStyJMOf1wphntH5DFrDJINn8Z9WwqjjlH/ppGXSz8c7XjV0nRbi5tqLgqSR1zaqarekd5WC/O85fOotmrJmP0Ud73LjKy8ymNVkRALgmeG5gEJBKvXCr0av6bzjDm2j7VESlMz2RZDxF5ysImeIXmdcOMbxZ0OWvcayHHRMEpvlYVgau2LpllvYyzUPwxqZzCZbm6thhGyJ4YsgjJKp1M5sQBW0eR7hwgspAHmGycf2bsvtk1qdD88LA+Z8LOahhCYqtOt7YAsKKJG6yP8eNcuvRniFriiH0MIxT84YcKPeAuFd0Iv0VEho3aSqGgrV80GUd38y2HSiPFCEE7Evf3gqYglvh475uetv22u+Pjf8Dw+FvYI5d+d2velY7rXiqOpTMsYUeFPGO8uiYBVtGfrXt++eHgQyarsmpAzeGWnWC6F7G4bg04XpxcrIIH1ekLplHSZq7XpuoKhArcym6uuKJ1ew4a3idBfIDpHIEZDbOiJs1tSwHku1+9UPAUGsggzTyNc67o0977QkfJkTzvuxmabY1gX+L70jwQZJSbr/A8Pw==",
+    configure(
+      "AZ7LJzXLLmFWHbYP5xHr8VAEgAxmNGYcGnYoifpGSJrYfTInIQojdIJpKD0FSSi1bC5Ubjh0mGXLarfJZWNjfmAq/jeqIzh2amOBVudpvMVnYg3hx00GonlYsMyeWvW2P1jlS5FY0P5dBiRslDHxevdo9cNsQLFE4y/2kklgJ7sfi3M6RJ3wmqZRxEYrca9VvyUkxcLRCEPXES0mxoNtrmj2pmiUZbowpKpi3S+1Z6+W2lpOBDEcCogiajFAdLTa8IEvgnoJMcXlp3BvLFjK79c0Gv4B/Tr2XWh1vcYVuHNGom4ca7GiyVm1stDwTmD81nA3NK3E3epN9d5T3BjwNrWQRRl3QkFH77q6lshecqkrqFcZ3LFyGbZAcQEAh+U/UbnjmDkasXsKCd+X0ggieaZ6lEhDUFmEmkR9zSin/0Gw4k4xvC7PRkivpEYWBhoUUzMzdYtxgGk1Dx7aiBZKl6yLp27ooLz4Wy/Q8VRZCan9WXnapOx/maokalCmw3hqWFWaIijAWq6GWVK7RJ37u4HgjFyJAoOxhNTvFsKtNAduRRBkXWlMywA0iQBeaNB0QVOmpO0iFNyxQqlLzw+7zQ2oaH25ycVXuWotmPWXunkTOEH5DhbhdlolqN8vLuHV2tyjc1WJjT+ER7+tzV9KylK1HA5by41jxe3I8g0eqgTaDtAZZvs630ESbLAbUYm2lAnU9xXPiNA5iwtLpIo0/hcbfXK/Eg7BM0pcBk14gp1ZLI0EkIRsuE40I7Mh8eNOfw4UYczh3qXbzmUJ/UraLzdK2WF/dORCAEXAycnNECNxYl0sWfIGSdmH9Ikp",
       {
         engineLocation: engineLocation,
         preloadEngineLibrary: false,
@@ -15,19 +25,19 @@ class BarcodeScanner extends Component {
 
     const scannerContainer = document.getElementById("scandit-barcode-picker");
     const resultContainer = document.getElementById("scandit-barcode-result");
-    const continueButton = document.getElementById("continue-scanning-button");
-    continueButton.disabled = true;
-    continueButton.hidden = true;
+    // const continueButton = document.getElementById("continue-scanning-button");
+    // continueButton.disabled = true;
+    // continueButton.hidden = true;
     let picker;
 
     // create & start picker
-    Scandit.BarcodePicker.create(scannerContainer, {
+    BarcodePicker.create(scannerContainer, {
       playSoundOnScan: true,
       vibrateOnScan: true,
       guiStyle: 2
     })
       .then(picker => {
-        const scanSettings = new Scandit.ScanSettings({
+        const scanSettings = new ScanSettings({
           enabledSymbologies: [
             "ean8",
             "ean13",
@@ -43,8 +53,8 @@ class BarcodeScanner extends Component {
         picker.applyScanSettings(scanSettings);
 
         picker.onScan(scanResult => {
-          continueButton.hidden = false;
-          continueButton.disabled = false;
+          // continueButton.hidden = false;
+          // continueButton.disabled = false;
           // picker.pauseScanning();
           // resultContainer.innerHTML = scanResult.barcodes.reduce((string, barcode) => {
           //   string + `${Scandit.Barcode.Symbology.toHumanizedName(barcode.symbology)}: ${barcode.data}<br>`
@@ -53,6 +63,8 @@ class BarcodeScanner extends Component {
           resultContainer.innerHTML = `${scanResult.barcodes[0].symbology}: ${
             scanResult.barcodes[0].data
           }`;
+          this.setState({ scannedUpc: scanResult.barcodes[0].data });
+          console.log(this.state);
         });
 
         picker.onScanError(error => {
@@ -65,25 +77,47 @@ class BarcodeScanner extends Component {
         console.log(err);
       });
 
-    const continueScanning = () => {
-      if (picker) {
-        continueButton.disabled = true;
+    // const continueScanning = () => {
+    //   if (picker) {
+    //     continueButton.disabled = true;
 
-        picker.resumeScanning();
-      }
-    };
+    //     picker.resumeScanning();
+    //   }
+    // };
   }
+  componentDidUpdate() {
+    console.log("       ", this.state);
+    console.log("this.props", this.props.ingredient);
+  }
+  handleUpcSubmit() {
+    this.props.getByUpc(this.state.scannedUpc);
+  }
+  //getByUpc
   render() {
     return (
       <div className="bc-scanner">
         <div id="scandit-barcode-picker" />
         <div id="scandit-barcode-result">No codes scanned yet</div>
-        <button id="continue-scanning-button" onclick="continueScanning()">
-          Continue Scanning
-        </button>
+        <button onClick={this.handleUpcSubmit}>Submit</button>
       </div>
     );
   }
 }
-export default BarcodeScanner;
+const mapStateToProps = state => {
+  return {
+    ingredient: state.barcodeScanner.ingredient
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getByUpc: upc => {
+      dispatch(getByUpc(upc));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BarcodeScanner);
+
+//DO NOT DELETE!!!
 // .fetch("https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json? format=json&q=butter&sort=n&max=25&offset=0&api_key=AGfEqQqGhphAHGNzD43BSzADNdKyC7oIyPt8ovVj&location=Denver+CO")
