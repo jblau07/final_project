@@ -7,7 +7,7 @@ import { loadRecipes, setActiveRecipe } from "../actions/ItemsAction";
 import ActiveRecipe from "../components/ActiveRecipe";
 import RecipesList from "../components/RecipeList";
 import SuggestIngredient from "../containers/SuggestIngredient";
-import Navbar from "../components/Navbar";
+import { Navbar } from "../components/Navbar";
 
 class App extends Component {
   constructor(props) {
