@@ -1,4 +1,4 @@
-import { LOAD_INGREDIENTS, ADD_TO_FRIDGE } from "../actions/SuggestAction";
+import { LOAD_INGREDIENTS } from "../actions/SuggestAction";
 
 const initialState = {
   ingredients: [],
