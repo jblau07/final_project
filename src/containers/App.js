@@ -42,7 +42,7 @@ class App extends Component {
           <h1 className="App-title">FINAL PROJECT WOO</h1>
         </header>
         <SuggestIngredient/>
-        {/* <ActiveRecipe planet={this.props.activeRecipe} /> */}
+{/* <ActiveRecipe planet={this.props.activeRecipe} /> */}
         {/* <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p> */}
