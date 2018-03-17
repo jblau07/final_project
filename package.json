@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "base64-stream": "^0.1.3",
     "body-parser": "^1.18.2",
     "bookshelf": "^0.12.1",
     "express": "^4.16.3",
@@ -18,8 +19,8 @@
     "react-scripts": "1.1.1",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "watson-developer-cloud": "^3.2.1",
-    "scandit-sdk": "^1.4.7"
+    "scandit-sdk": "^1.4.7",
+    "watson-developer-cloud": "^3.2.1"
   },
   "scripts": {
     "start-js": "react-scripts start",
