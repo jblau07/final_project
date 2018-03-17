@@ -7,6 +7,7 @@ const Fridge = require('../server/db/models/Fridge');
 
 
 router.route('/:id')
+  //Get Ingredient by ID (Not Necessary)
   .get((req, res) => {
     let id = req.params.id;
     return new Ingredient()
@@ -20,6 +21,7 @@ router.route('/:id')
         return res.json({ err: err.message });
       })
   })
+  //Edit Ingredient (Not Necessary)
   .put((req, res) => {
     let id = req.params.id;
     let data = {} = req.body;
@@ -33,6 +35,7 @@ router.route('/:id')
         res.json({ err: err.message })
       })
   })
+  //Delete Ingredient (Not Necessary)
   .delete((req, res) => {
     let id = req.params.id;
     return new Ingredient({ id: id })
@@ -47,9 +50,8 @@ router.route('/:id')
   })
 
 router.route('/')
-
+  //Get All Ingredients for Fuzzy Search
   .get((req, res) => {
-
     return new Ingredient()
       .fetchAll()
       .then(ingredients => {
@@ -61,64 +63,36 @@ router.route('/')
       })
   })
 
-  //Pass the local storage from front-end to the backend so it can be added into user_id
+
+  //If Ingredients already exists, find ID
+  //If Ingredients doesnt exist, add into Ingredients table
   .post((req, res) => {
     let data = { name } = req.body;
-    console.log('data', req.body.id)
-    let userId;
-    userId = 1;
-    let ingr;
-    let id;
+    
     return new Ingredient()
-      .save(data)
+      .where({ name: data.name })
+      .fetch()
       .then(ingredient => {
-        console.log('ingredient', ingredient)
-        ingr = ingredient.toJSON();
-        id = ingr.id;
-
-        let newData = {ingredient_id : id, user_id:userId}
-        return new Fridge(newData)
-          .save()
-          .then(result => {
-            console.log(result);
-            return res.json({'fridge':result.toJSON()});
+        ingredient = ingredient.toJSON();
+        return res.json(ingredient)
+      })
+      .catch(err => {
+        return new Ingredient()
+          .save(data)
+          .then(ingredient => {
+            ingredient = ingredient.toJSON();
+            console.log('reddd', ingredient)
+            return res.json(ingredient);
           })
           .catch(err => {
-            console.log('fridge',{ err: err.message });
+            console.log({ err: err.message })
             return res.json({ err: err.message });
           })
-        return res.json(ingredient.toJSON());
+        console.log({ err: err.message });
+        res.json({ err: err.message })
       })
 
-      .catch(err => {
-
-        return new Ingredient()
-        .where({name:req.body.name})
-        .fetch()
-        .then(ingredient => {
-         console.log('FOUND INGREDIENT')
-         console.log('thisingredient', ingredient)
-         ingr = ingredient.toJSON();
-         id = ingr.id;
-  
-          newData = {ingredient_id : id, user_id:userId}
-          return new Fridge(newData)
-            .save()
-            .then(result => {
-              console.log(result);
-              return res.json(result.toJSON());
-            })
-            .catch(err => {
-              console.log('fridge',{ err: err.message });
-              return res.json({ err: err.message });
-            })
-          return res.json(ingredient.toJSON());
-        })
-      
-        return res.json({ err: err.message });
-      })
   })
-
 
 
 

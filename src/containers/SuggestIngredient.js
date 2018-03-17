@@ -16,12 +16,14 @@ function escapeRegexCharacters(str) {
 
 class SuggestIngredient extends Component {
   constructor(props) {
-    super(props) 
+    super(props);
     
     this.state = {
       value: '',
       suggestions: []
     }
+
+    this.handleOnSubmit = this.handleOnSubmit.bind(this);
   }
 
   componentDidMount(props) {
@@ -33,8 +35,8 @@ class SuggestIngredient extends Component {
       value: newValue
     })
   }
-  getSuggestions = (value, array) => {
 
+  getSuggestions = (value, array) => {
     const escapedValue = escapeRegexCharacters(value.trim());
 
     if (escapedValue === '') {
@@ -42,7 +44,6 @@ class SuggestIngredient extends Component {
     }
 
     const regex = new RegExp('^' + escapedValue, 'i');
-
     return array.filter(item => regex.test(item.name));
   };
 
@@ -66,7 +67,6 @@ class SuggestIngredient extends Component {
   }
 
   render () {
-
     const { value, suggestions} = this.state;
 
     const inputProps = {
@@ -79,19 +79,19 @@ class SuggestIngredient extends Component {
     console.log('state', this.state)
     return (
 
-    <form className="new-ing-form" onSubmit = {this.handleOnSubmit.bind(this)}>
-      <Autosuggest
-      suggestions={suggestions}
-      onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-      onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-      getSuggestionValue={getSuggestionValue}
-      renderSuggestion={renderSuggestion}
-      inputProps={inputProps}
-    />
-    <div className="add-ing">
-      <button className="form-submit" type="submit">Submit</button>
-    </div>
-    </form>
+      <form className="new-ing-form" onSubmit={this.handleOnSubmit}>
+        <Autosuggest
+          suggestions={suggestions}
+          onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+          onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+          getSuggestionValue={getSuggestionValue}
+          renderSuggestion={renderSuggestion}
+          inputProps={inputProps}
+        />
+        <div className="add-ing">
+          <button className="form-submit" type="submit">Submit</button>
+        </div>
+      </form>
     )
   }
 }
@@ -105,13 +105,13 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    loadIngredients: function () {
+    loadIngredients: () => {
       dispatch(loadIngredients());
     },
-    addIngredient: function (name) {
+    addIngredient: (name) => {
       dispatch(addIngredient(name));
     }
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SuggestIngredient)
+export default connect(mapStateToProps, mapDispatchToProps)(SuggestIngredient);

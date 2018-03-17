@@ -5,9 +5,9 @@ const User = require('../server/db/models/User')
 
 router.route('/:id')
 
+//Get user by ID
 .get((req,res) => {
   let id = req.params.id;
-
   return new User()
   .where({id:id})
   .fetch()
@@ -19,6 +19,8 @@ router.route('/:id')
     return res.json({ err: err.message });
   })
 })
+
+//Edit username password
 .put( (req,res)=>{
   let id = req.params.id;
   let data = {username,password} = req.body;
@@ -37,8 +39,8 @@ router.route('/:id')
 
 
 router.route(`/`)
+// Get all User
 .get((req,res) => {
-
   return new User()
   .fetchAll()
   .then(users => {
