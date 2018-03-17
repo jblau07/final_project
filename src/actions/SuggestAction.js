@@ -9,7 +9,6 @@ export const loadIngredients = () => {
   return dispatch => {
     return axios.get('/api/ingredients')
     .then(data => {
-      console.log('datawwwww', data.data)
       dispatch({
         type: LOAD_INGREDIENTS,
         ingredients: data
@@ -20,25 +19,6 @@ export const loadIngredients = () => {
     })
   }
 }
-
-
-// export const addToFridge = (newIngredient) => {
-//   return dispatch => {
-//     return axios.post('/api/fridge', {
-//       name: newIngredient
-//     })
-//     .then(ingredient => {
-//       dispatch({
-//         type: ADD_TO_FRIDGE,
-//         singleIngredient: ingredient.data
-//       })
-    
-//     })
-//     .catch((err) => {
-//       console.log(err)
-//     })
-//   }
-// }
 
 export const addIngredient = (newIngredient) => {
   return dispatch => {
