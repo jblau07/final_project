@@ -68,20 +68,21 @@ router.route('/')
   //If Ingredients doesnt exist, add into Ingredients table
   .post((req, res) => {
     let data = { name } = req.body;
-
+    
     return new Ingredient()
-      .where({ name: req.body.name })
+      .where({ name: data.name })
       .fetch()
       .then(ingredient => {
         ingredient = ingredient.toJSON();
-        return res.json(ingredient.name)
+        return res.json(ingredient)
       })
       .catch(err => {
         return new Ingredient()
           .save(data)
           .then(ingredient => {
             ingredient = ingredient.toJSON();
-            return res.json(ingredient.name);
+            console.log('reddd', ingredient)
+            return res.json(ingredient);
           })
           .catch(err => {
             console.log({ err: err.message })
