@@ -7,7 +7,7 @@ const initialState = {
 export default (state = initialState,action ={})=>{
   switch(action.type){
     case REGISTER:
-    return {...state, users: action.users};
+    return {...state, users: action.users}
    
     default:
     return state;

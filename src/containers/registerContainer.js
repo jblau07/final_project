@@ -17,11 +17,8 @@ class Register extends Component {
 
   handleRegister(event) {
     event.preventDefault();
-    this.props.register(this.state, this.props.history);
-    
-
-  }
-  ComponentWillMount() {
+    this.props.register(this.state);
+    this.props.history.push("/login");
 
   }
 
@@ -39,7 +36,9 @@ class Register extends Component {
               onChange={this.handleChange}
               placeholder="Username"
             />
+
             <br />
+
             <input
               type="text"
               name="password"
@@ -47,7 +46,9 @@ class Register extends Component {
               onChange={this.handleChange}
               placeholder="Password"
             />
+
             <br />
+
             <button type="submit">Submit</button>
           </form>
 
@@ -64,10 +65,10 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch =>{
+const mapDispatchToProps = dispatch => {
   return {
-    register: (user, history) =>{
-      dispatch(register(user,history));
+    register: (user) => {
+      dispatch(register(user));
     }
   }
 }
