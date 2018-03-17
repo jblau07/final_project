@@ -4,8 +4,8 @@ class Recipe extends bookshelf.Model {
   get tableName(){
     return 'recipes'
   }
-  cookbook(){
-    return this.belongsTo('Recipe');
+  recipe(){
+    return this.belongsToMany('User').through('Cookbook')
   }
 
 

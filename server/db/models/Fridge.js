@@ -6,10 +6,11 @@ class Fridge extends bookshelf.Model{
   }
 
   ingredients(){
-   return this.hasMany('Ingredient');
+   return this.belongsTo('Ingredient')
   }
+
   users(){
-    return this.belongsTo('User');
+    return this.belongsTo('User')
   }
 
 }
