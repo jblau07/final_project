@@ -9,6 +9,7 @@ import RecipesList from "../components/RecipeList";
 import SuggestIngredient from "../containers/SuggestIngredient";
 import ButtonComponent from "../components/Login_RegisterButtons";
 import LogoutContainer from "../containers/LogoutContainer";
+import { Navbar } from "../components/Navbar";
 
 class App extends Component {
   constructor(props) {
@@ -73,6 +74,7 @@ class App extends Component {
         
       /> */}
         {/* <BarcodeScanner /> */}
+        <Navbar />
       </div>
     );
   }
