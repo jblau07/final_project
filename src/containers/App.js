@@ -7,6 +7,8 @@ import { loadRecipes, setActiveRecipe } from "../actions/ItemsAction";
 import ActiveRecipe from "../components/ActiveRecipe";
 import RecipesList from "../components/RecipeList";
 import SuggestIngredient from "../containers/SuggestIngredient";
+import ButtonComponent from "../components/Login_RegisterButtons";
+import LogoutContainer from "../containers/LogoutContainer";
 
 class App extends Component {
   constructor(props) {
@@ -37,16 +39,28 @@ class App extends Component {
       return foundRecipe;
     }
   }
+
+  
   render() {
+
+    let buttons =  <ButtonComponent />;
+    let logoutButton;
+    if(localStorage.length > 0){
+      buttons = null;
+      logoutButton =  <LogoutContainer />;
+    }
+
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">FINAL PROJECT WOO</h1>
         </header>
+        <ButtonComponent />
+        <LogoutContainer />
         <div className="Main">
+
           <Main />
         </div>
-
         {/* <ActiveRecipe planet={this.props.activeRecipe} /> */}
         {/* <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
