@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import BarcodeScanner from "../components/BarcodeScanner";
+import Main from "../reactRouter/Main";
+import BarcodeScanner from "./BarcodeScanner";
 import { loadRecipes, setActiveRecipe } from "../actions/ItemsAction";
 import ActiveRecipe from "../components/ActiveRecipe";
 import RecipesList from "../components/RecipeList";
-import SuggestIngredient from '../containers/SuggestIngredient';
+import SuggestIngredient from "../containers/SuggestIngredient";
 
 class App extends Component {
   constructor(props) {
@@ -42,7 +43,10 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">FINAL PROJECT WOO</h1>
         </header>
-        <SuggestIngredient/>
+        <div className="Main">
+          <Main />
+        </div>
+
         {/* <ActiveRecipe planet={this.props.activeRecipe} /> */}
         {/* <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
@@ -54,7 +58,7 @@ class App extends Component {
         />
         
       /> */}
-        <BarcodeScanner />
+        {/* <BarcodeScanner /> */}
       </div>
     );
   }
