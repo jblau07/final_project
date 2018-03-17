@@ -1,42 +1,28 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {loadFridge} from '../actions/FridgeAction';
-import FridgeListItem from './FridgeListItem';
+import React from 'react';
 
-class FridgeList extends Component {
-  constructor(props) {
-    super(props)
-  }
+export const FridgeList = ({fridge}) => {
+  let data;
+  if (fridge.length === 0) {
+    return (
+      <div></div>
+    )
+  } else {
+    data = fridge.data;
 
-  componentDidMount() {
-    const userId = 1;
-    // const userId = this.props.match.params.id;
-    this.props.loadFridge(userId);
-  }
+      return (
+        <ul className="userFridge">
+          {data.map((element,idx) => {
+            return (
+              <div className="ingredient_name">
+                <p>{element.ingredients.name}</p>
+              </div>
+            )
+          })}
+              </ul>
+      );
 
 
-render() {
-  return (
-    <div className="fridge-container">
-    <FridgeListItem
-      ingredients={this.props.fridge}/>
-    </div>
-
-  )
-}
-}
-
-const mapStateToProps = state => {
-  return {
-    fridge: state.fridge.fridge
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    loadFridge: (id) => {
-      dispatch(loadFridge(id));
-    }
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(FridgeList)
+export default FridgeList;
