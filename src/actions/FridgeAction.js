@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const LOAD_FRIDGE = 'LOAD_FRIDGE';
+export const SELECT_FROM_FRIDGE = 'SELECT_FROM_FRIDGE';
 
 export const loadFridge = (id) => {
   return dispatch => {
@@ -17,3 +18,9 @@ export const loadFridge = (id) => {
   }
 }
 
+export const selectFromFridge = (name) => {
+  return  {
+    type: SELECT_FROM_FRIDGE,
+    selected: name
+  }
+}
