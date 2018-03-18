@@ -8,7 +8,7 @@ const Main = props => (
   <main className="page-content">
     <Switch>
       <Route exact path="/" component={Fridge} />
-      <Route exact path="/scan" component={BarcodeScanner} />
+      <Route exact path="/barcodeScanner" component={BarcodeScanner} />
       <Route exact path='/register' component={Register} />
       <Route exact path='/login' component={Login} />
     </Switch>
