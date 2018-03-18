@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { loadIngredients, addIngredient } from '../actions/SuggestAction' ;
 import Autosuggest from 'react-autosuggest';
 
+
 const getSuggestionValue = suggestion => suggestion.name;
 
 function renderSuggestion(suggestion) {
