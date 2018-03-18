@@ -25,9 +25,10 @@ class ImageRecognition extends Component {
 
   componentDidMount() {
     const constraints = this.state.constraints;
+    const userMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
     const getUserMedia = (params) => (
       new Promise((success, error) => {
-        navigator.webkitGetUserMedia.call(navigator, params, success, error);
+        userMedia.call(navigator, params, success, error);
       })
     );
 
@@ -36,13 +37,12 @@ class ImageRecognition extends Component {
       const video = document.querySelector('video');
       const vendorURL = window.URL || window.webkitURL;
 
-      video.src = vendorURL.createObjectURL(stream);
+      if (window.webkitURL) {
+        video.src = vendorURL.createObjectURL(stream);
+      } else {
+        video.src = stream;
+      }
       video.play();
-
-      // if (this.state.didTakePicture === true) {
-      //   const track = stream.getTracks()[0];
-      //   track.stop();
-      // }
     })
     .catch(err => {
       console.log(err);
@@ -107,7 +107,7 @@ class ImageRecognition extends Component {
         <button onClick={ this.handleStartClick }>Capture</button>
         <canvas id="canvas" hidden></canvas>
         <div className="output">
-          <img id="photo" />
+          <img id="photo" alt="Your capture"/>
         </div>
         <button id="submit" onClick={ this.handleSend } style={ submitStyle }>Submit</button>
       </div>
@@ -117,7 +117,7 @@ class ImageRecognition extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    sendImage: (image) => {
+    sendImage: image => {
       dispatch(sendImage(image));
     }
   }
