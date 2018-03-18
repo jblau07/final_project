@@ -45,17 +45,16 @@ router.route('/:userId')
 
 router.route('/')
   .post((req, res) => {
+    console.log(req.body);
 
     let data = {
-      user_id: 1,
-      // user_id: req.body.user_id,
-      ingredient_id: req.body.newFridgeItem
+      user_id: req.body.user_id,
+      ingredient_id: req.body.ingredient_id
     }
     return new Fridge(data)
       .save()
       .then(result => {
-        console.log('got to fridge', result.toJSON())
-        return res.json(result.toJSON())
+        return res.json({ 'fridge': result.toJSON() });
       })
       .catch(err => {
         console.log('fridge', { err: err.message });

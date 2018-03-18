@@ -65,6 +65,7 @@ router.route('/')
       })
 
       .catch(err => {
+        console.log('AWIJFAIWUEFAIWUEHFAIWEUHFIUWAEF');
         return new Recipe()
           .where({ url: req.body.url })
           .fetch()
