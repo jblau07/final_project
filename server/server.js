@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 
+
 app.use('/api/users',userRoute);
 app.use('/api/ingredients',ingredientsRoute);
 app.use('/api/recipes',recipeRoute);
@@ -48,6 +49,19 @@ app.post('/api/login', (req, res) => {
     .catch(err => {
       return res.json({message: err.message})
     })
+})
+
+app.get(`/api/logout`, (req, res) => {
+  if(!req.user) {
+    return res.status(200).json({
+      logout: true
+    });
+  } else {
+    return res.status(401).json({
+      error: 'User is still logged in',
+      logout: false
+    })
+  }
 })
 
 app.get(`/`, (req,res) => {
