@@ -8,7 +8,7 @@ class BarcodeScanner extends Component {
     super(props);
     this.state = {
       scannedUpc: null,
-      scannedName: []
+      scannedName: null
     };
     this.handleUpcSubmit = this.handleUpcSubmit.bind(this);
   }
@@ -25,6 +25,7 @@ class BarcodeScanner extends Component {
 
     const scannerContainer = document.getElementById("scandit-barcode-picker");
     const resultContainer = document.getElementById("scandit-barcode-result");
+    // const resultAfterApi = document.getElementById('result-after-api');
     // const continueButton = document.getElementById("continue-scanning-button");
     // continueButton.disabled = true;
     // continueButton.hidden = true;
@@ -91,7 +92,13 @@ class BarcodeScanner extends Component {
   }
   handleUpcSubmit() {
     this.props.getByUpc(this.state.scannedUpc);
+    
   }
+
+  // this.setState({ scannedName: [this.props.ingredient] });
+  //   const apiResult = document.getElementById('api-result');
+  //   apiResult.innerHTML = this.props.ingredient;
+
   //getByUpc
   render() {
     return (
@@ -99,6 +106,7 @@ class BarcodeScanner extends Component {
         <div id="scandit-barcode-picker" />
         <div id="scandit-barcode-result">No codes scanned yet</div>
         <button onClick={this.handleUpcSubmit}>Submit</button>
+        <div id="result-after-api">{this.props.ingredient}</div>
       </div>
     );
   }
