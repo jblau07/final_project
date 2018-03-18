@@ -23,3 +23,4 @@ yarn-error.log*
 
 server/db/config.js
 routes/temp
+src/config.js
