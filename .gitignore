@@ -22,3 +22,4 @@ yarn-debug.log*
 yarn-error.log*
 
 server/db/config.js
+src/config.js
