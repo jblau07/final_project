@@ -8,18 +8,25 @@ export const FridgeList = ({fridge}) => {
       <div></div>
     )
   } else {
+    
     data = fridge.data;
-    return (
-      <ul className="userFridge">
-        {data.map((ingredient) => {
-          return (
-            <FridgeIngredient
-              key={ingredient.id}
-              {...ingredient}/>
-          )
-        })}
-            </ul>
-    );
+    if(data < 0 ){
+      console.log('no ingredients')
+    }
+    else{
+
+      return (
+        <ul className="userFridge">
+          {data.map((ingredient) => {
+            return (
+              <FridgeIngredient
+                key={ingredient.id}
+                {...ingredient}/>
+            )
+          })}
+              </ul>
+      );
+    }
   }
 }
 
