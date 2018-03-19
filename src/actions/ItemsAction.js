@@ -1,4 +1,4 @@
-import "axios";
+import axios from "axios";
 
 const EDAMAM = "https://developer.edamam.com/edamam-docs-recipe-api";
 
@@ -14,9 +14,11 @@ export const setActiveRecipe = recipe => {
   }
 };
 
-export const loadRecipes = () => {
+export const loadRecipes = (Ingredients) => {
   return dispatch => {
-    return fetch(`/recipes/getRecipes`)
+    return axios.post(`/api/recipes/getRecipes`,{
+      Ingredients
+    })
       .then(res => {
         console.log(res);
         return res.json();
