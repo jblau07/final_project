@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {Component} from 'react';
+import FridgeIngredient from '../containers/FridgeIngredient';
 
 export const FridgeList = ({fridge}) => {
   let data;
@@ -8,20 +9,17 @@ export const FridgeList = ({fridge}) => {
     )
   } else {
     data = fridge.data;
-
-      return (
-        <ul className="userFridge">
-          {data.map((element,idx) => {
-            return (
-              <div className="ingredient_name">
-                <p>{element.ingredients.name}</p>
-              </div>
-            )
-          })}
-              </ul>
-      );
-
-
+    return (
+      <ul className="userFridge">
+        {data.map((ingredient) => {
+          return (
+            <FridgeIngredient
+              key={ingredient.id}
+              {...ingredient}/>
+          )
+        })}
+            </ul>
+    );
   }
 }
 

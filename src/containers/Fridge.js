@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import SuggestIngredient from "./SuggestIngredient";
 import FridgeList from "../components/FridgeList";
+
 import { addIngredient } from "../actions/SuggestAction";
 import { loadFridge } from "../actions/FridgeAction";
 
@@ -13,10 +14,7 @@ class Fridge extends Component {
   }
 
   componentDidMount() {
-    console.log('mounting')
-    const userId = 1;
-    // const userId = this.props.match.params.id;
-    this.props.loadFridge(userId);
+    this.props.loadFridge();
   }
 
   render() {
