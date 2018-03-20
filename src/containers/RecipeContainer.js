@@ -15,26 +15,26 @@ class Recipe extends Component {
 
   handleSelected(event) {
     this.props.getRecipes(this.props.fridgeSelect);
-    this.props.history.push("/recipes");
+    // this.props.history.push("/recipes");
   }
 
 
 
   render() {
-    
+
     let recipe = this.props.recipes;
-    console.log('WHAT ARE YOU',recipe);
-    if(recipe < 0){
+    console.log('WHAT ARE YOU', recipe);
+    if (recipe < 0) {
       console.log('empty')
     }
-    
+
     return (
       <div className='recipes'>
         <button onClick={this.handleSelected} type="submit">Selected</button>
         <h2 className='list_of_selected'>Selected Ingredients:</h2>
         {this.props.fridgeSelect.join(' ')}
-
-
+        <RecipeList recipe = {this.props.recipes} />
+        {/* 
        <ul className="userRecipes">
           { recipe > 0 &&
             recipe.map((recipes) => {
@@ -50,7 +50,7 @@ class Recipe extends Component {
           })}
 
         </ul>
-       
+        */}
 
 
         <br />
