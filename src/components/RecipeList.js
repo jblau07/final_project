@@ -1,18 +1,38 @@
-import React from "react";
+import React, { Component } from 'react';
 
-import RecipeListItem from "./RecipeListItem";
 
-const RecipeList = ({ recipes, recipeClickHandler }) => {
-  const recipesListContent = recipes.map((recipe, idx) => {
+export const RecipeList = ({ recipe }) => {
+  
+  console.log('RECIPELIST', recipe);
+  let data;
+  if (!recipe) {
     return (
-      <RecipeListItem
-        key={idx}
-        {...recipe}
-        recipeClickHandler={recipeClickHandler}
-      />
-    );
-  });
-  return <ul className="recipes-list">{recipesListContent}</ul>;
-};
+      <div></div>
+    )
+  } else {
+
+    if (recipe < 0) {
+      console.log('no recipes');
+    }
+    else {
+
+      return (
+        <ul className="userRecipes">
+          {recipe.map((recipes) => {
+            return (
+              <div className='allrecipes'>
+                <h3>{recipes.recipe}</h3>
+                <h4>{recipes.ingredients.join(', ')}</h4>
+                <img href={recipes.url} src={recipes.image} />
+                <a href={recipes.url}>Take Me To Recipe!</a>
+              </div>
+            )
+          })}
+
+        </ul>
+      );
+    }
+  }
+}
 
 export default RecipeList;
