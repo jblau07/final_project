@@ -60,18 +60,25 @@ class ImageTest extends Component {
   handleFile(event) {
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
+    const output = document.getElementById('output');
 
     const reader = new FileReader();
     reader.addEventListener('load', () => {
       const img = new Image();
       img.src = reader.result;
+      img.id = 'photo';
+      img.setAttribute('alt', 'Your mobile capture');
       img.addEventListener('load', () => {
         canvas.width = img.width;
         canvas.height = img.height;
         context.drawImage(img, 0, 0, canvas.width, canvas.height);
       });
+      output.appendChild(img);
     });
     reader.readAsDataURL(event.target.files[0]);
+
+    const submit = document.getElementById('submit');
+    submit.style.display = "block";
   }
 
   handleStartClick(event) {
@@ -128,10 +135,9 @@ class ImageTest extends Component {
       return (
         <div className="capture">
           <input type="file" name="image" id="input" accept="image/*" />
-          <canvas id="canvas"></canvas>
-          <div className="output">
-            <img id="photo" alt="Your mobile capture"/>
-          </div>
+          <canvas id="canvas" hidden></canvas>
+          <div id="output"></div>
+          <button id="submit" onClick={ this.handleSend } style={ submitStyle }>Submit</button>
         </div>
       )
     }
