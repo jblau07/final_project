@@ -6,8 +6,7 @@ import FridgeList from "../components/FridgeList";
 
 import { addIngredient } from "../actions/SuggestAction";
 import { loadFridge } from "../actions/FridgeAction";
-import ConnectedRecipes from '../containers/RecipeContainer';
-
+import ConnectedRecipes from "../containers/RecipeContainer";
 
 class Fridge extends Component {
   constructor(props) {
@@ -19,13 +18,11 @@ class Fridge extends Component {
   }
 
   render() {
-
     return (
       <div className="ParentFridgeClass">
         <ConnectedRecipes />
 
-        <FridgeList
-          fridge={this.props.fridge} />
+        <FridgeList fridge={this.props.fridge} />
         <SuggestIngredient />
       </div>
     );
@@ -43,12 +40,12 @@ const mapDispatchToProps = dispatch => {
     addIngredient: newIngredient => {
       dispatch(addIngredient(newIngredient));
     },
-    loadFridge: (id) => {
-      dispatch(loadFridge(id))
+    loadFridge: id => {
+      dispatch(loadFridge(id));
     }
   };
 };
 
 const ConnectedFridge = connect(mapStateToProps, mapDispatchToProps)(Fridge);
 
-export default withRouter((ConnectedFridge));
+export default withRouter(ConnectedFridge);
