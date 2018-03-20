@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const User = require('../server/db/models/User')
+const User = require('../db/models/User');
 
 router.route('/:id')
 

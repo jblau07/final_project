@@ -4,12 +4,12 @@ const path = require('path');
 const User = require('./db/models/User');
 const PORT = process.env.PORT || 8080;
 
-const userRoute = require('../routes/users');
-const ingredientsRoute = require('../routes/ingredients');
-const recipeRoute = require('../routes/recipes');
-const fridgeRoute = require('../routes/fridge');
-const cookbookRoute = require('../routes/cookbook');
-const imageCaptureRoute = require('../routes/imageCapture');
+const userRoute = require('./routes/users');
+const ingredientsRoute = require('./routes/ingredients');
+const recipeRoute = require('./routes/recipes');
+const fridgeRoute = require('./routes/fridge');
+const cookbookRoute = require('./routes/cookbook');
+const imageCaptureRoute = require('./routes/imageCapture');
 
 const app = express();
 app.use(bodyParser.json({ limit: '50MB' }));

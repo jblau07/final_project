@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 
 
-const Fridge = require('../server/db/models/Fridge');
-const User = require('../server/db/models/User');
-const Ingredient = require('../server/db/models/Ingredient');
+const Fridge = require('../db/models/Fridge');
+const User = require('../db/models/User');
+const Ingredient = require('../db/models/Ingredient');
 
 router.route('/:userId/:ingredientId')
   //Delete Ingredient from Users Fridge

@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const Ingredient = require('../server/db/models/Ingredient');
-const User = require('../server/db/models/User');
-const Fridge = require('../server/db/models/Fridge');
+const Ingredient = require('../db/models/Ingredient');
+const User = require('../db/models/User');
+const Fridge = require('../db/models/Fridge');
 
 
 router.route('/:id')

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const Cookbook = require('../server/db/models/Cookbook');
+const Cookbook = require('../db/models/Cookbook');
 
 
 

@@ -1,14 +1,18 @@
 const express = require('express');
 const router = express.Router();
-const Base64Decode = require('base64-stream').decode;
 const fs = require('fs');
-// const axios = require('axios');
 const watson = require('watson-developer-cloud');
 const path = require('path');
 
 router.post('/', (req, res) => {
-  let stream = Base64Decode(req.body.image);
-  console.log('stream', stream);
+
+  let base64string = req.body.image;
+  let formatted = base64string.split(',').pop();
+
+  let buff = new Buffer(formatted, 'base64');
+  const dir = path.dirname(__dirname);
+  fs.writeFileSync(dir + '/temp/test.jpg', buff);
+  console.log('created test.jpg');
 
   return new Promise((resolve, reject) => {
     const visual = new watson.VisualRecognitionV3({
@@ -23,7 +27,7 @@ router.post('/', (req, res) => {
     };
     
     const params = {
-      images_file: fs.createReadStream(path.join(__dirname + '/temp/apple.jpeg')),
+      images_file: fs.createReadStream(path.join(dir + '/temp/test.jpg')),
       // images_file: stream,
       parameters: parameters
     };

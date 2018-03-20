@@ -2,9 +2,9 @@ const axios = require('axios');
 const express = require('express');
 const router = express.Router();
 
-const User = require('../server/db/models/User');
-const Recipe = require('../server/db/models/Recipe');
-const Cookbook = require('../server/db/models/Cookbook');
+const User = require('../db/models/User');
+const Recipe = require('../db/models/Recipe');
+const Cookbook = require('../db/models/Cookbook');
 
 const url = 'https://api.edamam.com/search?app_id=4774d0c5&app_key=a56469a8e5c8652660440e595a4f5b90&from=0&to=3&q=';
 
