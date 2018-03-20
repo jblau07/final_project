@@ -2,6 +2,10 @@ import axios from 'axios';
 
 export const LOAD_FRIDGE = 'LOAD_FRIDGE';
 export const SELECT_FROM_FRIDGE = 'SELECT_FROM_FRIDGE';
+export const DESELECT_FROM_FRIDGE = 'DESELECT_FROM_FRIDGE';
+export const CLEAR_SELECTED = 'CLEAR_SELECTED';
+
+
 
 export const loadFridge = () => {
   let user_id;
@@ -46,6 +50,21 @@ export const deleteFromFridge = (id) => {
     })
   }
 }
+
+export const deselectFromFridge = (name) => {
+  console.log('deselect', name)
+  return  {
+    type: DESELECT_FROM_FRIDGE,
+    selected: name
+  }
+}
+
+export const clearAllSelected = () => {
+  return {
+    type: CLEAR_SELECTED,
+  }
+}
+
 
 export const selectFromFridge = (name) => {
   console.log('select', name)

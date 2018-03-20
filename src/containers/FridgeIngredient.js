@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectFromFridge, deleteFromFridge } from "../actions/FridgeAction";
+import { selectFromFridge, deselectFromFridge, deleteFromFridge, clearAllSelected } from "../actions/FridgeAction";
 
 class FridgeIngredient extends Component {
   constructor(props) {
     super(props);
-    this.handleOnSelected = this.handleOnSelected.bind(this)    
+    this.handleOnSelected = this.handleOnSelected.bind(this)     
+    this.handleOnDeselect = this.handleOnDeselect.bind(this)    
     this.handleOnDelete = this.handleOnDelete.bind(this)
 
   }
@@ -13,6 +14,10 @@ class FridgeIngredient extends Component {
 
   handleOnSelected() {
     this.props.selectFromFridge(this.props.ingredients.name)
+  }
+
+  handleOnDeselect() {
+    this.props.deselectFromFridge(this.props.ingredients.name)
   }
 
   handleOnDelete() {
@@ -25,9 +30,11 @@ class FridgeIngredient extends Component {
       return (
         <ul className="card">
           <div className="attribute">{name}</div>
+          
           <button onClick={this.handleOnSelected}>Select</button>
+          <button onClick={this.handleOnDeselect}>Deselect</button>
           <button onClick={this.handleOnDelete}>Delete</button>
-
+        
         </ul>
       )
   }
@@ -47,9 +54,12 @@ const mapDispatchToProps = dispatch => {
     selectFromFridge: function (name) {
       dispatch(selectFromFridge(name))
     },
+    deselectFromFridge: function (name) {
+      dispatch(deselectFromFridge(name))
+    },
     deleteFromFridge: function (id) {
       dispatch(deleteFromFridge(id))
-    }
+    },
 
   }
 }
