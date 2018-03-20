@@ -6,6 +6,7 @@ import FridgeList from "../components/FridgeList";
 
 import { addIngredient } from "../actions/SuggestAction";
 import { loadFridge } from "../actions/FridgeAction";
+import ConnectedRecipes from '../containers/RecipeContainer';
 
 
 class Fridge extends Component {
@@ -18,11 +19,13 @@ class Fridge extends Component {
   }
 
   render() {
-  
+
     return (
       <div className="ParentFridgeClass">
-      <FridgeList
-      fridge={this.props.fridge}/>
+        <ConnectedRecipes />
+
+        <FridgeList
+          fridge={this.props.fridge} />
         <SuggestIngredient />
       </div>
     );
