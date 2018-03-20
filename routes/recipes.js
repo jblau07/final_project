@@ -97,7 +97,11 @@ router.route('/getRecipes')
 
     let recipe;
     let recipeArr = [];
-    let ingredientArray = req.body;
+    let ingredientArray = req.body.Ingredients;
+    if(!req.body){
+      console.log(`req.body dne`)
+    }
+    console.log('REQ.BODY:',ingredientArray);
 
     ingredientArray = ingredientArray.join("%20");
     console.log('stuff',ingredientArray)
