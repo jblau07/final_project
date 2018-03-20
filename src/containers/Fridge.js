@@ -41,6 +41,7 @@ class Fridge extends Component {
 }
 const mapStateToProps = state => {
   return {
+    
     ingredients: state.suggest.ingredients,
     fridge: state.fridge.fridge,
     fridgeSelect: state.fridge.selected,

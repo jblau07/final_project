@@ -45,6 +45,7 @@ class Login extends Component {
             onChange={this.handleChange}
             placeholder="Password"
           />
+          
           <button type="submit">Submit</button>
         </form>
           </div>
