@@ -99,6 +99,7 @@ class BarcodeScanner extends Component {
         <div id="scandit-barcode-picker" />
         <div id="scandit-barcode-result">No codes scanned yet</div>
         <button onClick={this.handleUpcSubmit}>Submit</button>
+        <div id="scandit-item-result">{this.props.ingredient.item_name}</div>
       </div>
     );
   }
