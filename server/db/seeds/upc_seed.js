@@ -10,4 +10,4 @@ exports.seed = function(knex, Promise) {
         { upc_code: "0033383660004", item_name: "Carrots" }
       ]);
     });
-};
+ };
