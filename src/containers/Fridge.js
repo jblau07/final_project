@@ -16,11 +16,9 @@ class Fridge extends Component {
   }
 
   componentWillMount() {
- 
-  if (localStorage.length > 0) {
-    this.props.loadFridge();
-  }
-  
+    if (localStorage.length > 0) {
+      this.props.loadFridge();
+    }
   }
 
   handleSelected(event) {
@@ -31,8 +29,10 @@ class Fridge extends Component {
   render() {
     return (
       <div className="ParentFridgeClass">
-      <button onClick={this.handleSelected} type="submit">Selected</button>
-      {this.props.fridgeSelect.join(' ')}
+        <button onClick={this.handleSelected} type="submit">
+          Find Recipes
+        </button>
+        {this.props.fridgeSelect.join(" ")}
 
         <FridgeList fridge={this.props.fridge} />
         <SuggestIngredient />
@@ -42,12 +42,10 @@ class Fridge extends Component {
 }
 const mapStateToProps = state => {
   return {
-    
     ingredients: state.suggest.ingredients,
     fridge: state.fridge.fridge,
     fridgeSelect: state.fridge.selected,
     recipes: state.recipes.recipes
-
   };
 };
 
@@ -57,10 +55,10 @@ const mapDispatchToProps = dispatch => {
       dispatch(addIngredient(newIngredient));
     },
     loadFridge: () => {
-      dispatch(loadFridge())
+      dispatch(loadFridge());
     },
-    getRecipes: (ingr) => {
-      dispatch(loadRecipes(ingr))
+    getRecipes: ingr => {
+      dispatch(loadRecipes(ingr));
     }
   };
 };
