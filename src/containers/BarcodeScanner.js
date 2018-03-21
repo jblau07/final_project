@@ -65,6 +65,7 @@ class BarcodeScanner extends Component {
             scanResult.barcodes[0].data
           }`;
           this.setState({ scannedUpc: scanResult.barcodes[0].data });
+          this.props.getByUpc(this.state.scannedUpc);
           console.log(this.state);
         });
 
@@ -95,18 +96,14 @@ class BarcodeScanner extends Component {
     
   }
 
-  // this.setState({ scannedName: [this.props.ingredient] });
-  //   const apiResult = document.getElementById('api-result');
-  //   apiResult.innerHTML = this.props.ingredient;
-
   //getByUpc
   render() {
     return (
       <div className="bc-scanner">
         <div id="scandit-barcode-picker" />
         <div id="scandit-barcode-result">No codes scanned yet</div>
-        <button onClick={this.handleUpcSubmit}>Submit</button>
-        <div id="result-after-api">{this.props.ingredient}</div>
+        {/* <button onClick={this.handleUpcSubmit}>Submit</button> */}
+        <div id="scandit-item-result">{this.props.ingredient.item_name}</div>
       </div>
     );
   }

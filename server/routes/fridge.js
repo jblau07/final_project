@@ -15,6 +15,7 @@ router.route('/:userId/:ingredientId')
       .where({ user_id: user_id, ingredient_id: ingr_id })
       .destroy()
       .then(result => {
+        return res.json({ success: true });
         console.log('Deleted!');
       })
       .catch(err => {
@@ -47,8 +48,7 @@ router.route('/')
   .post((req, res) => {
 
     let data = {
-      user_id: 1,
-      // user_id: req.body.user_id,
+      user_id: req.body.user_id,
       ingredient_id: req.body.newFridgeItem
     }
     return new Fridge(data)

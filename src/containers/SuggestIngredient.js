@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadIngredients, addIngredient } from '../actions/SuggestAction' ;
+import { clearAllSelected } from '../actions/FridgeAction';
 import Autosuggest from 'react-autosuggest';
 
 
@@ -24,6 +25,7 @@ class SuggestIngredient extends Component {
     }
 
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
+    this.handleOnClear = this.handleOnClear.bind(this);
   }
 
   componentDidMount(props) {
@@ -34,6 +36,10 @@ class SuggestIngredient extends Component {
     this.setState({
       value: newValue
     })
+  }
+
+  handleOnClear() {
+    this.props.clearAllSelected()
   }
 
   getSuggestions = (value, array) => {
@@ -61,9 +67,10 @@ class SuggestIngredient extends Component {
 
   handleOnSubmit (event) {
     event.preventDefault();
-    this.props.addIngredient(this.state.value);
-    console.log('handle', this.state.value)
-    this.setState({value: ''})
+    if (this.state.value !== '') {
+      this.props.addIngredient(this.state.value);
+      this.setState({value: ''})
+    }
   }
 
   render () {
@@ -78,7 +85,7 @@ class SuggestIngredient extends Component {
     console.log('props', this.props)
     console.log('state', this.state)
     return (
-
+      <div className ="big-form">
       <form className="new-ing-form" onSubmit={this.handleOnSubmit}>
         <Autosuggest
           suggestions={suggestions}
@@ -92,6 +99,10 @@ class SuggestIngredient extends Component {
           <button className="form-submit" type="submit">Submit</button>
         </div>
       </form>
+        <div className="clear">
+          <button onClick = {this.handleOnClear} className="clear-button">Clear All</button>
+        </div>
+      </div>
     )
   }
 }
@@ -110,6 +121,9 @@ const mapDispatchToProps = dispatch => {
     },
     addIngredient: (name) => {
       dispatch(addIngredient(name));
+    },
+    clearAllSelected: function () {
+      dispatch(clearAllSelected())
     }
   }
 }

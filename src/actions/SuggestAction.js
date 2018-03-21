@@ -21,9 +21,9 @@ export const loadIngredients = () => {
 }
 
 export const addIngredient = (newIngredient) => {
-  let id;
+  let user_id;
   if (localStorage.length > 0) {
-    id = localStorage.getItem('id');
+    user_id = localStorage.getItem('id');
   }
 
   return dispatch => {
@@ -33,14 +33,15 @@ export const addIngredient = (newIngredient) => {
       .then(ingredient => {
         let newFridgeItem = ingredient.data.id
         return axios.post('/api/fridge', {
+          user_id,
           newFridgeItem
         })
           .then(data => {
-            return axios.get(`/api/fridge/${id}`)
+            return axios.get(`/api/fridge/${user_id}`)
               .then(data => {
                 dispatch({
                   type: 'LOAD_FRIDGE',
-                  fridge: data
+                  fridge: data.data
                 })
               })
           })

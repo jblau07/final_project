@@ -141,7 +141,7 @@ class ImageCapture extends Component {
     const history = this.props.history;
     this.setState({ selectedIngredient: event.target.value }, () => {
       this.props.sendIngredient(this.state.selectedIngredient, (redirectCallback) => {
-        history.push('/');
+        history.push('/fridge');
       });
     });
   }

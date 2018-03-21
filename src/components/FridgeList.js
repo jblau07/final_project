@@ -1,28 +1,20 @@
-import React from 'react';
+import React, { Component } from "react";
+import FridgeIngredient from "../containers/FridgeIngredient";
 
-export const FridgeList = ({fridge}) => {
+export const FridgeList = ({ fridge }) => {
   let data;
-  if (fridge.length === 0) {
-    return (
-      <div></div>
-    )
-  } else {
-    data = fridge.data;
-
+  if (fridge.length === 0 || localStorage.length === 0) {
+    return <div />;
+  } else{
       return (
         <ul className="userFridge">
-          {data.map((element,idx) => {
-            return (
-              <div className="ingredient_name">
-                <p>{element.ingredients.name}</p>
-              </div>
-            )
+          {fridge.map(ingredient => {
+            return <FridgeIngredient key={ingredient.id} {...ingredient} />;
           })}
-              </ul>
+        </ul>
       );
-
-
+    }
   }
-}
+;
 
 export default FridgeList;

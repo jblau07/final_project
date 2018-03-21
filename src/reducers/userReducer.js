@@ -13,12 +13,10 @@ export default (state = initialState, action = {}) => {
     case REGISTER:
       return { ...state, users: action.payload }
     case LOGIN:
-      localStorage.setItem('id', action.payload.data.id);
       return { ...state, user: action.payload }
     case LOGOUT:
       localStorage.clear();
       return { ...state, user: null }
-
     default:
       return state;
   }

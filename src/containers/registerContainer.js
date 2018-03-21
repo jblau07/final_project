@@ -12,23 +12,22 @@ class Register extends Component {
   }
 
   handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value })
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   handleRegister(event) {
     event.preventDefault();
-    this.props.register(this.state);
-    this.props.history.push("/login");
-
+    this.props.register(this.state, () => {
+      this.props.history.push('/fridge'); 
+  })
   }
 
   render() {
     return (
       <div className="registerContainer">
-        <h1 className='register_title'>Register</h1>
+        <h1 className="register_title">Register</h1>
         <div className="register_form">
           <form onSubmit={this.handleRegister}>
-
             <input
               type="text"
               name="username"
@@ -51,28 +50,25 @@ class Register extends Component {
 
             <button type="submit">Submit</button>
           </form>
-
         </div>
-
-      </div >
-    )
+      </div>
+    );
   }
 }
 
 const mapStateToProps = state => {
   return {
     users: state.users.users
-  }
-}
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
-    register: (user) => {
-      dispatch(register(user));
+    register: function (user, redirectCallback ) {
+      dispatch(register(user, redirectCallback));
     }
-  }
-}
-
+  };
+};
 
 const ConnectedRegister = withRouter(
   connect(mapStateToProps, mapDispatchToProps)(Register)

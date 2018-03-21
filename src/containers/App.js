@@ -15,41 +15,14 @@ import { Navbar } from "../components/Navbar";
 class App extends Component {
   constructor(props) {
     super(props);
-
-    this.recipeClickHandler = this.recipeClickHandler.bind(this);
-    this.findRecipeByName = this.findRecipeByName.bind(this);
-  }
-  // componentDidMount() {
-  //   this.props.loadRecipe();
-  // }
-
-  recipeClickHandler(event) {
-    const recipeName = event.currentTarget.dataset.recipeName;
-    if (recipeName) {
-      const foundRecipe = this.findRecipeByName(recipeName);
-      if (foundRecipe) {
-        this.props.setActiveRecipe(foundRecipe);
-      }
-    }
   }
 
-  findRecipeByName(name) {
-    const foundRecipe = this.props.recipes.find(recipe => {
-      return recipe.name === name;
-    });
-    if (foundRecipe) {
-      return foundRecipe;
-    }
-  }
-
-  
   render() {
-
-    let buttons =  <ButtonComponent />;
+    let buttons = <ButtonComponent />;
     let logoutButton;
-    if(localStorage.length > 0){
+    if (localStorage.length > 0) {
       buttons = null;
-      logoutButton =  <LogoutContainer />;
+      logoutButton = <LogoutContainer />;
     }
 
     return (
@@ -57,8 +30,7 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">FINAL PROJECT WOO</h1>
         </header>
-        <ButtonComponent />
-        <LogoutContainer />
+        {logoutButton}
         <div className="Main">
           <Main />
         </div>
@@ -68,5 +40,4 @@ class App extends Component {
   }
 }
 
-// export default connect(mapStateToProp, mapDispatchToProps)(App);
 export default App;

@@ -1,31 +1,45 @@
 import axios from "axios";
+
 const config = require("../../src/config");
 
-export const UPC_CODE = "https://api.nal.usda.gov/ndb/search/?format=json&q=";
-export const NDBNO_CODE = "https://api.nal.usda.gov/ndb/V2/reports?ndbno=";
+// export const UPC_CODE = "https://api.nal.usda.gov/ndb/search/?format=json&q=";
+// export const NDBNO_CODE = "https://api.nal.usda.gov/ndb/V2/reports?ndbno=";
 export const UPC_INGREDIENT = "UPC_INGREDIENT";
 
 export const getByUpc = upc => {
-  upc = parseFloat(upc);
+  let user_id;
+  if (localStorage.length > 0) {
+    user_id = localStorage.getItem('id');
+  }
+  console.log(upc);
   return dispatch => {
     return axios
-      .get(`${UPC_CODE}${upc}&${config.api.upc}`)
+      .post(`/api/upc`, {
+        new: upc
+      })
       .then(data => {
-        console.log(data);
-        let ndbno = data.data.list.item[0].ndbno;
-        return axios
-          .get(`${NDBNO_CODE}${ndbno}&${config.api.ndbno}`)
+        dispatch({
+          type: UPC_INGREDIENT,
+          ingredient: data.data
+        })
+        // console.log('data.data', data.data)
+        return data.data;
+      })
+      .then(data => {
+        return axios.post('/api/ingredients', {
+            name: data.item_name
+          })
           .then(data => {
-            console.log(data);
-            let desc = data.data.foods[0].food.desc.name;
-            return dispatch({
-              type: UPC_INGREDIENT,
-              ingredient: desc
-            });
-          });
+            console.log('this data', data)
+            let newFridgeItem = data.data.id;
+            return axios.post('/api/fridge', {
+              user_id,
+              newFridgeItem
+            })
+          })
       })
       .catch(err => {
         console.log(err);
       });
   };
-};
+}
