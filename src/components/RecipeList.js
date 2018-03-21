@@ -24,7 +24,7 @@ export const RecipeList = ({ recipe }) => {
                 <h3>{recipes.recipe}</h3>
                 <h4>{recipes.ingredients.join(', ')}</h4>
                 <img href={recipes.url} src={recipes.image} />
-                <a href={recipes.url}>Take Me To Recipe!</a>
+                <a href={recipes.url} target="_blank" >Take Me To Recipe!</a>
               </div>
             )
           })}
