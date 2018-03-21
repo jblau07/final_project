@@ -19,8 +19,9 @@ class Login extends Component {
   handlelogin(event) {
     event.preventDefault();
 
-    this.props.history.push("/fridge")
+
     this.props.login(this.state);
+    this.props.history.push("/fridge")
 
   }
 

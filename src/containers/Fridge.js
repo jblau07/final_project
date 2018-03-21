@@ -15,8 +15,12 @@ class Fridge extends Component {
     this.handleSelected = this.handleSelected.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
+ 
+  if (localStorage.length > 0) {
     this.props.loadFridge();
+  }
+  
   }
 
   handleSelected(event) {
@@ -52,8 +56,8 @@ const mapDispatchToProps = dispatch => {
     addIngredient: newIngredient => {
       dispatch(addIngredient(newIngredient));
     },
-    loadFridge: (id) => {
-      dispatch(loadFridge(id))
+    loadFridge: () => {
+      dispatch(loadFridge())
     },
     getRecipes: (ingr) => {
       dispatch(loadRecipes(ingr))
