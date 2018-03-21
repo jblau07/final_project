@@ -18,7 +18,7 @@ class Register extends Component {
   handleRegister(event) {
     event.preventDefault();
     this.props.register(this.state);
-    this.props.history.push("/login");
+    this.props.history.push("/");
 
   }
 

@@ -6,6 +6,11 @@ export const LOAD_RECIPES = "LOAD_RECIPES";
 export const SET_ACTIVE_RECIPES = "SET_ACTIVE_RECIPES";
 
 export const loadRecipes = (Ingredients) => {
+  let user_id;
+  if (localStorage.length > 0) {
+    user_id = localStorage.getItem('id');
+  }
+  
   return dispatch => {
     return axios.post(`/api/recipes/getRecipes`,{
       Ingredients
