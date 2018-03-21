@@ -13,16 +13,15 @@ class Fridge extends Component {
     super(props);
   }
 
-  componentWillMount() {
+  componentDidMount() {
  
   if (localStorage.length > 0) {
     this.props.loadFridge();
   }
-  
   }
 
+  
   render() {
-
       return (
         <div className="ParentFridgeClass">
           <ConnectedRecipes />
@@ -43,7 +42,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addIngredient: newIngredient => {
+    addIngredient: (newIngredient) => {
       dispatch(addIngredient(newIngredient));
     },
     loadFridge: () => {
