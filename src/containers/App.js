@@ -11,7 +11,6 @@ import ButtonComponent from "../components/Login_RegisterButtons";
 import LogoutContainer from "../containers/LogoutContainer";
 import { Navbar } from "../components/Navbar";
 
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -42,14 +41,12 @@ class App extends Component {
     }
   }
 
-  
   render() {
-
-    let buttons =  <ButtonComponent />;
+    let buttons = <ButtonComponent />;
     let logoutButton;
-    if(localStorage.length > 0){
+    if (localStorage.length > 0) {
       buttons = null;
-      logoutButton =  <LogoutContainer />;
+      logoutButton = <LogoutContainer />;
     }
 
     return (
@@ -57,11 +54,9 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">FINAL PROJECT WOO</h1>
         </header>
-   
-        <ButtonComponent />
+
         <LogoutContainer />
         <div className="Main">
-
           <Main />
         </div>
         {/* <ActiveRecipe planet={this.props.activeRecipe} /> */}
