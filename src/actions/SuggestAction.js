@@ -41,7 +41,7 @@ export const addIngredient = (newIngredient) => {
               .then(data => {
                 dispatch({
                   type: 'LOAD_FRIDGE',
-                  fridge: data
+                  fridge: data.data
                 })
               })
           })
