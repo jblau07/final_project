@@ -6,7 +6,6 @@ export const ButtonComponent = () => {
       <a href="/login">
         <button type="submit">Login</button>
       </a>
-      <a href="/register">Register</a>
     </div>
   );
 };
