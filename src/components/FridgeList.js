@@ -9,12 +9,11 @@ export const FridgeList = ({fridge}) => {
     )
   } else {
     
-    data = fridge.data;
+    data = fridge;
     if(data < 0 ){
       console.log('no ingredients')
     }
     else{
-
       return (
         <ul className="userFridge">
           {data.map((ingredient) => {
