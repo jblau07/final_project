@@ -13,19 +13,25 @@ class Fridge extends Component {
     super(props);
   }
 
-  componentDidMount() {
+  componentWillMount() {
+ 
+  if (localStorage.length > 0) {
     this.props.loadFridge();
+  }
+  
   }
 
   render() {
-    return (
-      <div className="ParentFridgeClass">
-        <ConnectedRecipes />
 
-        <FridgeList fridge={this.props.fridge} />
-        <SuggestIngredient />
-      </div>
-    );
+      return (
+        <div className="ParentFridgeClass">
+          <ConnectedRecipes />
+  
+          <FridgeList
+            fridge={this.props.fridge} />
+          <SuggestIngredient />
+        </div>
+      )
   }
 }
 const mapStateToProps = state => {
@@ -40,8 +46,8 @@ const mapDispatchToProps = dispatch => {
     addIngredient: newIngredient => {
       dispatch(addIngredient(newIngredient));
     },
-    loadFridge: id => {
-      dispatch(loadFridge(id));
+    loadFridge: () => {
+      dispatch(loadFridge())
     }
   };
 };
