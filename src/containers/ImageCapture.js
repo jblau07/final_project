@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { sendImage } from '../actions/ImageCaptureAction';
 
-class ImageRecognition extends Component {
+class ImageCapture extends Component {
   constructor(props) {
     super(props);
 
@@ -137,30 +137,59 @@ class ImageRecognition extends Component {
     const submitStyle = {
       display: "none"
     };
+    const results = this.props.imageResults;
 
     if (/Mobi/.test(navigator.userAgent)) {
       return (
-        <div className="capture">
-          <input type="file" name="image" id="input" accept="image/*" />
-          <canvas id="canvas" hidden></canvas>
-          <div id="output"></div>
-          <button id="submit" onClick={ this.handleSend } style={ submitStyle }>Submit</button>
+        <div>
+          <div className="capture">
+            <input type="file" name="image" id="input" accept="image/*" />
+            <canvas id="canvas" hidden></canvas>
+            <div id="output"></div>
+            <button id="submit" onClick={ this.handleSend } style={ submitStyle }>Find Ingredient</button>
+          </div>
+          <div className="image-results">
+            <ul>
+              {results.map((element, idx) => {
+                return (
+                  <li key={idx}>{element.class}</li>
+                )
+              })}
+            </ul>
+          </div>
         </div>
       )
     }
     else {
       return (
-        <div className="capture">
-          <video id="video"></video>
-          <button onClick={ this.handleStartClick }>Capture</button>
-          <canvas id="canvas" hidden></canvas>
-          <div className="output">
-            <img id="photo" alt="Your capture"/>
+        <div>
+          <div className="capture">
+            <video id="video"></video>
+            <button onClick={ this.handleStartClick }>Capture</button>
+            <canvas id="canvas" hidden></canvas>
+            <div className="output">
+              <img id="photo" alt="Your capture"/>
+            </div>
+            <button id="submit" onClick={ this.handleSend } style={ submitStyle }>Find Ingredient</button>
           </div>
-          <button id="submit" onClick={ this.handleSend } style={ submitStyle }>Submit</button>
+          <div className="image-results">
+            <ul>
+              {results.map((element, idx) => {
+                return (
+                  <li key={idx}>{element.class}</li>
+                )
+              })}
+            </ul>
+          </div>
         </div>
       )
     }
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    imageResults: state.imageCapture.results
   }
 }
 
@@ -172,4 +201,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(ImageRecognition);
+export default connect(mapStateToProps, mapDispatchToProps)(ImageCapture);

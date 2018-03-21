@@ -11,7 +11,7 @@ export const sendImage = (image) => {
       console.log('data', data);
       dispatch({
         type: SEND_IMAGE,
-        image: data.image
+        results: data.data.results
       });
     })
     .catch(err => {

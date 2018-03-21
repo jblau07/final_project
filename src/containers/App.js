@@ -6,7 +6,7 @@ import BarcodeScanner from "./BarcodeScanner";
 import { loadRecipes, setActiveRecipe } from "../actions/ItemsAction";
 import ActiveRecipe from "../components/ActiveRecipe";
 import RecipesList from "../components/RecipeList";
-import ImageRecognition from '../containers/ImageRecognition';
+import ImageCapture from '../containers/ImageCapture';
 import SuggestIngredient from '../containers/SuggestIngredient';
 import ButtonComponent from "../components/Login_RegisterButtons";
 import LogoutContainer from "../containers/LogoutContainer";
