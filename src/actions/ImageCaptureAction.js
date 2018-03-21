@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const SEND_IMAGE = 'SEND_IMAGE';
+export const SEND_INGREDIENT = 'SEND_INGREDIENT';
 
 export const sendImage = (image) => {
   return dispatch => {
@@ -12,6 +13,31 @@ export const sendImage = (image) => {
       dispatch({
         type: SEND_IMAGE,
         results: data.data.results
+      });
+    })
+    .catch(err => {
+      console.log('err', err);
+    });
+  }
+}
+
+export const sendIngredient = (ingredient, cb) => {
+  return dispatch => {
+    return axios.post('/api/ingredients', {
+      name: ingredient
+    })
+    .then(ingredient => {
+      console.log('ingredient', ingredient);
+      let newFridgeItem = ingredient.data.id;
+      return axios.post('/api/fridge', {
+        newFridgeItem
+      })
+      .then(data => {
+        console.log('data', data);
+        cb();
+      })
+      .catch(err => {
+        console.log('err', err);
       });
     })
     .catch(err => {

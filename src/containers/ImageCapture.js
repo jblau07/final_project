@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { sendImage } from '../actions/ImageCaptureAction';
+import { withRouter } from 'react-router-dom';
+import { sendImage, sendIngredient } from '../actions/ImageCaptureAction';
 
 class ImageCapture extends Component {
   constructor(props) {
@@ -14,7 +15,8 @@ class ImageCapture extends Component {
           height: 300
         }
       },
-      didTakePicture: false
+      didTakePicture: false,
+      selectedIngredient: ''
     };
 
     this.handleStartClick = this.handleStartClick.bind(this);
@@ -22,6 +24,7 @@ class ImageCapture extends Component {
     this.clearPhoto = this.clearPhoto.bind(this);
     this.handleSend = this.handleSend.bind(this);
     this.handleMobile = this.handleMobile.bind(this);
+    this.selectIngredient = this.selectIngredient.bind(this);
   }
 
   componentDidMount() {
@@ -133,6 +136,16 @@ class ImageCapture extends Component {
     this.props.sendImage(base64);
   }
 
+  selectIngredient(event) {
+    event.preventDefault();
+    const history = this.props.history;
+    this.setState({ selectedIngredient: event.target.value }, () => {
+      this.props.sendIngredient(this.state.selectedIngredient, (redirectCallback) => {
+        history.push('/');
+      });
+    });
+  }
+
   render() {
     const submitStyle = {
       display: "none"
@@ -149,13 +162,11 @@ class ImageCapture extends Component {
             <button id="submit" onClick={ this.handleSend } style={ submitStyle }>Find Ingredient</button>
           </div>
           <div className="image-results">
-            <ul>
               {results.map((element, idx) => {
                 return (
-                  <li key={idx}>{element.class}</li>
+                  <li key={idx}><input type="button" value={element.class} name={element.class} onClick={ this.selectIngredient } /></li>
                 )
               })}
-            </ul>
           </div>
         </div>
       )
@@ -176,7 +187,7 @@ class ImageCapture extends Component {
             <ul>
               {results.map((element, idx) => {
                 return (
-                  <li key={idx}>{element.class}</li>
+                  <li key={idx}><input type="button" value={element.class} name={element.class} onClick={ this.selectIngredient } /></li>
                 )
               })}
             </ul>
@@ -197,8 +208,11 @@ const mapDispatchToProps = dispatch => {
   return {
     sendImage: image => {
       dispatch(sendImage(image));
+    },
+    sendIngredient: (ingr, redirectCallback) => {
+      dispatch(sendIngredient(ingr, redirectCallback));
     }
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ImageCapture);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ImageCapture));
