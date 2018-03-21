@@ -39,4 +39,23 @@ router.route(`/:userId`)
 
   })
 
+  router.route('/')
+  .post((req,res)=>{
+    let data = {
+      user_id: req.body.user_id,
+      recipe_id: req.body.recipe_id
+    }
+    return new Cookbook(data)
+    .save()
+    .then(result => {
+      console.log(result);
+      return res.json(result.toJSON());
+    })
+    .catch(err => {
+      console.log({ err: err.message });
+      return res.json({ err: err.message });
+    })
+
+  })
+
 module.exports = router;

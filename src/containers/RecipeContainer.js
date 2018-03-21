@@ -8,15 +8,15 @@ class Recipe extends Component {
   constructor(props) {
     super(props);
 
-    this.handleSelected = this.handleSelected.bind(this);
+    // this.handleSelected = this.handleSelected.bind(this);
 
   }
 
 
-  handleSelected(event) {
-    this.props.getRecipes(this.props.fridgeSelect);
-    // this.props.history.push("/recipes");
-  }
+  // handleSelected(event) {
+  //   this.props.getRecipes(this.props.fridgeSelect);
+  //   // this.props.history.push("/recipes");
+  // }
 
 
 
@@ -30,27 +30,13 @@ class Recipe extends Component {
 
     return (
       <div className='recipes'>
-        <button onClick={this.handleSelected} type="submit">Selected</button>
+        {/* <button onClick={this.handleSelected} type="submit">Selected</button> */}
         <h2 className='list_of_selected'>Selected Ingredients:</h2>
         {this.props.fridgeSelect.join(' ')}
         <RecipeList recipe = {this.props.recipes} />
-        {/* 
-       <ul className="userRecipes">
-          { recipe > 0 &&
-            recipe.map((recipes) => {
-            return (
-              
-              <div className='allrecipes'>
-                <h3>{recipes.recipe}</h3>
-                <h4>{recipes.ingredients.join(', ')}</h4>
-                <img href={recipes.url} src={recipes.image} />
-                <a href={recipes.url}>Take Me To Recipe!</a>
-              </div>
-            )
-          })}
+       
 
-        </ul>
-        */}
+
 
 
         <br />
