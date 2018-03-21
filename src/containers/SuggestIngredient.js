@@ -67,9 +67,11 @@ class SuggestIngredient extends Component {
 
   handleOnSubmit (event) {
     event.preventDefault();
-    this.props.addIngredient(this.state.value);
-    console.log('handle', this.state.value)
-    this.setState({value: ''})
+    if (this.state.value !== '') {
+      this.props.addIngredient(this.state.value);
+      console.log('handle', this.state.value)
+      this.setState({value: ''})
+    }
   }
 
   render () {
