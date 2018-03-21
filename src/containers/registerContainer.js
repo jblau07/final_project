@@ -17,8 +17,9 @@ class Register extends Component {
 
   handleRegister(event) {
     event.preventDefault();
-    this.props.register(this.state);
-    this.props.history.push("/fridge");
+    this.props.register(this.state, () => {
+      this.props.history.push('/fridge'); 
+  })
   }
 
   render() {
@@ -63,8 +64,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    register: user => {
-      dispatch(register(user));
+    register: function (user, redirectCallback ) {
+      dispatch(register(user, redirectCallback));
     }
   };
 };
