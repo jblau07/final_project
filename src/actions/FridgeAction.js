@@ -29,16 +29,14 @@ export const loadFridge = () => {
       if (localStorage.length > 0) {
         user_id = localStorage.getItem("id");
       }
-
-      console.log("user_id", user_id);
       return dispatch => {
         return axios
           .delete(`/api/fridge/${user_id}/${id}`)
           .then(() => {
             return axios.get(`/api/fridge/${user_id}`).then(data => {
               dispatch({
-                type: "LOAD_FRIDGE",
-                fridge: data
+                type: LOAD_FRIDGE,
+                fridge: data.data
               });
             });
           })
