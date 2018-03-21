@@ -22,5 +22,5 @@ yarn-debug.log*
 yarn-error.log*
 
 server/db/config.js
-routes/temp
+server/temp
 src/config.js
