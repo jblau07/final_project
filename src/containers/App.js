@@ -55,7 +55,7 @@ class App extends Component {
           <h1 className="App-title">FINAL PROJECT WOO</h1>
         </header>
 
-        <LogoutContainer />
+        {logoutButton}
         <div className="Main">
           <Main />
         </div>
