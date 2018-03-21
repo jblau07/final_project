@@ -52,7 +52,19 @@ router.post('/', (req, res) => {
     .then(result => {
       cleanupCallback();
       console.log('result', JSON.stringify(result, null, 2));
-      return res.json({ "success": true });
+      
+      const classResults = result.images[0].classifiers[0].classes;
+      classResults.sort((a, b) => {
+        return b.score - a.score;
+      });
+      console.log('sorted', classResults);
+
+      const topResults = classResults.filter((ele, idx) => {
+        return idx < 3;
+      });
+      console.log('top 3', topResults);
+
+      return res.json({ results: topResults });
     })
     .catch(err => {
       console.log('err', err);
