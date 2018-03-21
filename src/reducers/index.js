@@ -4,6 +4,7 @@ import recipesReducer from "./recipesReducer";
 import suggestReducer from "./suggestReducer";
 import userReducer from './userReducer';
 import fridgeReducer from "./fridgeReducer";
+import cookbookReducer from "./cookbookReducer";
 
 
 export default combineReducers({
@@ -11,5 +12,6 @@ export default combineReducers({
   recipes: recipesReducer,
   suggest: suggestReducer,
   users:userReducer,
-  fridge: fridgeReducer
+  fridge: fridgeReducer,
+  cookbook:cookbookReducer
 });
