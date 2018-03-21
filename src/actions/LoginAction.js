@@ -5,12 +5,14 @@ export const LOGOUT = "LOGOUT";
 
 
 export const loginAction = (user) => {
+
   return dispatch => {
     return axios.post('/api/login',{
       username:user.username,
       password:user.password
     })
     .then(loginInfo => {
+      localStorage.setItem('id', loginInfo.data.id);
       dispatch({
         type:LOGIN,
         payload:loginInfo
