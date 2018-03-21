@@ -15,9 +15,9 @@ export const loadFridge = () => {
   return dispatch => {
     return axios.get(`/api/fridge/${user_id}`)
     .then(data => {
-      dispatch({
+     return dispatch({
         type: LOAD_FRIDGE,
-        fridge: data
+        fridge: data.data
       })
     })
     .catch(err => {
