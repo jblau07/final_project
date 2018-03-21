@@ -23,73 +23,45 @@ router.route(`/:id`)
       })
   })
 
-router.route('/')
-  //Get all Recipes
-  .get((req, res) => {
-    return new Recipe()
-      .fetchAll()
-      .then(result => {
-        return res.json(result.toJSON());
-      })
-      .catch(err => {
-        console.log({ err: err.message });
-        return res.json({ err: err.message });
-      })
-  })
+// router.route('/')
+//   //Get all Recipes
+//   .get((req, res) => {
+//     return new Recipe()
+//       .fetchAll()
+//       .then(result => {
+//         return res.json(result.toJSON());
+//       })
+//       .catch(err => {
+//         console.log({ err: err.message });
+//         return res.json({ err: err.message });
+//       })
+//   })
 
-  .post((req, res) => {
-    //Post Recipe to the DB and the Cookbook
-    let data = { name, ingredients, url, image } = req.body;
-    let userId;
-    userId = 1;
-    let ingr;
-    let id;
-    return new Recipe(data)
-      .save()
-      .then(recipe => {
-        recipe = recipe.toJSON();
-        id = recipe.id;
+//   .post((req, res) => {
+//     let data = { name, ingredients, url, image } = req.body;
 
-        let newData = { recipe_id: id, user_id: userId }
-        return new Cookbook(newData)
-          .save()
-          .then(result => {
-            console.log(result);
-            return res.json(result.toJSON());
-          })
-          .catch(err => {
-            console.log({ err: err.message });
-            return res.json({ err: err.message });
-          })
-        return res.json(recipe.toJSON());
-      })
+//     return new Recipe(data)
+//       .save()
+//       .then(recipe => {
+//         recipe = recipe.toJSON();
+//         return res.json(recipe.toJSON());
+//       })
 
-      .catch(err => {
-        return new Recipe()
-          .where({ url: req.body.url })
-          .fetch()
-          .then(recipe => {
-            console.log('FOUND INGREDIENT')
-            recipe = recipe.toJSON();
-            id = recipe.id;
+//       .catch(err => {
+//         return new Recipe()
+//           .where({ url: req.body.url })
+//           .fetch()
+//           .then(recipe => {
+//             console.log('FOUND INGREDIENT')
+//             recipe = recipe.toJSON();
+//             id = recipe.id;
 
-            newData = { recipe_id: id, user_id: userId }
-            return new Cookbook(newData)
-              .save()
-              .then(result => {
-                console.log(result);
-                return res.json({ "Cookbook": result.toJSON() });
-              })
-              .catch(err => {
-                console.log({ err: err.message });
-                return res.json({ err: err.message });
-              })
-            return res.json(recipe.toJSON());
-          })
+//             return res.json(recipe.toJSON());
+//           })
 
-        return res.json({ err: err.message });
-      })
-  })
+//         return res.json({ err: err.message });
+//       })
+//   })
 
 router.route('/getRecipes')
 
