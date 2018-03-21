@@ -6,8 +6,7 @@ import FridgeList from "../components/FridgeList";
 
 import { addIngredient } from "../actions/SuggestAction";
 import { loadFridge } from "../actions/FridgeAction";
-import ConnectedRecipes from '../containers/RecipeContainer';
-
+import ConnectedRecipes from "../containers/RecipeContainer";
 
 class Fridge extends Component {
   constructor(props) {
@@ -55,4 +54,4 @@ const mapDispatchToProps = dispatch => {
 
 const ConnectedFridge = connect(mapStateToProps, mapDispatchToProps)(Fridge);
 
-export default withRouter((ConnectedFridge));
+export default withRouter(ConnectedFridge);

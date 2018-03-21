@@ -1,12 +1,10 @@
-import React, {Component} from 'react';
-import FridgeIngredient from '../containers/FridgeIngredient';
+import React, { Component } from "react";
+import FridgeIngredient from "../containers/FridgeIngredient";
 
-export const FridgeList = ({fridge}) => {
+export const FridgeList = ({ fridge }) => {
   let data;
   if (fridge.length === 0) {
-    return (
-      <div></div>
-    )
+    return <div />;
   } else {
     
     data = fridge;
@@ -16,17 +14,13 @@ export const FridgeList = ({fridge}) => {
     else{
       return (
         <ul className="userFridge">
-          {data.map((ingredient) => {
-            return (
-              <FridgeIngredient
-                key={ingredient.id}
-                {...ingredient}/>
-            )
+          {data.map(ingredient => {
+            return <FridgeIngredient key={ingredient.id} {...ingredient} />;
           })}
-              </ul>
+        </ul>
       );
     }
   }
-}
+};
 
 export default FridgeList;
