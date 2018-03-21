@@ -54,7 +54,7 @@ class Login extends Component {
 
 const mapStateToProps = state => {
   return {
-    login: state.users.user
+    user: state.users.user
   };
 };
 

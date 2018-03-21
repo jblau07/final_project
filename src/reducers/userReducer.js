@@ -4,20 +4,19 @@ import { LOGOUT } from "../actions/LoginAction";
 
 const initialState = {
   users: [],
-  user: []
-
-}
+  user: {}
+};
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case REGISTER:
-      return { ...state, users: action.payload }
+      return { ...state, users: action.payload };
     case LOGIN:
-      return { ...state, user: action.payload }
+      return { ...state, user: action.payload };
     case LOGOUT:
       localStorage.clear();
-      return { ...state, user: null }
+      return { ...state, user: null };
     default:
       return state;
   }
-}
+};

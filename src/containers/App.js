@@ -15,12 +15,18 @@ class App extends Component {
   constructor(props) {
     super(props);
 
+    this.state = { isLoggedin: false };
+
     this.recipeClickHandler = this.recipeClickHandler.bind(this);
     this.findRecipeByName = this.findRecipeByName.bind(this);
   }
-  // componentDidMount() {
-  //   this.props.loadRecipe();
-  // }
+  componentDidMount() {
+    console.log(this.props);
+    console.log(this.state);
+    // if (this.props.user.id) {
+    //   this.setState({ isLoggedin: true });
+    // }
+  }
 
   recipeClickHandler(event) {
     const recipeName = event.currentTarget.dataset.recipeName;
@@ -42,40 +48,42 @@ class App extends Component {
   }
 
   render() {
-    let buttons = <ButtonComponent />;
-    let logoutButton;
-    if (localStorage.length > 0) {
-      buttons = null;
-      logoutButton = <LogoutContainer />;
-    }
+    // let navbar = null;
+    // let buttons = <ButtonComponent />;
+    // let logoutButton;
+    // if (localStorage.length > 0) {
+    //   buttons = null;
+    //   logoutButton = <LogoutContainer />;
+
+    //   navbar = <Navbar />;
+    // }
 
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">FINAL PROJECT WOO</h1>
         </header>
-
-        {logoutButton}
-        <div className="Main">
-          <Main />
-        </div>
-        {/* <ActiveRecipe planet={this.props.activeRecipe} /> */}
-        {/* <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p> */}
-        {/* <RecipesList
-          planets={this.props.recipes}
-          recipeClickHandler={this.recipeClickHandler}
-
-        />
-        
-      /> */}
-        {/* <BarcodeScanner /> */}
-        <Navbar />
+        {this.props.user && this.props.user.id ? (
+          <div>
+            <LogoutContainer />
+            <div className="Main">
+              <Main />
+            </div>
+            <Navbar />
+          </div>
+        ) : (
+          <div className="Main">
+            <Main />
+          </div>
+        )}
       </div>
     );
   }
 }
-
+const mapStateToProps = state => {
+  return {
+    user: state.users.user
+  };
+};
+export default connect(mapStateToProps, null)(App);
 // export default connect(mapStateToProp, mapDispatchToProps)(App);
-export default App;

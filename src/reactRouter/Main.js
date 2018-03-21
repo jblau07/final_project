@@ -12,7 +12,7 @@ const Main = props => (
       <Route exact path="/fridge" component={Fridge} />
       <Route exact path="/scan" component={BarcodeScanner} />
       <Route exact path="/register" component={Register} />
-      <Route exact path="/home" component={Login} />
+      <Route exact path="/" component={Login} />
       <Route exact path="/recipes" component={ConnectedRecipes} />
     </Switch>
   </main>
