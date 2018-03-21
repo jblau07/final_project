@@ -9,10 +9,10 @@ import ConnectedRecipes from '../containers/RecipeContainer';
 const Main = props => (
   <main className="page-content">
     <Switch>
-      <Route exact path="/" component={Fridge} />
+      <Route exact path="/fridge" component={Fridge} />
       <Route exact path="/scan" component={BarcodeScanner} />
       <Route exact path="/register" component={Register} />
-      <Route exact path="/login" component={Login} />
+      <Route exact path="/" component={Login} />
       <Route exact path ='/recipes' component = {ConnectedRecipes} />
     </Switch>
   </main>

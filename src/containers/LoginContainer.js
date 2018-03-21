@@ -19,8 +19,8 @@ class Login extends Component {
   handlelogin(event) {
     event.preventDefault();
 
+    this.props.history.push("/fridge")
     this.props.login(this.state);
-    this.props.history.push("/")
 
   }
 
@@ -45,7 +45,6 @@ class Login extends Component {
             onChange={this.handleChange}
             placeholder="Password"
           />
-          
           <button type="submit">Submit</button>
         </form>
           </div>

@@ -31,10 +31,14 @@ class Recipe extends Component {
     return (
       <div className='recipes'>
         {/* <button onClick={this.handleSelected} type="submit">Selected</button> */}
-      
-
+        <h2 className='list_of_selected'>Selected Ingredients:</h2>
+        {this.props.fridgeSelect.join(' ')}
         <RecipeList recipe = {this.props.recipes} />
        
+
+
+
+
         <br />
 
 
