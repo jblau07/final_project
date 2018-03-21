@@ -16,9 +16,7 @@ class Fridge extends Component {
   }
 
   componentDidMount() {
-    if (localStorage.length > 0) {
       this.props.loadFridge();
-    }
   }
 
   handleSelected(event) {

@@ -3,7 +3,7 @@ import FridgeIngredient from "../containers/FridgeIngredient";
 
 export const FridgeList = ({ fridge }) => {
   let data;
-  if (fridge.length === 0) {
+  if (fridge.length === 0 || localStorage.length === 0) {
     return <div />;
   } else{
       return (
