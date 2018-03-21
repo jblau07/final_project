@@ -20,7 +20,7 @@ class Login extends Component {
     event.preventDefault();
 
     this.props.login(this.state);
-    this.props.history.push("/")
+    this.props.history.push("/fridge")
 
   }
 
