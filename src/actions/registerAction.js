@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const REGISTER = "REGISTER";
 
-export const register = (user) => {
+export const register = (user, redirectCallback) => {
 
   return dispatch => {
     return axios.post('/api/register',{
@@ -14,6 +14,7 @@ export const register = (user) => {
         type:REGISTER,
         users:newUser
       })
+      redirectCallback();
     })
     .catch(err => {
       console.log({ err: err.message });

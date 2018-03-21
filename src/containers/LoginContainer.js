@@ -19,8 +19,9 @@ class Login extends Component {
   handlelogin(event) {
     event.preventDefault();
 
-    this.props.login(this.state);
-    this.props.history.push("/fridge");
+    this.props.login(this.state, () => {
+      this.props.history.push("/fridge")
+    });
   }
 
   render() {
@@ -60,8 +61,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    login: user => {
-      dispatch(loginAction(user));
+    login:function (user, redirectCallback) {
+      dispatch(loginAction(user, redirectCallback));
     }
   };
 };
