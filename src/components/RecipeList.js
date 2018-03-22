@@ -28,7 +28,6 @@ export const RecipeList = ({ recipe }) => {
               </li>
             )
           })}
-
         </ul>
       );
     }

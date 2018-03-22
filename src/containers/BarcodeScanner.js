@@ -8,14 +8,14 @@ class BarcodeScanner extends Component {
     super(props);
     this.state = {
       scannedUpc: null,
-      scannedName: null
+      scannedName: []
     };
     this.handleUpcSubmit = this.handleUpcSubmit.bind(this);
   }
   componentDidMount() {
     const engineLocation = "https://unpkg.com/scandit-sdk/build";
     configure(
-      "AUjrmg3LFnsDOOOyBBnYXiIxYoXuBI5/11Flmz5inE/kcU5NOluYVn12511rRLDbGyXDyp95c75XX4cWGgJwPvIgpwTFDPeeb20+N+RZocFGed279h9HjkNXMFf2LDPtDGD3Yo8HHsYpBPCJ5LCfqRCYGIyDjKc8WdcuvyTjv2OmngxeWZh3o+h71t81qqkmGGusYKFnoDCEPero9wqQ1QbLKu0MBtFvwcn2Y/jF4/g4G9jYOKbK2TY8h4A2AfA1jLN62OQ9cg5Cqe5fotxi4Z0RfqYmbgB2LwJxs2bTpbbMOLWRommFrLDpHg+ELAM8pu34Lc1If2S4jUrWWk2hjbfCivp4Dg8RJjCBsgJrB7IuouV9pztvXLpVx7ox0GT5dEtrNZDIDyEm/cDJ/RFYENPCwoXKyYV08QeJcgChGX+lD1f6I7Aw4d5U+ayPZeEc/c2Ua5UdxdLzEu1nlyFVTkK2yQ3QS+k8xgMULXm8+F8KF/5Ib+HFMYZztY7k4fPz1qY/C84Hvu74w/NKmDrWcxGe78HLfWN/mvv86AoS8xOxhRA4sC2wDMUgV0RWPMPcbbQNd1XLJGGjlxR3wTou0kckKJ1qe4tv5DcEtfF/EeWfu7KVyFSbCpk71wLz2hodGBLfW3z3/fKdUE0eHA61H2iWSkuF1Qm9rENvuvThYGWlAEjgwnLA7vuS6HETVWPSe4nbq5DSmLmfejAxUB/V6ys3EVpq4EzC6/Yw0vggknpdRdL+SYNcJSIZlCx3dl0HyP13fZF/I0sCCnRrg90kknZszfEwPdpJ9465ahex+r46f2hpJSTj5e2toy6v",
+      "AZ7LJzXLLmFWHbYP5xHr8VAEgAxmNGYcGnYoifpGSJrYfTInIQojdIJpKD0FSSi1bC5Ubjh0mGXLarfJZWNjfmAq/jeqIzh2amOBVudpvMVnYg3hx00GonlYsMyeWvW2P1jlS5FY0P5dBiRslDHxevdo9cNsQLFE4y/2kklgJ7sfi3M6RJ3wmqZRxEYrca9VvyUkxcLRCEPXES0mxoNtrmj2pmiUZbowpKpi3S+1Z6+W2lpOBDEcCogiajFAdLTa8IEvgnoJMcXlp3BvLFjK79c0Gv4B/Tr2XWh1vcYVuHNGom4ca7GiyVm1stDwTmD81nA3NK3E3epN9d5T3BjwNrWQRRl3QkFH77q6lshecqkrqFcZ3LFyGbZAcQEAh+U/UbnjmDkasXsKCd+X0ggieaZ6lEhDUFmEmkR9zSin/0Gw4k4xvC7PRkivpEYWBhoUUzMzdYtxgGk1Dx7aiBZKl6yLp27ooLz4Wy/Q8VRZCan9WXnapOx/maokalCmw3hqWFWaIijAWq6GWVK7RJ37u4HgjFyJAoOxhNTvFsKtNAduRRBkXWlMywA0iQBeaNB0QVOmpO0iFNyxQqlLzw+7zQ2oaH25ycVXuWotmPWXunkTOEH5DhbhdlolqN8vLuHV2tyjc1WJjT+ER7+tzV9KylK1HA5by41jxe3I8g0eqgTaDtAZZvs630ESbLAbUYm2lAnU9xXPiNA5iwtLpIo0/hcbfXK/Eg7BM0pcBk14gp1ZLI0EkIRsuE40I7Mh8eNOfw4UYczh3qXbzmUJ/UraLzdK2WF/dORCAEXAycnNECNxYl0sWfIGSdmH9Ikp",
       {
         engineLocation: engineLocation,
         preloadEngineLibrary: false,
@@ -93,9 +93,7 @@ class BarcodeScanner extends Component {
   }
   handleUpcSubmit() {
     this.props.getByUpc(this.state.scannedUpc);
-    
   }
-
   //getByUpc
   render() {
     return (
