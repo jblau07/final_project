@@ -18,17 +18,16 @@ export const RecipeList = ({ recipe }) => {
 
       return (
         <ul className="userRecipes">
-          {recipe.map((recipes) => {
+          {recipe.map((recipes, idx) => {
             return (
-              <div className='allrecipes'>
+              <li key={idx} className='allrecipes'>
                 <h3>{recipes.recipe}</h3>
                 <h4>{recipes.ingredients.join(', ')}</h4>
                 <img href={recipes.url} src={recipes.image} />
                 <a href={recipes.url} target="_blank" >Take Me To Recipe!</a>
-              </div>
+              </li>
             )
           })}
-
         </ul>
       );
     }

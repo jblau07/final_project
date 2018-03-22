@@ -4,27 +4,27 @@ const path = require("path");
 const User = require("./db/models/User");
 const PORT = process.env.PORT || 8080;
 
-const userRoute = require("../routes/users");
-const ingredientsRoute = require("../routes/ingredients");
-const recipeRoute = require("../routes/recipes");
-const fridgeRoute = require("../routes/fridge");
-const cookbookRoute = require("../routes/cookbook");
+const userRoute = require('./routes/users');
+const ingredientsRoute = require('./routes/ingredients');
+const recipeRoute = require('./routes/recipes');
+const fridgeRoute = require('./routes/fridge');
+const cookbookRoute = require('./routes/cookbook');
+const imageCaptureRoute = require('./routes/imageCapture');
 const upcRoute = require("../routes/upc");
 
 const app = express();
-app.use(bodyParser.json());
-app.use(
-  bodyParser.urlencoded({
-    extended: true
-  })
-);
+app.use(bodyParser.json({ limit: '50MB' }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
+app.use('/api/users',userRoute);
+app.use('/api/ingredients',ingredientsRoute);
+app.use('/api/recipes',recipeRoute);
+app.use('/api/fridge',fridgeRoute);
+app.use('/api/cookbook',cookbookRoute);
+app.use('/api/image-capture', imageCaptureRoute);
 app.use("/api/upc", upcRoute);
-app.use("/api/users", userRoute);
-app.use("/api/ingredients", ingredientsRoute);
-app.use("/api/recipes", recipeRoute);
-app.use("/api/fridge", fridgeRoute);
-app.use("/api/cookbook", cookbookRoute);
 
 app.post("/api/register", (req, res) => {
   let data = ({ username, password } = req.body);

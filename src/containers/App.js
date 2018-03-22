@@ -6,7 +6,8 @@ import BarcodeScanner from "./BarcodeScanner";
 import { loadRecipes, setActiveRecipe } from "../actions/ItemsAction";
 import ActiveRecipe from "../components/ActiveRecipe";
 import RecipesList from "../components/RecipeList";
-import SuggestIngredient from "../containers/SuggestIngredient";
+import ImageCapture from '../containers/ImageCapture';
+import SuggestIngredient from '../containers/SuggestIngredient';
 import ButtonComponent from "../components/Login_RegisterButtons";
 import LogoutContainer from "../containers/LogoutContainer";
 import { Navbar } from "../components/Navbar";
@@ -54,28 +55,14 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">FINAL PROJECT WOO</h1>
         </header>
-
         {logoutButton}
         <div className="Main">
           <Main />
         </div>
-        {/* <ActiveRecipe planet={this.props.activeRecipe} /> */}
-        {/* <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p> */}
-        {/* <RecipesList
-          planets={this.props.recipes}
-          recipeClickHandler={this.recipeClickHandler}
-
-        />
-        
-      /> */}
-        {/* <BarcodeScanner /> */}
         <Navbar />
       </div>
     );
   }
 }
 
-// export default connect(mapStateToProp, mapDispatchToProps)(App);
 export default App;
