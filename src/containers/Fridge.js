@@ -21,7 +21,7 @@ class Fridge extends Component {
 
   handleSelected(event) {
     this.props.getRecipes(this.props.fridgeSelect, () => {
-      this.props.history.push("/recipes")
+      this.props.history.push("/search")
     });
 
   }
