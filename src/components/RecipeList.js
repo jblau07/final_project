@@ -18,7 +18,6 @@ export const RecipeList = ({ recipe }) => {
 
       return (
         <ul className="userRecipes">
-<<<<<<< HEAD
           {recipe.map((recipes) => {
             data = {
               name:recipes.recipe,
@@ -36,16 +35,6 @@ export const RecipeList = ({ recipe }) => {
                 <a href={data.url} target="_blank" >Take Me To Recipe!</a>
                 <FavoriteRecipe key={recipes.id} {...data} />
               </div>
-=======
-          {recipe.map((recipes, idx) => {
-            return (
-              <li key={idx} className='allrecipes'>
-                <h3>{recipes.recipe}</h3>
-                <h4>{recipes.ingredients.join(', ')}</h4>
-                <img href={recipes.url} src={recipes.image} />
-                <a href={recipes.url} target="_blank" >Take Me To Recipe!</a>
-              </li>
->>>>>>> 5351581e241675d1e81684a2161e2423727a4f9b
             )
           })}
         </ul>
