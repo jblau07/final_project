@@ -36,38 +36,37 @@ export const loadRecipes = (Ingredients) => {
   };
 };
 
-// export const postSavedRecipes = (recipes) => {
-//   let user_id;
-//   if (localStorage.length > 0) {
-//     user_id = localStorage.getItem('id');
-//   }
-//   return dispatch => {
-//     return axios.post(`/api/recipes`,{
-//       name:recipes.name,
-//       ingredients:recipes.ingredients,
-//       url:recipes.url,
-//       image:recipes.image
-//     })
-//     .then(recipe => {
-//       return axios.post(`/api/cookbook`, {
-//         user_id:user_id,
-//         recipe_id:recipe.id
-//       })
-//       .then ( data =>{
-//         return axios.get(`/api/cookbook/${user_id}`)
-//         .then(data => {
-//           dispatch({
-//             type:POST_SAVED_RECIPES,
-//             payload:data
-//           })
-//         })
+export const postSavedRecipes = (recipes) => {
+  let user_id;
+  if (localStorage.length > 0) {
+    user_id = localStorage.getItem('id');
+  }
+  console.log('ARE YOU CORRECT',recipes)
+  return dispatch => {
+    return axios.post(`/api/recipes`,{
+      recipes
+    })
+    .then(recipe => {
+      console.log('recipe console',recipe)
+      return axios.post(`/api/cookbook`, {
+        user_id:user_id,
+        recipe_id:recipe.data.id
+      })
+      .then ( data =>{
+        return axios.get(`/api/cookbook/${user_id}`)
+        .then(data => {
+          dispatch({
+            type:POST_SAVED_RECIPES,
+            payload:data
+          })
+        })
 
-//       })
+      })
 
-//     })
-//     .catch(err =>{
-//       console.log({err:err.message})
-//     })
+    })
+    .catch(err =>{
+      console.log({err:err.message})
+    })
 
-//   }
-// }
+  }
+}

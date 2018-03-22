@@ -12,7 +12,7 @@ class Logout extends Component {
   handleLogout(event) {
     event.preventDefault();
     this.props.logout();
-    this.props.history.push("/home");
+    this.props.history.push("/");
   }
 
   render() {

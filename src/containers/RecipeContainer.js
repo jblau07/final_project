@@ -3,22 +3,13 @@ import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom';
 import { loadRecipes } from "../actions/ItemsAction";
 import RecipeList from '../components/RecipeList';
+import {FavRecipeContainer} from './FavRecipeContainer';
 
 class Recipe extends Component {
   constructor(props) {
     super(props);
 
-    // this.handleSelected = this.handleSelected.bind(this);
-
   }
-
-
-  // handleSelected(event) {
-  //   this.props.getRecipes(this.props.fridgeSelect);
-  //   // this.props.history.push("/recipes");
-  // }
-
-
 
   render() {
 
@@ -34,10 +25,6 @@ class Recipe extends Component {
         <h2 className='list_of_selected'>Selected Ingredients:</h2>
         {this.props.fridgeSelect.join(' ')}
         <RecipeList recipe = {this.props.recipes} />
-       
-
-
-
 
         <br />
 
