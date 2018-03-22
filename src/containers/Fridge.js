@@ -25,8 +25,14 @@ class Fridge extends Component {
   }
 
   render() {
+
+    let user_id;
+    const userInfo = JSON.parse(localStorage.getItem('user'));
+
     return (
       <div className="ParentFridgeClass">
+         <p>Hello, {userInfo.username}</p>
+
         <button onClick={this.handleSelected} type="submit">
           Find Recipes
         </button>
