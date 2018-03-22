@@ -17,6 +17,7 @@ class Cookbook extends Component {
 
     return (
       <div className='cookbook'>
+      <h3>My Cookbook</h3>
       <CookbookList savedRecipe = {this.props.myCookbook}/>
       <br/>
       </div>
