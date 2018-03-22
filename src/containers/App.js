@@ -5,7 +5,6 @@ import "../scss/styles.css";
 import Main from "../reactRouter/Main";
 import BarcodeScanner from "./BarcodeScanner";
 import { loadRecipes, setActiveRecipe } from "../actions/ItemsAction";
-import ActiveRecipe from "../components/ActiveRecipe";
 import RecipesList from "../components/RecipeList";
 import ImageCapture from "../containers/ImageCapture";
 import SuggestIngredient from "../containers/SuggestIngredient";
