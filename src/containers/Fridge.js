@@ -13,10 +13,12 @@ class Fridge extends Component {
   constructor(props) {
     super(props);
     this.handleSelected = this.handleSelected.bind(this);
+
+
   }
 
   componentDidMount() {
-      this.props.loadFridge();
+    this.props.loadFridge();
   }
 
   handleSelected(event) {
@@ -25,11 +27,22 @@ class Fridge extends Component {
   }
 
   render() {
+    console.log('THIS.PROPS.SELECTED', this.props.fridgeSelect);
+    let findRecipes = null;
+    if (this.props.fridgeSelect.length > 0) {
+
+        findRecipes = <button onClick={this.handleSelected} type="submit">Find Recipes</button>
+
+
+    }
+
+
     return (
       <div className="ParentFridgeClass">
-        <button onClick={this.handleSelected} type="submit">
+        {/* <button onClick={this.handleSelected} type="submit">
           Find Recipes
-        </button>
+        </button> */}
+        {findRecipes}
         {this.props.fridgeSelect.join(" ")}
 
         <FridgeList fridge={this.props.fridge} />
