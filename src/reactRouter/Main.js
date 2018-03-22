@@ -6,6 +6,7 @@ import Register from "../containers/registerContainer";
 import Login from "../containers/LoginContainer";
 import ImageCapture from "../containers/ImageCapture";
 import ConnectedRecipes from "../containers/RecipeContainer";
+import ConnectedCookbook from "../containers/CookbookContainer";
 
 const Main = props => (
   <main className="page-content">
@@ -16,6 +17,7 @@ const Main = props => (
       <Route exact path="/register" component={Register} />
       <Route exact path="/" component={Login} />
       <Route exact path="/recipes" component={ConnectedRecipes} />
+      <Route exact path="/cookbook" component={ConnectedCookbook}/>
     </Switch>
   </main>
 );

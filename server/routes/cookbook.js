@@ -14,6 +14,7 @@ router.route('/:userId/:recipeId')
       .where({ user_id: user_id, recipe_id: recipe_id })
       .destroy()
       .then(result => {
+        return res.json({ success: true });
         console.log('Deleted!');
       })
       .catch(err => {
