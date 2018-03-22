@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import FavoriteRecipe from '../containers/FavRecipeContainer';
 
 export const RecipeList = ({ recipe }) => {
   
@@ -19,12 +19,21 @@ export const RecipeList = ({ recipe }) => {
       return (
         <ul className="userRecipes">
           {recipe.map((recipes) => {
+            data = {
+              name:recipes.recipe,
+              ingredients:recipes.ingredients.join(', '),
+              url:recipes.url,
+              image:recipes.image
+            }
+            console.log('WHAT ARE THE RECIPES', data);
             return (
+              
               <div className='allrecipes'>
-                <h3>{recipes.recipe}</h3>
-                <h4>{recipes.ingredients.join(', ')}</h4>
-                <img href={recipes.url} src={recipes.image} />
-                <a href={recipes.url} target="_blank" >Take Me To Recipe!</a>
+                <h3>{data.name}</h3>
+                <h4>{data.ingredients}</h4>
+                <img href={data.url} src={data.image} />
+                <a href={data.url} target="_blank" >Take Me To Recipe!</a>
+                <FavoriteRecipe key={recipes.id} {...data} />
               </div>
             )
           })}

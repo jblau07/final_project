@@ -3,7 +3,7 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable('recipes', (table)=> {
     table.increments();
     table.string('name').notNullable();
-    table.string('ingredients');
+    table.string('ingredients',800);
     table.string('url').notNullable().unique();
     table.string('image');
     table.timestamp('created_at').defaultTo(knex.fn.now());

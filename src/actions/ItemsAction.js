@@ -41,17 +41,16 @@ export const postSavedRecipes = (recipes) => {
   if (localStorage.length > 0) {
     user_id = localStorage.getItem('id');
   }
+  console.log('ARE YOU CORRECT',recipes)
   return dispatch => {
     return axios.post(`/api/recipes`,{
-      name:recipes.name,
-      ingredients:recipes.ingredients,
-      url:recipes.url,
-      image:recipes.image
+      recipes
     })
     .then(recipe => {
+      console.log('recipe console',recipe)
       return axios.post(`/api/cookbook`, {
         user_id:user_id,
-        recipe_id:recipe.id
+        recipe_id:recipe.data.id
       })
       .then ( data =>{
         return axios.get(`/api/cookbook/${user_id}`)
