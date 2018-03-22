@@ -27,6 +27,7 @@ export const loginAction = (user, redirectCallback) => {
 }
 
 export const logout = () => {
+  localStorage.clear();
   return dispatch => {
     return fetch(`api/logout`)
       .then(logout => {
