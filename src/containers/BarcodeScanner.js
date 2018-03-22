@@ -25,6 +25,7 @@ class BarcodeScanner extends Component {
 
     const scannerContainer = document.getElementById("scandit-barcode-picker");
     const resultContainer = document.getElementById("scandit-barcode-result");
+    // const resultAfterApi = document.getElementById('result-after-api');
     // const continueButton = document.getElementById("continue-scanning-button");
     // continueButton.disabled = true;
     // continueButton.hidden = true;
