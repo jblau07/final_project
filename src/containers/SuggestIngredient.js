@@ -81,9 +81,7 @@ class SuggestIngredient extends Component {
       value,
       onChange: this.onChange
     }
-    
-    console.log('props', this.props)
-    console.log('state', this.state)
+
     return (
       <div className ="big-form">
       <form className="new-ing-form" onSubmit={this.handleOnSubmit}>

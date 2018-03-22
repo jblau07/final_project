@@ -9,6 +9,7 @@ export const RecipeList = ({ recipe }) => {
 
     return <div />;
   } else {
+    
     if (recipe < 1) {
       console.log("2no recipes");
       recipe = [{

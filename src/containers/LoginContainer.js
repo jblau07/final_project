@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { loginAction } from "../actions/LoginAction";
+import { clearAllSelected } from '../actions/FridgeAction';
 
 class Login extends Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class Login extends Component {
     event.preventDefault();
 
     this.props.login(this.state, () => {
+      this.props.clearAllSelected()
       this.props.history.push("/fridge")
     });
   }
@@ -63,6 +65,9 @@ const mapDispatchToProps = dispatch => {
   return {
     login:function (user, redirectCallback) {
       dispatch(loginAction(user, redirectCallback));
+    },
+    clearAllSelected: function () {
+      dispatch(clearAllSelected())
     }
   };
 };

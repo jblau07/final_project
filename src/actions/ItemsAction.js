@@ -5,8 +5,9 @@ const EDAMAM = "https://developer.edamam.com/edamam-docs-recipe-api";
 export const LOAD_RECIPES = "LOAD_RECIPES";
 export const SET_ACTIVE_RECIPES = "SET_ACTIVE_RECIPES";
 export const POST_SAVED_RECIPES = "POST_SAVED_RECIPES";
+export const CLEAR_RECIPES = "CLEAR_RECIPES";
 
-export const loadRecipes = (Ingredients) => {
+export const loadRecipes = (Ingredients, redirectCallback) => {
   let user_id;
   if (localStorage.length > 0) {
     user_id = localStorage.getItem('id');
@@ -25,6 +26,7 @@ export const loadRecipes = (Ingredients) => {
           type: LOAD_RECIPES,
           payload:recipes
         });
+        redirectCallback()
       })
       .catch(err => {
         console.log(err);
@@ -69,4 +71,13 @@ export const postSavedRecipes = (recipes) => {
     })
 
   }
+}
+
+export const clearRecipes = () => {
+ return dispatch=> {
+
+   dispatch({
+      type:CLEAR_RECIPES
+    })
+ }
 }
