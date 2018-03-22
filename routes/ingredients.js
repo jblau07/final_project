@@ -73,6 +73,7 @@ router.route('/')
       .where({ name: data.name })
       .fetch()
       .then(ingredient => {
+        console.log('postss', ingredient)
         ingredient = ingredient.toJSON();
         return res.json(ingredient)
       })
