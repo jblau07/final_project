@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from 'react-router-dom';
 import "../scss/styles.css";
 
 import Main from "../reactRouter/Main";
@@ -12,6 +13,7 @@ import SuggestIngredient from "../containers/SuggestIngredient";
 import ButtonComponent from "../components/Login_RegisterButtons";
 import LogoutContainer from "../containers/LogoutContainer";
 import { Navbar } from "../components/Navbar";
+import { join } from "path";
 
 class App extends Component {
   constructor(props) {
@@ -51,19 +53,24 @@ class App extends Component {
       logoutButton = <LogoutContainer />;
     }
 
+    let currentLocation = this.props.location.pathname;
+    if (currentLocation === '/') {
+      currentLocation = 'home';
+    } else {
+      currentLocation = currentLocation.split('/').pop();
+    }
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">FINAL PROJECT WOO</h1>
+      <main className="app" id={currentLocation}>
+        <header className="app-header">
+          <h1 className="app-title">FINAL PROJECT WOO</h1>
         </header>
-        {logoutButton}
-        <div className="Main">
-          <Main />
-        </div>
+        <Main />
         <Navbar />
-      </div>
+        {logoutButton}
+      </main>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
