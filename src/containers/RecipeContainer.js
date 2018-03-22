@@ -13,6 +13,13 @@ class Recipe extends Component {
     this.state = {recipesArr:this.props.recipes};
 
   }
+
+  componentDidMount(){
+    if(!localStorage.getItem('id')){
+      this.props.history.push("/")
+    }
+  }
+
   componentWillUnmount() {
     this.props.clearRecipes();
     console.log('inside CWU')
