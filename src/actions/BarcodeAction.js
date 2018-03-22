@@ -8,9 +8,11 @@ export const UPC_INGREDIENT = "UPC_INGREDIENT";
 
 export const getByUpc = upc => {
   let user_id;
-  if (localStorage.length > 0) {
-    user_id = localStorage.getItem('id');
-  }
+    const userInfo = JSON.parse(localStorage.getItem('user'));
+
+    if (userInfo) {
+      user_id = userInfo.id;
+    }
   console.log(upc);
   return dispatch => {
     return axios

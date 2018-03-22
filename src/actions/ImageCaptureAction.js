@@ -23,9 +23,11 @@ export const sendImage = (image) => {
 
 export const sendIngredient = (ingredient, cb) => {
   let user_id;
-  if (localStorage.length > 0) {
-    user_id = localStorage.getItem('id');
-  }
+    const userInfo = JSON.parse(localStorage.getItem('user'));
+
+    if (userInfo) {
+      user_id = userInfo.id;
+    }
   return dispatch => {
     return axios.post('/api/ingredients', {
       name: ingredient

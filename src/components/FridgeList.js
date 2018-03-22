@@ -3,7 +3,9 @@ import FridgeIngredient from "../containers/FridgeIngredient";
 
 export const FridgeList = ({ fridge }) => {
   let data;
-  if (fridge.length === 0 || localStorage.length === 0) {
+    const userInfo = JSON.parse(localStorage.getItem('user'));
+
+  if (fridge.length === 0 || !userInfo) {
     return <div />;
   } else{
       return (

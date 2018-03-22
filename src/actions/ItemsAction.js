@@ -8,8 +8,10 @@ export const POST_SAVED_RECIPES = "POST_SAVED_RECIPES";
 
 export const loadRecipes = (Ingredients) => {
   let user_id;
-  if (localStorage.length > 0) {
-    user_id = localStorage.getItem('id');
+  const userInfo = JSON.parse(localStorage.getItem('user'));
+
+  if (userInfo) {
+    user_id = userInfo.id;
   }
   
   return dispatch => {
@@ -38,8 +40,10 @@ export const loadRecipes = (Ingredients) => {
 
 export const postSavedRecipes = (recipes) => {
   let user_id;
-  if (localStorage.length > 0) {
-    user_id = localStorage.getItem('id');
+  const userInfo = JSON.parse(localStorage.getItem('user'));
+
+  if (userInfo) {
+    user_id = userInfo.id;
   }
   console.log('ARE YOU CORRECT',recipes)
   return dispatch => {

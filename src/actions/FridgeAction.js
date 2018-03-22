@@ -7,8 +7,10 @@ export const CLEAR_SELECTED = "CLEAR_SELECTED";
 
 export const loadFridge = () => {
     let user_id;
-    if (localStorage.length > 0) {
-      user_id = localStorage.getItem("id");
+    const userInfo = JSON.parse(localStorage.getItem('user'));
+
+    if (userInfo) {
+      user_id = userInfo.id;
     }
     return dispatch => {
       return axios.get(`/api/fridge/${user_id}`)
@@ -26,9 +28,11 @@ export const loadFridge = () => {
 
     export const deleteFromFridge = id => {
       let user_id;
-      if (localStorage.length > 0) {
-        user_id = localStorage.getItem("id");
-      }
+    const userInfo = JSON.parse(localStorage.getItem('user'));
+
+    if (userInfo) {
+      user_id = userInfo.id;
+    }
       return dispatch => {
         return axios
           .delete(`/api/fridge/${user_id}/${id}`)
