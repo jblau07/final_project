@@ -11,8 +11,8 @@ export const loginAction = (user, redirectCallback) => {
       password:user.password
     })
     .then(loginInfo => {
-      
-      localStorage.setItem('id', loginInfo.data.id);
+      localStorage.setItem('user', JSON.stringify(loginInfo.data));
+      // localStorage.setItem('id', loginInfo.data.id);
       console.log('length',localStorage.length)
       dispatch({
         type:LOGIN,
