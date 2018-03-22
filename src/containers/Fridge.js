@@ -22,12 +22,13 @@ class Fridge extends Component {
   }
 
   handleSelected(event) {
-    this.props.getRecipes(this.props.fridgeSelect);
-    this.props.history.push("/recipes");
+    this.props.getRecipes(this.props.fridgeSelect, () => {
+      this.props.history.push("/recipes")
+    });
+    // this.props.history.push("/recipes");
   }
 
   render() {
-    console.log('THIS.PROPS.SELECTED', this.props.fridgeSelect);
     let findRecipes = null;
     if (this.props.fridgeSelect.length > 0) {
 
@@ -68,8 +69,8 @@ const mapDispatchToProps = dispatch => {
     loadFridge: () => {
       dispatch(loadFridge());
     },
-    getRecipes: ingr => {
-      dispatch(loadRecipes(ingr));
+    getRecipes: (ingr, redirectCallback) => {
+      dispatch(loadRecipes(ingr, redirectCallback));
     }
   };
 };
