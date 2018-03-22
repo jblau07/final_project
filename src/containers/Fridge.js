@@ -4,7 +4,6 @@ import { withRouter } from "react-router-dom";
 import SuggestIngredient from "./SuggestIngredient";
 import FridgeList from "../components/FridgeList";
 import { loadRecipes } from "../actions/ItemsAction";
-
 import { addIngredient } from "../actions/SuggestAction";
 import { loadFridge } from "../actions/FridgeAction";
 import ConnectedRecipes from "../containers/RecipeContainer";
@@ -12,9 +11,8 @@ import ConnectedRecipes from "../containers/RecipeContainer";
 class Fridge extends Component {
   constructor(props) {
     super(props);
+
     this.handleSelected = this.handleSelected.bind(this);
-
-
   }
 
   componentDidMount() {
@@ -30,12 +28,8 @@ class Fridge extends Component {
     console.log('THIS.PROPS.SELECTED', this.props.fridgeSelect);
     let findRecipes = null;
     if (this.props.fridgeSelect.length > 0) {
-
         findRecipes = <button onClick={this.handleSelected} type="submit">Find Recipes</button>
-
-
     }
-
 
     return (
       <div className="ParentFridgeClass">
@@ -51,6 +45,7 @@ class Fridge extends Component {
     );
   }
 }
+
 const mapStateToProps = state => {
   return {
     ingredients: state.suggest.ingredients,

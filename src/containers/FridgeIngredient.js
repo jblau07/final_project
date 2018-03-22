@@ -5,24 +5,23 @@ import { selectFromFridge, deselectFromFridge, deleteFromFridge, clearAllSelecte
 class FridgeIngredient extends Component {
   constructor(props) {
     super(props);
-    this.handleOnSelected = this.handleOnSelected.bind(this)     
-    this.handleOnDeselect = this.handleOnDeselect.bind(this)    
-    this.handleOnDelete = this.handleOnDelete.bind(this)
 
+    this.handleOnSelected = this.handleOnSelected.bind(this);
+    this.handleOnDeselect = this.handleOnDeselect.bind(this);  
+    this.handleOnDelete = this.handleOnDelete.bind(this);
   }
 
 
   handleOnSelected() {
-    this.props.selectFromFridge(this.props.ingredients.name)
+    this.props.selectFromFridge(this.props.ingredients.name);
   }
 
   handleOnDeselect() {
-    this.props.deselectFromFridge(this.props.ingredients.name)
+    this.props.deselectFromFridge(this.props.ingredients.name);
   }
 
   handleOnDelete() {
-    this.props.deleteFromFridge(this.props.ingredients.id)
-
+    this.props.deleteFromFridge(this.props.ingredients.id);
   }
 
   render() {
@@ -30,17 +29,13 @@ class FridgeIngredient extends Component {
       return (
         <ul className="card">
           <div className="attribute">{name}</div>
-          
           <button onClick={this.handleOnSelected}>Select</button>
           <button onClick={this.handleOnDeselect}>Deselect</button>
           <button onClick={this.handleOnDelete}>Delete</button>
-        
         </ul>
       )
   }
-
 }
-
 
 const mapStateToProps = state => {
   return {
@@ -63,6 +58,5 @@ const mapDispatchToProps = dispatch => {
 
   }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(FridgeIngredient);
