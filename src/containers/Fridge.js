@@ -25,7 +25,7 @@ class Fridge extends Component {
     this.props.getRecipes(this.props.fridgeSelect, () => {
       this.props.history.push("/recipes")
     });
-    // this.props.history.push("/recipes");
+
   }
 
   render() {
