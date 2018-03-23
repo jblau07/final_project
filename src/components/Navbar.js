@@ -27,7 +27,7 @@ export const Navbar = () => {
             </Link>
           </li>
           <li className="navbar-icon">
-            <Link to="/recipes">
+            <Link to="/cookbook">
               <img src="/assets/cookbook.svg" />
             </Link>
           </li>
