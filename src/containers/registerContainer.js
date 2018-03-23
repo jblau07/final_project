@@ -25,7 +25,7 @@ class Register extends Component {
   render() {
     return (
       <div className="register_Container">
-        <h1 className="register_title">Register</h1>
+        {/* <h1 className="register_title">Register</h1> */}
         <div className="form_Register">
           <form onSubmit={this.handleRegister}>
             <div className="input_register" />
@@ -36,9 +36,7 @@ class Register extends Component {
               onChange={this.handleChange}
               placeholder="Username"
             />
-
             <br />
-
             <input
               type="text"
               name="password"
