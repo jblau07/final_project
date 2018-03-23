@@ -1,0 +1,15 @@
+@import "../partials/_variables.scss";
+
+#scan {
+  background-color: $black;
+
+  .bc-scanner {
+    color: $white;
+    margin: 1rem;
+  }
+  #scandit-barcode-picker {
+  }
+  .scandit-barcode-desc {
+  }
+}
+
