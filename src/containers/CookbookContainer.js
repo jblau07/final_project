@@ -22,13 +22,14 @@ class Cookbook extends Component {
 
     return (
       <div className='cookbook'>
-      <h3>My Cookbook</h3>
-      <CookbookList savedRecipe = {this.props.myCookbook}/>
-      <br/>
+        <header className="view-title">
+          <h2>My Cookbook</h2>
+        </header>
+        <CookbookList savedRecipe = {this.props.myCookbook}/>
       </div>
     )
   }
-  }
+}
 
   const mapStateToProps = state => {
     return {
@@ -44,5 +45,4 @@ class Cookbook extends Component {
     }
   }
 
-const ConnectedCookbook = withRouter(connect(mapStateToProps, mapDispatchToProps)(Cookbook))
-export default ConnectedCookbook;
+  export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Cookbook));
