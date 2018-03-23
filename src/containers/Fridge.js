@@ -37,7 +37,7 @@ class Fridge extends Component {
   render() {
     let findRecipes = null;
     if (this.props.fridgeSelect.length > 0) {
-        findRecipes = <button onClick={this.handleSelected} type="submit">Find Recipes</button>
+        findRecipes = <button className="find-recipes__button" onClick={this.handleSelected} type="submit">Find Recipes</button>
     }
     return (
       <div className="fridge-content">

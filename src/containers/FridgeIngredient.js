@@ -33,9 +33,13 @@ class FridgeIngredient extends Component {
     if (this.props.selected.includes(name) === false) {
       return (
         <li className="fridge-list__item">
-          <button onClick={this.handleOnSelected}>Select</button>
+          <button className="select-button" onClick={this.handleOnSelected}>
+            <i className="far fa-fw fa-circle"></i>
+          </button>
           <p className="ingredient-name">{name}</p>
-          <button onClick={this.handleOnDelete}>Delete</button>
+          <button className="delete-button" onClick={this.handleOnDelete}>
+            <i className="far fa-fw fa-trash-alt"></i>
+          </button>
         </li>
       )
     }
@@ -43,9 +47,13 @@ class FridgeIngredient extends Component {
     if (this.props.selected.includes(name) === true) {
       return (
         <li className="fridge-list__item">
-          <button onClick={this.handleOnDeselect}>Deselect</button>
-          <p className="ingredient-name">{name}</p>
-          <button onClick={this.handleOnDelete}>Delete</button>
+          <button className="deselect-button" onClick={this.handleOnDeselect}>
+            <i className="far fa-fw fa-check-circle"></i>
+          </button>
+          <p className="ingredient-name selected">{name}</p>
+          <button className="delete-button" onClick={this.handleOnDelete}>
+            <i className="far fa-fw fa-trash-alt"></i>
+          </button>
         </li>
       )
     }
