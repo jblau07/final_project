@@ -4,15 +4,16 @@ import { withRouter } from "react-router-dom";
 import SuggestIngredient from "./SuggestIngredient";
 import FridgeList from "../components/FridgeList";
 import { loadRecipes } from "../actions/ItemsAction";
+import { clearAllSelected } from '../actions/FridgeAction';
 import { addIngredient } from "../actions/SuggestAction";
 import { loadFridge } from "../actions/FridgeAction";
-import ConnectedRecipes from "../containers/RecipeContainer";
 
 class Fridge extends Component {
   constructor(props) {
     super(props);
     
     this.handleSelected = this.handleSelected.bind(this);
+    this.handleOnClear = this.handleOnClear.bind(this);
   }
 
   componentDidMount() {
@@ -29,6 +30,10 @@ class Fridge extends Component {
 
   }
 
+  handleOnClear() {
+    this.props.clearAllSelected()
+  }
+
   render() {
     let findRecipes = null;
     if (this.props.fridgeSelect.length > 0) {
@@ -40,6 +45,9 @@ class Fridge extends Component {
         <SuggestIngredient />
         <FridgeList fridge={this.props.fridge} />
         {findRecipes}
+        <div className="clear">
+          <button onClick = {this.handleOnClear} className="clear-button">Clear All</button>
+        </div>
       </div>
     );
   }
@@ -64,6 +72,9 @@ const mapDispatchToProps = dispatch => {
     },
     getRecipes: (ingr, redirectCallback) => {
       dispatch(loadRecipes(ingr, redirectCallback));
+    },
+    clearAllSelected: function () {
+      dispatch(clearAllSelected())
     }
   };
 };

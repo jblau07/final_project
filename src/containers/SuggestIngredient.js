@@ -25,7 +25,6 @@ class SuggestIngredient extends Component {
     }
 
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
-    this.handleOnClear = this.handleOnClear.bind(this);
   }
 
   componentDidMount(props) {
@@ -36,10 +35,6 @@ class SuggestIngredient extends Component {
     this.setState({
       value: newValue
     })
-  }
-
-  handleOnClear() {
-    this.props.clearAllSelected()
   }
 
   getSuggestions = (value, array) => {
@@ -84,22 +79,19 @@ class SuggestIngredient extends Component {
 
     return (
       <div className ="big-form">
-      <form className="new-ing-form" onSubmit={this.handleOnSubmit}>
-        <Autosuggest
-          suggestions={suggestions}
-          onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-          onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-          getSuggestionValue={getSuggestionValue}
-          renderSuggestion={renderSuggestion}
-          inputProps={inputProps}
-        />
-        <div className="add-ing">
-          <button className="form-submit" type="submit">Add Ingredient</button>
-        </div>
-      </form>
-        {/* <div className="clear">
-          <button onClick = {this.handleOnClear} className="clear-button">Clear All</button>
-        </div> */}
+        <form className="new-ing-form" onSubmit={this.handleOnSubmit}>
+          <Autosuggest
+            suggestions={suggestions}
+            onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+            onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+            getSuggestionValue={getSuggestionValue}
+            renderSuggestion={renderSuggestion}
+            inputProps={inputProps}
+          />
+          <div className="add-ing">
+            <button className="form-submit" type="submit">Add Ingredient</button>
+          </div>
+        </form>
       </div>
     )
   }
@@ -119,9 +111,6 @@ const mapDispatchToProps = dispatch => {
     },
     addIngredient: (name) => {
       dispatch(addIngredient(name));
-    },
-    clearAllSelected: function () {
-      dispatch(clearAllSelected())
     }
   }
 }

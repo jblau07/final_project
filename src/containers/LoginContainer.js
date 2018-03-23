@@ -13,6 +13,12 @@ class Login extends Component {
     this.handlelogin = this.handlelogin.bind(this);
   }
 
+  componentDidMount() {
+    if(localStorage.getItem('id')){
+      this.props.history.push("/fridge")
+    }
+  }
+
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
