@@ -46,17 +46,28 @@ router.route(`/:userId`)
       user_id: req.body.user_id,
       recipe_id: req.body.recipe_id
     }
-    return new Cookbook(data)
-    .save()
-    .then(result => {
-      console.log(result);
-      return res.json(result.toJSON());
-    })
-    .catch(err => {
-      console.log({ err: err.message });
-      return res.json({ err: err.message });
-    })
 
+    return new Cookbook()
+      .where({user_id: data.user_id, recipe_id: data.recipe_id})
+      .fetch()
+      .then(savedRecipe => {
+        savedRecipe = savedRecipe.toJSON();
+        return res.json(savedRecipe)
+      })
+      .catch(err => {
+        return new Cookbook()
+        .save(data)
+        .then(savedRecipe => {
+          savedRecipe = savedRecipe.toJSON()
+          return res.json(savedRecipe)
+        })
+        .catch(err => {
+          console.log({err: err.message})
+          return res.json({err: err.message})
+        })
+        console.log({err: err.message});
+        res.json({err: err.message})
+      })
   })
 
 module.exports = router;
