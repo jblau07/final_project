@@ -106,6 +106,8 @@ class BarcodeScanner extends Component {
           <h2>Barcode Scanner</h2>
         </header>
         <div id="scandit-barcode-picker" />
+        <div id="scandit-barcode-result" />
+
         <p className="scandit-barcode-desc">
           <i className="fas fa-exclamation-circle" />
           <br />
