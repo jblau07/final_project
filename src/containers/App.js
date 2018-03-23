@@ -38,10 +38,10 @@ class App extends Component {
       <main className="app" id={currentLocation}>
         <header className="app-header">
           <h1 className="app-title">recipEasy</h1>
+          {logoutButton}
         </header>
         <Main />
         <Navbar />
-        {logoutButton}
       </main>
     );
   }
