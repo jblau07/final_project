@@ -24,10 +24,11 @@ class Register extends Component {
 
   render() {
     return (
-      <div className="registerContainer">
+      <div className="register_Container">
         <h1 className="register_title">Register</h1>
-        <div className="register_form">
+        <div className="form_Register">
           <form onSubmit={this.handleRegister}>
+            <div className="input_register" />
             <input
               type="text"
               name="username"
@@ -47,8 +48,9 @@ class Register extends Component {
             />
 
             <br />
-
-            <button type="submit">Submit</button>
+            <div className="register_button">
+              <button type="submit">Sign up</button>
+            </div>
           </form>
         </div>
       </div>

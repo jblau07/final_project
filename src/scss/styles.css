@@ -334,7 +334,7 @@ template {
   margin: 0; }
   .login_Container h1 {
     display: flex;
-    color: #f5f5f5; }
+    color: #d8dbe2; }
 
 .form_Container {
   background-color: #f6f7f8;
@@ -344,6 +344,14 @@ template {
   -moz-box-shadow: 3px 3px 5px 6px black;
   -webkit-box-shadow: 3px 3px 5px 6px black;
   box-shadow: 3px 3px 5px 6px black; }
+
+input {
+  outline: none;
+  display: block;
+  width: 100%;
+  padding: 7px;
+  border: none;
+  border-bottom: 1px solid #ddd; }
 
 div.input_Container {
   display: flex;
@@ -356,7 +364,7 @@ div.input_Container {
     font-weight: 600;
     text-align: center;
     font-size: 19px;
-    color: #f5f5f5;
+    color: #d8dbe2;
     background-color: grey;
     border: none;
     border-radius: 4px;
@@ -382,12 +390,12 @@ div.input_Container {
     #fridge .big-form .new-ing-form .react-autosuggest__container {
       max-width: 50%; }
     #fridge .big-form .new-ing-form input {
-      background-color: #f5f5f5;
+      background-color: #d8dbe2;
       padding: 5px 10px;
       border: none;
       width: 180px; }
     #fridge .big-form .new-ing-form #react-autowhatever-1 {
-      background-color: #f5f5f5; }
+      background-color: #d8dbe2; }
     #fridge .big-form .new-ing-form .react-autosuggest__input--focused {
       outline: none; }
     #fridge .big-form .new-ing-form .react-autosuggest__input--open {
@@ -398,7 +406,7 @@ div.input_Container {
       position: absolute;
       width: 180px;
       border-top: 1px solid #ddd;
-      background-color: #f5f5f5;
+      background-color: #d8dbe2;
       border-bottom-left-radius: 4px;
       border-bottom-right-radius: 4px;
       z-index: 2; }
@@ -412,7 +420,7 @@ div.input_Container {
     #fridge .big-form .new-ing-form .react-autosuggest__suggestion--highlighted {
       background-color: #ddd; }
     #fridge .big-form .new-ing-form .form-submit {
-      background-color: #f5f5f5;
+      background-color: #d8dbe2;
       padding: 5px 10px;
       border: none; }
   #fridge .fridge-list {
@@ -423,7 +431,7 @@ div.input_Container {
       justify-content: space-between;
       margin: 20px;
       padding: 0 20px;
-      background-color: #f5f5f5; }
+      background-color: #d8dbe2; }
       #fridge .fridge-list .fridge-list__item .select-button, #fridge .fridge-list .fridge-list__item .deselect-button {
         margin: 0 20px 0 0;
         padding: 0; }
@@ -433,7 +441,7 @@ div.input_Container {
         font-size: 18px;
         width: 100%; }
   #fridge .find-recipes__button {
-    background-color: #f5f5f5;
+    background-color: #d8dbe2;
     padding: 10px 20px;
     margin: 10px;
     border: none;
@@ -443,7 +451,84 @@ div.input_Container {
     align-self: center; }
     #fridge .clear .clear-button {
       text-decoration: underline;
-      color: #f5f5f5; }
+      color: #d8dbe2; }
+
+#register {
+  height: 100vh;
+  background-image: url("/assets/registerView.jpg");
+  background-size: cover; }
+
+.register_Container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  padding: 6%;
+  margin: 0; }
+  .register_Container h1 {
+    display: flex;
+    color: #d8dbe2; }
+
+input {
+  outline: none;
+  display: block;
+  width: 100%;
+  padding: 7px;
+  border: none;
+  border-bottom: 1px solid #ddd; }
+
+.form_Register {
+  display: flex;
+  justify-content: center;
+  background-color: #d8dbe2;
+  padding: 1em;
+  border-radius: 8px;
+  -moz-box-shadow: 3px 3px 5px 6px #ddbdd5;
+  -webkit-box-shadow: 3px 3px 5px 6px #ddbdd5;
+  box-shadow: 3px 3px 5px 6px #ddbdd5; }
+  .form_Register div.input_register {
+    display: flex;
+    flex-direction: column; }
+  .form_Register .register_button {
+    display: flex;
+    justify-content: center; }
+    .form_Register .register_button button {
+      font-weight: 600;
+      text-align: center;
+      font-size: 19px;
+      color: #3e1929;
+      background-color: #ddbdd5;
+      border: none;
+      border-radius: 4px;
+      padding: 0.8em;
+      margin-top: 1em;
+      margin-bottom: 1em;
+      cursor: pointer;
+      overflow: hidden; }
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 1.5rem;
+  text-decoration: none;
+  background-color: #ddd;
+  color: black;
+  position: fixed;
+  bottom: 0;
+  width: 100%; }
+  .navbar ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; }
+  .navbar a {
+    text-decoration: none;
+    color: #040303; }
+  .navbar .navbar-icon {
+    height: 40px;
+    width: 40px; }
 
 html,
 body {
