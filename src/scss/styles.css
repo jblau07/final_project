@@ -296,3 +296,50 @@ template {
  */
 [hidden] {
   display: none; }
+
+#home {
+  height: 100vh;
+  background-image: url("/assets/homeView-compressor.jpg");
+  background-size: cover; }
+
+.login_Container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  padding: 6%;
+  margin: 0; }
+  .login_Container h1 {
+    display: flex;
+    color: #f5f5f5; }
+
+.form_Container {
+  background-color: #f6f7f8;
+  padding: 1em;
+  border-radius: 8px;
+  justify-content: center;
+  -moz-box-shadow: 3px 3px 5px 6px black;
+  -webkit-box-shadow: 3px 3px 5px 6px black;
+  box-shadow: 3px 3px 5px 6px black; }
+
+div.input_Container {
+  display: flex;
+  flex-direction: column; }
+
+.buttons_login {
+  display: flex;
+  justify-content: center; }
+  .buttons_login button {
+    font-weight: 600;
+    text-align: center;
+    font-size: 19px;
+    color: #f5f5f5;
+    background-color: grey;
+    border: none;
+    border-radius: 4px;
+    padding: 0.8em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    cursor: pointer;
+    overflow: hidden; }
