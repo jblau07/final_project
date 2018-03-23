@@ -4,6 +4,7 @@ const fs = require('fs');
 const watson = require('watson-developer-cloud');
 const path = require('path');
 const tmp = require('tmp');
+const keys = require('../../src/config');
 
 router.post('/', (req, res) => {
 
@@ -22,7 +23,7 @@ router.post('/', (req, res) => {
 
     return new Promise((resolve, reject) => {
       const visual = new watson.VisualRecognitionV3({
-        api_key: 'b1555be548310e779283830eb5f2cc3d664e5248',
+        api_key: keys.api.imageRecognition,
         version: 'v3',
         version_date: '2016-05-20',
         url: 'https://gateway-a.watsonplatform.net/visual-recognition/api'
