@@ -20,10 +20,11 @@ export const RecipeList = ({ recipe }) => {
       }]
 
       return (
-        <ul className="grilledCheese">
-        
-          <h3>Hmmm, we could'nt find a recipe using your selected ingredients! </h3>
-          <h2>Might I suggest a Grilled Cheese?</h2>
+        <ul className="grilled-cheese">
+          <header className="grilled-cheese__header">
+            <h3>Hmmm, we could'nt find a recipe using your selected ingredients!</h3>
+            <h3>Might I suggest a Grilled Cheese?</h3>
+          </header>
           {recipe.map(recipes => {
             data = {
               name: recipes.recipe,
@@ -31,20 +32,25 @@ export const RecipeList = ({ recipe }) => {
               url: recipes.url,
               image: recipes.image
             };
-            console.log("WHAT ARE THE RECIPES", data);
+
             return (
-              <div className="grilledcheeseclass">
-                <h3>{data.name}</h3>
-                <h4>{data.ingredients}</h4>
-                <a href={data.url} target="_blank">
-                  <img src={data.image} />
-                </a>
-                <br />
-                <a href={data.url} target="_blank">
-                  Take Me To Recipe!
-                </a>
-                <FavoriteRecipe key={recipes.id} {...data} />
-              </div>
+              <li className="recipe-list__item" key={1}>
+                <header className="recipe-list__header">
+                  <h3>{data.name}</h3>
+                  <div className="recipe-list__image">
+                    <a href={data.url} target="_blank">
+                      <img src={data.image} />
+                    </a>
+                  </div>
+                </header>
+                <div className="recipe-list__container">
+                  <p>{data.ingredients}</p>
+                  <footer className="recipe-list__footer">
+                    <a href={data.url} target="_blank">Take Me To Recipe!</a>
+                    <FavoriteRecipe key={recipes.id} {...data} />
+                  </footer>
+                </div>
+              </li>
             );
           })}
         </ul>
@@ -63,18 +69,23 @@ export const RecipeList = ({ recipe }) => {
             };
             console.log("WHAT ARE THE RECIPES", data);
             return (
-              <div className="allrecipes">
-                <h3>{data.name}</h3>
-                <h4>{data.ingredients}</h4>
-                <a href={data.url} target="_blank">
-                  <img src={data.image} />
-                </a>
-                <br />
-                <a href={data.url} target="_blank">
-                  Take Me To Recipe!
-                </a>
-                <FavoriteRecipe key={recipes.id} {...data} />
-              </div>
+              <li className="recipe-list__item" key={data.id}>
+                <header className="recipe-list__header">
+                  <h3>{data.name}</h3>
+                  <div className="recipe-list__image">
+                    <a href={data.url} target="_blank">
+                      <img src={data.image} />
+                    </a>
+                  </div>
+                </header>
+                <div className="recipe-list__container">
+                  <p>{data.ingredients}</p>
+                  <footer className="recipe-list__footer">
+                    <a href={data.url} target="_blank">Take Me To Recipe!</a>
+                    <FavoriteRecipe key={recipes.id} {...data} />
+                  </footer>
+                </div>
+              </li>
             );
           })}
         </ul>

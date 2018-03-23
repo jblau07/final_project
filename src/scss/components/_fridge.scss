@@ -1,9 +1,8 @@
 @import "../partials/_variables.scss";
+@import "../partials/_mixins.scss";
 
 #fridge {
-  background: #ee0979; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #ff6a00, #ee0979);
-  background: linear-gradient(to bottom, #ff6a00, #ee0979);
+  @include gradient;
 
   .fridge-content {
     display: flex;
@@ -15,7 +14,6 @@
       display: flex;
       flex-flow: row nowrap;
       justify-content: space-between;
-      margin: 0 20px;
 
       .react-autosuggest__container {
         max-width: 50%;
@@ -85,7 +83,7 @@
     .fridge-list__item {
       display: flex;
       justify-content: space-between;
-      margin: 20px;
+      margin: 20px 0;
       padding: 0 20px;
       background-color: $white;
 

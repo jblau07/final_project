@@ -1,0 +1,76 @@
+@import '../partials/_mixins.scss';
+
+#cookbook, #search {
+  @include gradient;
+
+  .cookbook {
+    margin-bottom: 115px;
+  }
+
+  .recipe-list__item {
+    // background: $white;
+    border-radius: 4px;
+    margin: 20px 0;
+  }
+
+  .recipe-list__header {
+    background: $orange;
+    padding: 20px;
+    position: relative;
+    // height: 200px;
+
+    h3 {
+      margin: 0;
+    }
+  }
+
+  .recipe-list__container {
+    background: $white;
+    padding: 20px 20px;
+    
+    p {
+      margin: 40px 0;
+    }
+  }
+
+  .recipe-list__image {
+    position: relative;
+    bottom: -50px;
+    text-align: center;
+
+    img {
+      border-radius: 50%;
+      border: 2px solid $white;
+      height: 150px;
+      width: 150px;
+    }
+  }
+
+  .recipe-list__footer {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 20px;
+
+    a {
+      padding: 10px 20px;
+      background: $orange;
+      border-radius: 4px;
+      color: $white;
+      cursor: pointer;
+    }
+
+    .my_cookbook_container button {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-around;
+      align-items: baseline;
+      cursor: pointer;
+  
+      p {
+        margin: 0 10px;
+      }
+    }
+  }
+}
