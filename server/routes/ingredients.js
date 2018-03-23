@@ -81,7 +81,6 @@ router.route('/')
           .save(data)
           .then(ingredient => {
             ingredient = ingredient.toJSON();
-            console.log('reddd', ingredient)
             return res.json(ingredient);
           })
           .catch(err => {

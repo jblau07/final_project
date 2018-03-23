@@ -17,20 +17,26 @@ export const CookbookList = ({savedRecipe}) => {
             image: savedRecipes.recipes.image
           };  
           return (
-            <div className="allrecipes">
-            <h3>{data.name}</h3>
-            <h4>{data.ingredients}</h4>
-            <a href={data.url} target="_blank">
-            <img src={data.image} />
-            </a>
-            <a href={data.url} target="_blank">
-              Take Me To Recipe!
-            </a>
-            <CookbookRecipe key={savedRecipes.id} {...data} />
-          </div>
+            <li className="recipe-list__item" key={data.id}>
+              <header className="recipe-list__header">
+                <h3>{data.name}</h3>
+                <div className="recipe-list__image">
+                  <a href={data.url} target="_blank">
+                    <img src={data.image} />
+                  </a>
+                </div>
+              </header>
+              <div className="recipe-list__container">
+                <p>{data.ingredients}</p>
+                <footer className="recipe-list__footer">
+                  <a href={data.url} target="_blank">Take Me To Recipe!</a>
+                  <CookbookRecipe key={savedRecipes.id} {...data} />
+                </footer>
+              </div>
+            </li>
           )
         })}
-        </ul>
+      </ul>
     )
   }
 }
