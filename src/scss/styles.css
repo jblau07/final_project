@@ -300,6 +300,12 @@ template {
 .app {
   overflow: auto; }
 
+.app-header h1 {
+  margin: 0 20px; }
+
+.view-title {
+  margin: 0 20px; }
+
 #home {
   height: 100vh;
   background-image: url("/assets/homeView-compressor.jpg");
