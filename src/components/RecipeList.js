@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import FavoriteRecipe from "../containers/FavRecipeContainer";
 
 export const RecipeList = ({ recipe }) => {
@@ -40,9 +40,9 @@ export const RecipeList = ({ recipe }) => {
                   <img src={data.image} />
                 </a>
                 <br />
-                {/* <a href={data.url} target="_blank">
+                <a href={data.url} target="_blank">
                   Take Me To Recipe!
-                </a> */}
+                </a>
                 <FavoriteRecipe key={recipes.id} {...data} />
               </div>
             );
@@ -70,9 +70,9 @@ export const RecipeList = ({ recipe }) => {
                   <img src={data.image} />
                 </a>
                 <br />
-                {/* <a href={data.url} target="_blank">
+                <a href={data.url} target="_blank">
                   Take Me To Recipe!
-                </a> */}
+                </a>
                 <FavoriteRecipe key={recipes.id} {...data} />
               </div>
             );

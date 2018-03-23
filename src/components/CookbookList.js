@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import CookbookRecipe from '../containers/CookbookRecipe';
 
 export const CookbookList = ({savedRecipe}) => {
@@ -20,7 +20,9 @@ export const CookbookList = ({savedRecipe}) => {
             <div className="allrecipes">
             <h3>{data.name}</h3>
             <h4>{data.ingredients}</h4>
-            <img href={data.url} src={data.image} />
+            <a href={data.url} target="_blank">
+            <img src={data.image} />
+            </a>
             <a href={data.url} target="_blank">
               Take Me To Recipe!
             </a>

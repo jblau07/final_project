@@ -13,6 +13,7 @@ class CookbookRecipe extends Component {
   }
   
   render() {
+  
     return (
       <div className = 'my_cookbook_container'>
         <button onClick={this.handleOnDelete}>REMOVE</button>
