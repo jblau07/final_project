@@ -17,9 +17,11 @@ class Register extends Component {
 
   handleRegister(event) {
     event.preventDefault();
-    this.props.register(this.state, () => {
-      this.props.history.push("/");
-    });
+    if (this.state.username !== "" && this.state.password !== "") {  
+      this.props.register(this.state, () => {
+        this.props.history.push("/");
+  });
+    }
   }
 
   render() {
