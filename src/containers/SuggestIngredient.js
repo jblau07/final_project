@@ -79,19 +79,19 @@ class SuggestIngredient extends Component {
 
     return (
       <div className ="big-form">
-      <form className="new-ing-form" onSubmit={this.handleOnSubmit}>
-        <Autosuggest
-          suggestions={suggestions}
-          onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-          onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-          getSuggestionValue={getSuggestionValue}
-          renderSuggestion={renderSuggestion}
-          inputProps={inputProps}
-        />
-        <div className="add-ing">
-          <button className="form-submit" type="submit">Submit</button>
-        </div>
-      </form>
+        <form className="new-ing-form" onSubmit={this.handleOnSubmit}>
+          <Autosuggest
+            suggestions={suggestions}
+            onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+            onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+            getSuggestionValue={getSuggestionValue}
+            renderSuggestion={renderSuggestion}
+            inputProps={inputProps}
+          />
+          <div className="add-ing">
+            <button className="form-submit" type="submit">Add Ingredient</button>
+          </div>
+        </form>
       </div>
     )
   }

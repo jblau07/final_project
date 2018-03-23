@@ -17,7 +17,7 @@ const Main = props => (
       <Route exact path="/register" component={Register} />
       <Route exact path="/" component={Login} />
       <Route exact path="/search" component={ConnectedRecipes} />
-      <Route exact path="/recipes" component={ConnectedCookbook}/>
+      <Route exact path="/cookbook" component={ConnectedCookbook}/>
     </Switch>
   </main>
 );

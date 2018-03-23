@@ -4,7 +4,6 @@ import { withRouter } from "react-router-dom";
 import SuggestIngredient from "./SuggestIngredient";
 import FridgeList from "../components/FridgeList";
 import { loadRecipes } from "../actions/ItemsAction";
-
 import { clearAllSelected } from '../actions/FridgeAction';
 import { addIngredient } from "../actions/SuggestAction";
 import { loadFridge } from "../actions/FridgeAction";
@@ -12,6 +11,7 @@ import { loadFridge } from "../actions/FridgeAction";
 class Fridge extends Component {
   constructor(props) {
     super(props);
+    
     this.handleSelected = this.handleSelected.bind(this);
     this.handleOnClear = this.handleOnClear.bind(this);
   }
@@ -37,20 +37,14 @@ class Fridge extends Component {
   render() {
     let findRecipes = null;
     if (this.props.fridgeSelect.length > 0) {
-
-        findRecipes = <button onClick={this.handleSelected} type="submit">Find Recipes</button>
-
+        findRecipes = <button className="find-recipes__button" onClick={this.handleSelected} type="submit">Find Recipes</button>
     }
     return (
-      <div className="ParentFridgeClass">
-        {findRecipes}
-        
-        {this.props.fridgeSelect.join(" ")}
-
+      <div className="fridge-content">
+        <header className="view-title"><h2>My Fridge</h2></header>
         <SuggestIngredient />
-        
         <FridgeList fridge={this.props.fridge} />
-
+        {findRecipes}
         <div className="clear">
           <button onClick = {this.handleOnClear} className="clear-button">Clear All</button>
         </div>
@@ -58,6 +52,7 @@ class Fridge extends Component {
     );
   }
 }
+
 const mapStateToProps = state => {
   return {
     ingredients: state.suggest.ingredients,
