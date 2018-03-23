@@ -319,11 +319,8 @@ template {
     border: none;
     background: none; }
 
-.view-title {
-  margin: 0 20px; }
-
 .page-content {
-  margin-bottom: 88px; }
+  margin: 0 20px 88px; }
 
 #home {
   height: 100vh;
@@ -391,8 +388,7 @@ div.input_Container {
   #fridge .big-form .new-ing-form {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
-    margin: 0 20px; }
+    justify-content: space-between; }
     #fridge .big-form .new-ing-form .react-autosuggest__container {
       max-width: 50%; }
     #fridge .big-form .new-ing-form input {
@@ -435,7 +431,7 @@ div.input_Container {
     #fridge .fridge-list .fridge-list__item {
       display: flex;
       justify-content: space-between;
-      margin: 20px;
+      margin: 20px 0;
       padding: 0 20px;
       background-color: #d8dbe2; }
       #fridge .fridge-list .fridge-list__item .select-button,
@@ -547,6 +543,69 @@ input {
   #scan .bc-scanner {
     color: #d8dbe2;
     margin: 1rem; }
+
+#cookbook, #search {
+  background: #ee0979;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #ff6a00, #ee0979);
+  background: linear-gradient(to bottom, #ff6a00, #ee0979); }
+  #cookbook .cookbook, #search .cookbook {
+    margin-bottom: 115px; }
+  #cookbook .recipe-list__item, #search .recipe-list__item {
+    border-radius: 4px;
+    margin: 20px 0; }
+  #cookbook .recipe-list__header, #search .recipe-list__header {
+    background: #ee7500;
+    padding: 20px;
+    position: relative; }
+    #cookbook .recipe-list__header h3, #search .recipe-list__header h3 {
+      margin: 0; }
+  #cookbook .recipe-list__container, #search .recipe-list__container {
+    background: #d8dbe2;
+    padding: 20px 20px; }
+    #cookbook .recipe-list__container p, #search .recipe-list__container p {
+      margin: 40px 0; }
+  #cookbook .recipe-list__image, #search .recipe-list__image {
+    position: relative;
+    bottom: -50px;
+    text-align: center; }
+    #cookbook .recipe-list__image img, #search .recipe-list__image img {
+      border-radius: 50%;
+      border: 2px solid #d8dbe2;
+      height: 150px;
+      width: 150px; }
+  #cookbook .recipe-list__footer, #search .recipe-list__footer {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 20px; }
+    #cookbook .recipe-list__footer a, #search .recipe-list__footer a {
+      padding: 10px 20px;
+      background: #ee7500;
+      border-radius: 4px;
+      color: #d8dbe2;
+      cursor: pointer; }
+    #cookbook .recipe-list__footer .my_cookbook_container button, #search .recipe-list__footer .my_cookbook_container button {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-around;
+      align-items: baseline;
+      cursor: pointer; }
+      #cookbook .recipe-list__footer .my_cookbook_container button p, #search .recipe-list__footer .my_cookbook_container button p {
+        margin: 0 10px; }
+
+#search .recipes {
+  margin-bottom: 115px; }
+
+#search .fav_recipe_container button {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: baseline;
+  cursor: pointer; }
+  #search .fav_recipe_container button p {
+    margin: 0 10px; }
 
 html,
 body {

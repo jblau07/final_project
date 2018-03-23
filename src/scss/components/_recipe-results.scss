@@ -1,0 +1,24 @@
+
+
+#search {
+
+  .recipes {
+    margin-bottom: 115px;
+  }
+
+  .grilled-cheese__header {
+    
+  }
+
+  .fav_recipe_container button {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: baseline;
+    cursor: pointer;
+
+    p {
+      margin: 0 10px;
+    }
+  }
+}
