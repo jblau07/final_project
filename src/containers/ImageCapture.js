@@ -36,6 +36,12 @@ class ImageCapture extends Component {
     // handling mobile image capture
     if (/Mobi/.test(navigator.userAgent)) {
       const input = document.getElementById('input');
+      const mobileButton = document.getElementById('mobile-capture__button');
+
+      mobileButton.addEventListener('click', () => {
+        input.click();
+      });
+
       input.addEventListener('change', this.handleMobile);
     }
 
@@ -159,8 +165,12 @@ class ImageCapture extends Component {
 
     if (/Mobi/.test(navigator.userAgent)) {
       return (
-        <div>
+        <div className="image-capture">
+          <header className="view-title">
+            <h2>Image Capture</h2>
+          </header>
           <div className="capture">
+            <button id="mobile-capture__button">Choose Photo</button>
             <input type="file" name="image" id="input" accept="image/*" />
             <canvas id="canvas" hidden></canvas>
             <div id="output"></div>
@@ -172,6 +182,12 @@ class ImageCapture extends Component {
                   <li key={idx}><input type="button" value={element.class} name={element.class} onClick={ this.selectIngredient } /></li>
                 )
               })}
+          </div>
+          <div className="image-capture__desc">
+              <div class="desc-container">
+                <i className="fas fa-exclamation-circle fa-2x" />
+                <p>Click to take or upload a photo of your ingredient.</p>
+              </div>
           </div>
         </div>
       )

@@ -1,25 +1,28 @@
 @import "../partials/_variables.scss";
+
 #scan {
-  background-color: $black;
+  @include gradient;
+  
   .bc-scanner {
-    margin: 1rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    min-height: 80vh;
+    align-content: space-between;
+    
     h2 {
       color: $white;
-      text-align: center;
     }
-    p {
-      color: $black;
-      text-align: center;
+
+    .image-capture__desc {
       background-color: $white;
-      padding: 1em;
-      border-radius: 8px;
-      // -moz-box-shadow: 3px 3px 5px 6px $white;
-      // -webkit-box-shadow: 3px 3px 5px 6px $white;
-      // box-shadow: 3px 3px 5px 6px $white;
+      border-radius: 4px;
+      padding: 20px;
+      margin: 40px 0;
+      
+      .desc-container {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+      }
     }
   }
 }

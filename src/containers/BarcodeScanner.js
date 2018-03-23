@@ -111,13 +111,12 @@ class BarcodeScanner extends Component {
         <div id="scandit-barcode-picker" />
         <div id="scandit-barcode-result" />
 
-        <p className="scandit-barcode-desc">
-          <i className="fas fa-exclamation-circle" />
-          <br />
-          <br />
-          Align barcode inside highlighted area to add the ingredient to your
-          fridge.
-        </p>
+        <div className="image-capture__desc">
+          <div className="desc-container">
+            <i className="fas fa-exclamation-circle fa-2x" />
+            <p className="scandit-barcode-desc">Align barcode inside highlighted area to add the ingredient to your fridge.</p>
+          </div>
+        </div>
 
         <div id="scandit-item-result">{this.props.ingredient.item_name}</div>
       </div>

@@ -1,0 +1,47 @@
+
+
+#image {
+  @include gradient;
+
+  .image-capture {
+
+
+    .capture {
+
+      #mobile-capture__button {
+        background-color: $orange;
+        padding: 10px 20px;
+        border: none;
+        margin: 20px 0;
+      }
+      
+      #input {
+        border: none;
+        background: $orange;
+        display: none;
+      }
+
+      #submit {
+        cursor: pointer;
+        padding: 10px 20px;
+        background-color: $orange;
+        border: none;
+        margin: 20px 0;
+      }
+    }
+
+    .image-capture__desc {
+      background-color: $white;
+      border-radius: 4px;
+      padding: 20px;
+      margin: 20px 0;
+      
+      .desc-container {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+      }
+    }
+  }
+
+}

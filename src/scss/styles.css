@@ -539,22 +539,25 @@ input {
     width: 40px; }
 
 #scan {
-  background-color: #040303; }
+  background: #ee0979;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #ff6a00, #ee0979);
+  background: linear-gradient(to bottom, #ff6a00, #ee0979); }
   #scan .bc-scanner {
-    margin: 1rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    min-height: 80vh; }
+    align-content: space-between; }
     #scan .bc-scanner h2 {
-      color: #d8dbe2;
-      text-align: center; }
-    #scan .bc-scanner p {
-      color: #040303;
-      text-align: center;
+      color: #d8dbe2; }
+    #scan .bc-scanner .image-capture__desc {
       background-color: #d8dbe2;
-      padding: 1em;
-      border-radius: 8px; }
+      border-radius: 4px;
+      padding: 20px;
+      margin: 40px 0; }
+      #scan .bc-scanner .image-capture__desc .desc-container {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center; }
 
 #cookbook, #search {
   background: #ee0979;
@@ -618,6 +621,36 @@ input {
   cursor: pointer; }
   #search .fav_recipe_container button p {
     margin: 0 10px; }
+
+#image {
+  background: #ee0979;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #ff6a00, #ee0979);
+  background: linear-gradient(to bottom, #ff6a00, #ee0979); }
+  #image .image-capture .capture #mobile-capture__button {
+    background-color: #ee7500;
+    padding: 10px 20px;
+    border: none;
+    margin: 20px 0; }
+  #image .image-capture .capture #input {
+    border: none;
+    background: #ee7500;
+    display: none; }
+  #image .image-capture .capture #submit {
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: #ee7500;
+    border: none;
+    margin: 20px 0; }
+  #image .image-capture .image-capture__desc {
+    background-color: #d8dbe2;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 20px 0; }
+    #image .image-capture .image-capture__desc .desc-container {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center; }
 
 html,
 body {
