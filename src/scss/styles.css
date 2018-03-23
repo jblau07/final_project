@@ -325,8 +325,7 @@ template {
 #home {
   height: 100vh;
   background-image: url("/assets/homeView-compressor.jpg");
-  background-size: cover;
-  background-position-y: 300%; }
+  background-size: cover; }
 
 .login_Container {
   display: flex;
@@ -464,26 +463,23 @@ div.input_Container {
 #register {
   height: 100vh;
   background-image: url("/assets/registerView.jpg");
-  background-size: cover;
-  background-position: 50% 30%; }
+  background-size: cover; }
 
 .register_Container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   padding: 6%;
-  margin: 0; }
+  margin: 0;
+  border-top: 1px solid #ddd; }
 
 .form_Register {
   width: 100%;
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: row;
+  justify-content: center;
   background-color: transparent;
   padding: 1em;
-  border-radius: 8px;
-  min-height: 75vh; }
+  border-radius: 8px; }
   .form_Register div.input_register {
     display: flex;
     flex-direction: row; }
