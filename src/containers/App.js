@@ -17,7 +17,7 @@ class App extends Component {
   constructor(props) {
     super(props);
   }
-  
+
   render() {
     let buttons = <ButtonComponent />;
     let logoutButton;
@@ -37,10 +37,10 @@ class App extends Component {
       <div className="Main" id={currentLocation}>
         <header className="App-header">
           <h1 className="App-title">Recip-Easy</h1>
+          {logoutButton}
         </header>
         <Main />
         <Navbar />
-        {logoutButton}
       </div>
     );
   }
