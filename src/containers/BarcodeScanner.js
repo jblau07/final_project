@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { configure, BarcodePicker, ScanSettings, Barcode } from "scandit-sdk";
 import { getByUpc } from "../actions/BarcodeAction";
 import { connect } from "react-redux";
-import { api } from '../config';
+import { api } from "../config";
 
 class BarcodeScanner extends Component {
   constructor(props) {
@@ -14,20 +14,16 @@ class BarcodeScanner extends Component {
     this.handleUpcSubmit = this.handleUpcSubmit.bind(this);
   }
   componentDidMount() {
-
-    if(!localStorage.getItem('id')){
-      this.props.history.push("/")
+    if (!localStorage.getItem("id")) {
+      this.props.history.push("/");
     }
 
     const engineLocation = "https://unpkg.com/scandit-sdk/build";
-    configure(
-      api.barcode,
-      {
-        engineLocation: engineLocation,
-        preloadEngineLibrary: false,
-        preloadCameras: false
-      }
-    );
+    configure(api.barcode, {
+      engineLocation: engineLocation,
+      preloadEngineLibrary: false,
+      preloadCameras: false
+    });
 
     const scannerContainer = document.getElementById("scandit-barcode-picker");
     const resultContainer = document.getElementById("scandit-barcode-result");
@@ -41,7 +37,9 @@ class BarcodeScanner extends Component {
     BarcodePicker.create(scannerContainer, {
       playSoundOnScan: true,
       vibrateOnScan: true,
-      guiStyle: 2
+      guiStyle: 2,
+      enableTapToFocus: true,
+      enableCameraSwitcher: true
     })
       .then(picker => {
         const scanSettings = new ScanSettings({
@@ -107,8 +105,16 @@ class BarcodeScanner extends Component {
   render() {
     return (
       <div className="bc-scanner">
+        <header className="veiw-title">
+          <h2>Barcode Scanner</h2>
+        </header>
         <div id="scandit-barcode-picker" />
-        <div id="scandit-barcode-result">No codes scanned yet</div>
+        <div id="scandit-barcode-result" />
+        <p className="scandit-barcode-desc">
+          Align barcode inside highlighted area to add the ingredient to your
+          fridge.
+        </p>
+
         {/* <button onClick={this.handleUpcSubmit}>Submit</button> */}
         <div id="scandit-item-result">{this.props.ingredient.item_name}</div>
       </div>

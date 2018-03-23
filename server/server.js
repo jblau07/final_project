@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const User = require("./db/models/User");
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8081;
 
 const userRoute = require('./routes/users');
 const ingredientsRoute = require('./routes/ingredients');
@@ -68,6 +68,13 @@ app.get(`/api/logout`, (req, res) => {
 app.get(`/`, (req, res) => {
   res.send("SMOKE TEST :D");
 });
+
+app.get('/*', (req,res)=> {
+  var options = {
+    root: __dirname + '/public',
+  };
+  res.sendFile('index.html',options);
+})
 
 app.listen(PORT, () => {
   console.log(`Server is listening on ${PORT}`);
