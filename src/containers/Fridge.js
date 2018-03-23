@@ -16,6 +16,9 @@ class Fridge extends Component {
   }
 
   componentDidMount() {
+    if(!localStorage.getItem('id')){
+      this.props.history.push("/")
+    }
     this.props.loadFridge();
   }
 
