@@ -13,36 +13,33 @@ class Fridge extends Component {
   constructor(props) {
     super(props);
     this.handleSelected = this.handleSelected.bind(this);
-
-
   }
 
   componentDidMount() {
+    if(!localStorage.getItem('id')){
+      this.props.history.push("/")
+    }
     this.props.loadFridge();
   }
 
   handleSelected(event) {
-    this.props.getRecipes(this.props.fridgeSelect);
-    this.props.history.push("/recipes");
+    this.props.getRecipes(this.props.fridgeSelect, () => {
+      this.props.history.push("/search")
+    });
+
   }
 
   render() {
-    console.log('THIS.PROPS.SELECTED', this.props.fridgeSelect);
     let findRecipes = null;
     if (this.props.fridgeSelect.length > 0) {
 
         findRecipes = <button onClick={this.handleSelected} type="submit">Find Recipes</button>
 
-
     }
-
-
     return (
       <div className="ParentFridgeClass">
-        {/* <button onClick={this.handleSelected} type="submit">
-          Find Recipes
-        </button> */}
         {findRecipes}
+        
         {this.props.fridgeSelect.join(" ")}
 
         <FridgeList fridge={this.props.fridge} />
@@ -68,8 +65,8 @@ const mapDispatchToProps = dispatch => {
     loadFridge: () => {
       dispatch(loadFridge());
     },
-    getRecipes: ingr => {
-      dispatch(loadRecipes(ingr));
+    getRecipes: (ingr, redirectCallback) => {
+      dispatch(loadRecipes(ingr, redirectCallback));
     }
   };
 };

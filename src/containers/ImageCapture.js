@@ -28,6 +28,11 @@ class ImageCapture extends Component {
   }
 
   componentDidMount() {
+
+    if(!localStorage.getItem('id')){
+      this.props.history.push("/")
+    }
+
     // handling mobile image capture
     if (/Mobi/.test(navigator.userAgent)) {
       const input = document.getElementById('input');

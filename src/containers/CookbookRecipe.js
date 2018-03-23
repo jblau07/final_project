@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadMyCookbook, deleteFromCookbook } from '../actions/CookbookAction';
+import { deleteFromCookbook } from '../actions/CookbookAction';
 
 class CookbookRecipe extends Component {
   constructor(props) {
@@ -31,10 +31,7 @@ const mapDispatchToProps = dispatch => {
   return {
     deleteFromCookbook: function (id, cb) {
       dispatch(deleteFromCookbook(id, cb))
-    },
-    loadMyCookbook: () => {
-      dispatch(loadMyCookbook())
-    } 
+    }
    }
 }
 

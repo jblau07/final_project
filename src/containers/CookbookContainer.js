@@ -10,6 +10,11 @@ class Cookbook extends Component {
   }
 
   componentDidMount() {
+
+    if(!localStorage.getItem('id')){
+      this.props.history.push("/")
+    }
+    
     this.props.loadMyCookbook();
   }
 
@@ -17,7 +22,7 @@ class Cookbook extends Component {
 
     return (
       <div className='cookbook'>
-      <h3>My Cookbook</h3>
+      <h3>My Recipes</h3>
       <CookbookList savedRecipe = {this.props.myCookbook}/>
       <br/>
       </div>

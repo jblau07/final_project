@@ -13,7 +13,7 @@ export const Navbar = () => {
         <Link to="/fridge">Fridge</Link>
         <Link to="/scan">Barcode</Link>
         <Link to="/image">Image</Link>
-        <Link to="/cookbook">My Cookbook</Link>
+        <Link to="/recipes">My Recipes</Link>
       </div>
     );
   }

@@ -16,8 +16,8 @@ const Main = props => (
       <Route exact path="/image" component={ImageCapture} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/" component={Login} />
-      <Route exact path="/recipes" component={ConnectedRecipes} />
-      <Route exact path="/cookbook" component={ConnectedCookbook}/>
+      <Route exact path="/search" component={ConnectedRecipes} />
+      <Route exact path="/recipes" component={ConnectedCookbook}/>
     </Switch>
   </main>
 );
