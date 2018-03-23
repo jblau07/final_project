@@ -1,15 +1,25 @@
 @import "../partials/_variables.scss";
-
 #scan {
   background-color: $black;
-
   .bc-scanner {
-    color: $white;
     margin: 1rem;
-  }
-  #scandit-barcode-picker {
-  }
-  .scandit-barcode-desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 80vh;
+    h2 {
+      color: $white;
+      text-align: center;
+    }
+    p {
+      color: $black;
+      text-align: center;
+      background-color: $white;
+      padding: 1em;
+      border-radius: 8px;
+      // -moz-box-shadow: 3px 3px 5px 6px $white;
+      // -webkit-box-shadow: 3px 3px 5px 6px $white;
+      // box-shadow: 3px 3px 5px 6px $white;
+    }
   }
 }
-

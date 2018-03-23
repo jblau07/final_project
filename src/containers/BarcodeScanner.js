@@ -106,13 +106,14 @@ class BarcodeScanner extends Component {
           <h2>Barcode Scanner</h2>
         </header>
         <div id="scandit-barcode-picker" />
-        <div id="scandit-barcode-result" />
         <p className="scandit-barcode-desc">
+          <i className="fas fa-exclamation-circle" />
+          <br />
+          <br />
           Align barcode inside highlighted area to add the ingredient to your
           fridge.
         </p>
 
-        {/* <button onClick={this.handleUpcSubmit}>Submit</button> */}
         <div id="scandit-item-result">{this.props.ingredient.item_name}</div>
       </div>
     );
