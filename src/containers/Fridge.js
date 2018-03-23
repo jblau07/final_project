@@ -35,7 +35,6 @@ class Fridge extends Component {
     return (
       <div className="ParentFridgeClass">
         {findRecipes}
-        {this.props.fridgeSelect.join(" ")}
 
         <FridgeList fridge={this.props.fridge} />
         <SuggestIngredient />

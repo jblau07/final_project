@@ -11,6 +11,9 @@ class FridgeIngredient extends Component {
     this.handleOnDelete = this.handleOnDelete.bind(this);
   }
 
+  componentWillUnmount() {
+    // this.props.clearAllSelected();
+  }
 
   handleOnSelected() {
     this.props.selectFromFridge(this.props.ingredients.name);
@@ -25,15 +28,28 @@ class FridgeIngredient extends Component {
   }
 
   render() {
+    console.log('render fired')
     const { name } = this.props.ingredients;
+
+    if (this.props.selected.includes(name) === false) {
       return (
         <ul className="card">
           <div className="attribute">{name}</div>
           <button onClick={this.handleOnSelected}>Select</button>
+          <button onClick={this.handleOnDelete}>Delete</button>
+        </ul>
+      )
+    }
+
+    if (this.props.selected.includes(name) === true) {
+      return (
+        <ul className="card">
+          <div className="attribute">{name}</div>
           <button onClick={this.handleOnDeselect}>Deselect</button>
           <button onClick={this.handleOnDelete}>Delete</button>
         </ul>
       )
+    }
   }
 }
 
@@ -55,7 +71,9 @@ const mapDispatchToProps = dispatch => {
     deleteFromFridge: function (id) {
       dispatch(deleteFromFridge(id))
     },
-
+    clearAllSelected: () => {
+      dispatch(clearAllSelected())
+    }
   }
 }
 

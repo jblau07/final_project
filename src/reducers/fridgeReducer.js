@@ -18,10 +18,10 @@ export default (state = initialState, action) => {
     case DESELECT_FROM_FRIDGE:
       let itemToRemove = state.selected.indexOf(action.selected)
       if (itemToRemove === -1) {
-        return {...state}
+        return {...state, selected: [...state.selected]}
       } else {
         state.selected.splice(itemToRemove, 1)
-        return {...state}
+        return {...state, selected: [...state.selected]}
       }
     default:
       return state;
