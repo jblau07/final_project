@@ -34,9 +34,9 @@ class Fridge extends Component {
     if (this.props.fridgeSelect.length > 0) {
         findRecipes = <button onClick={this.handleSelected} type="submit">Find Recipes</button>
     }
-    
     return (
-      <div className="ParentFridgeClass">
+      <div className="fridge-content">
+        <header className="view-title"><h2>My Fridge</h2></header>
         <SuggestIngredient />
         <FridgeList fridge={this.props.fridge} />
         {findRecipes}

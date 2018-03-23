@@ -32,21 +32,21 @@ class FridgeIngredient extends Component {
 
     if (this.props.selected.includes(name) === false) {
       return (
-        <ul className="card">
-          <div className="attribute">{name}</div>
+        <li className="fridge-list__item">
           <button onClick={this.handleOnSelected}>Select</button>
+          <p className="ingredient-name">{name}</p>
           <button onClick={this.handleOnDelete}>Delete</button>
-        </ul>
+        </li>
       )
     }
 
     if (this.props.selected.includes(name) === true) {
       return (
-        <ul className="card">
-          <div className="attribute">{name}</div>
+        <li className="card">
           <button onClick={this.handleOnDeselect}>Deselect</button>
+          <p className="ingredient-name">{name}</p>
           <button onClick={this.handleOnDelete}>Delete</button>
-        </ul>
+        </li>
       )
     }
   }

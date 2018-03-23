@@ -94,12 +94,12 @@ class SuggestIngredient extends Component {
           inputProps={inputProps}
         />
         <div className="add-ing">
-          <button className="form-submit" type="submit">Submit</button>
+          <button className="form-submit" type="submit">Add Ingredient</button>
         </div>
       </form>
-        <div className="clear">
+        {/* <div className="clear">
           <button onClick = {this.handleOnClear} className="clear-button">Clear All</button>
-        </div>
+        </div> */}
       </div>
     )
   }

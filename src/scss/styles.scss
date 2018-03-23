@@ -2,7 +2,10 @@
 @import "./vendor/_reset.scss";
 
 //components
+@import "./components/_app.scss";
 @import "./components/_home.scss";
+@import "./components/_fridge.scss";
 
 //partials
 @import "./partials/_variables.scss";
+@import "./partials/_base.scss";
