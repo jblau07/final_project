@@ -319,6 +319,9 @@ template {
 .view-title {
   margin: 0 20px; }
 
+.page-content {
+  margin-bottom: 88px; }
+
 #home {
   height: 100vh;
   background-image: url("/assets/homeView-compressor.jpg");
@@ -448,7 +451,8 @@ div.input_Container {
     width: 200px;
     align-self: center; }
   #fridge .clear {
-    align-self: center; }
+    align-self: center;
+    margin: 10px 0 20px; }
     #fridge .clear .clear-button {
       text-decoration: underline;
       color: #d8dbe2; }
