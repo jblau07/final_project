@@ -28,7 +28,6 @@ class FridgeIngredient extends Component {
   }
 
   render() {
-    console.log('render fired')
     const { name } = this.props.ingredients;
 
     if (this.props.selected.includes(name) === false) {
