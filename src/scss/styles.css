@@ -542,14 +542,20 @@ input {
     height: 40px;
     width: 40px; }
 
+.bc-scanner {
+  color: #d8dbe2;
+  margin: 1rem; }
+
 html,
 body {
   box-sizing: border-box;
   margin: 0px;
   font-size: 16px;
-  height: 100%; }
+  height: 100%;
+  background-color: #040303; }
 
 * {
+  font-family: "Muli", sans-serif;
   box-sizing: inherit; }
 
 img {
