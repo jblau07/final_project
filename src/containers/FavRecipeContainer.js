@@ -6,10 +6,9 @@ import{RecipeContainer} from './RecipeContainer';
 class FavoriteRecipe extends Component {
   constructor(props){
     super(props);
-    this.handleFavRecipes = this.handleFavRecipes.bind(this)     
-
+    
+    this.handleFavRecipes = this.handleFavRecipes.bind(this);
   }
-
 
   handleFavRecipes(event){
     let data = {
@@ -23,26 +22,20 @@ class FavoriteRecipe extends Component {
     this.props.favoriteRecipes(data)
   }
 
-
-
-
   render(){
     return(
       <div className ='fav_recipe_container'>
-          <button onClick={this.handleFavRecipes}>SAVE ME!</button>
-
+          <button onClick={this.handleFavRecipes}>
+            <i className="far fa-bookmark"></i>
+            <p>Save</p>
+          </button>
       </div>
     )
-
   }
-
-
-
 }
 
 const mapStateToProps = state => {
-  return{
-
+  return {
     cookbook:state.cookbook.cookbook
   }
 }
@@ -52,10 +45,7 @@ const mapDispatchToProps = dispatch => {
     favoriteRecipes: (recipes)=>{
       dispatch(postSavedRecipes(recipes))
     }
-
-
   }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(FavoriteRecipe);

@@ -16,7 +16,10 @@ class CookbookRecipe extends Component {
   
     return (
       <div className = 'my_cookbook_container'>
-        <button onClick={this.handleOnDelete}>REMOVE</button>
+        <button onClick={this.handleOnDelete}>
+          <i className="far fa-fw fa-trash-alt"></i>
+          <p>Delete</p>
+        </button>
       </div>
     )
   }

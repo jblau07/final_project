@@ -44,26 +44,35 @@ router.route('/:userId')
       })
   })
 
-router.route('/')
+  router.route('/')
   .post((req, res) => {
 
     let data = {
       user_id: req.body.user_id,
       ingredient_id: req.body.newFridgeItem
     }
-    return new Fridge(data)
-      .save()
-      .then(result => {
-        console.log('got to fridge', result.toJSON())
-        return res.json(result.toJSON())
+
+    return new Fridge()
+      .where({user_id: data.user_id, ingredient_id: data.ingredient_id})
+      .fetch()
+      .then(fridgeIngredient => {
+        fridgeIngredient = fridgeIngredient.toJSON();
+        return res.json(fridgeIngredient)
       })
       .catch(err => {
-        console.log('fridge', { err: err.message });
-        return res.json({ err: err.message });
+        return new Fridge()
+          .save(data)
+          .then(fridgeIngredient => {
+            fridgeIngredient = fridgeIngredient.toJSON()
+            return res.json(fridgeIngredient)
+          })
+          .catch(err => {
+            console.log({err: err.message})
+            return res.json({err: err.message})
+          })
+          console.log({ err: err.message });
+        res.json({ err: err.message })
       })
-
   })
-
-
 
 module.exports = router;
