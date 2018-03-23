@@ -7,7 +7,7 @@ export const FridgeList = ({ fridge }) => {
     return <div />;
   } else{
       return (
-        <ul className="userFridge">
+        <ul className="fridge-list">
           {fridge.map(ingredient => {
             return <FridgeIngredient key={ingredient.id} {...ingredient} />;
           })}

@@ -2,19 +2,37 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export const Navbar = () => {
-  let loggedIn = JSON.parse(localStorage.getItem('id'));
-  console.log('loggedin', loggedIn)
+  let loggedIn = JSON.parse(localStorage.getItem("id"));
+  console.log("loggedin", loggedIn);
 
   if (loggedIn === null) {
-    return (null)
+    return null;
   } else {
-   return (
-      <div className="navbar">
-        <Link to="/fridge">Fridge</Link>
-        <Link to="/scan">Barcode</Link>
-        <Link to="/image">Image</Link>
-        <Link to="/recipes">My Recipes</Link>
-      </div>
+    return (
+      <nav className="navbar">
+        <ul>
+          <li className="navbar-icon">
+            <Link to="/fridge">
+              <img src="/assets/fridge.svg" />
+            </Link>
+          </li>
+          <li className="navbar-icon">
+            <Link to="/scan">
+              <img src="/assets/barcode.svg" />
+            </Link>
+          </li>
+          <li className="navbar-icon">
+            <Link to="/image">
+              <img src="/assets/scan.svg" />
+            </Link>
+          </li>
+          <li className="navbar-icon">
+            <Link to="/cookbook">
+              <img src="/assets/cookbook.svg" />
+            </Link>
+          </li>
+        </ul>
+      </nav>
     );
   }
 };

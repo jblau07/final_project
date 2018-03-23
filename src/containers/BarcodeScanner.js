@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { configure, BarcodePicker, ScanSettings, Barcode } from "scandit-sdk";
 import { getByUpc } from "../actions/BarcodeAction";
 import { connect } from "react-redux";
+import { api } from "../config";
 
 class BarcodeScanner extends Component {
   constructor(props) {
@@ -13,20 +14,16 @@ class BarcodeScanner extends Component {
     this.handleUpcSubmit = this.handleUpcSubmit.bind(this);
   }
   componentDidMount() {
-
-    if(!localStorage.getItem('id')){
-      this.props.history.push("/")
+    if (!localStorage.getItem("id")) {
+      this.props.history.push("/");
     }
 
     const engineLocation = "https://unpkg.com/scandit-sdk/build";
-    configure(
-      "AZ7LJzXLLmFWHbYP5xHr8VAEgAxmNGYcGnYoifpGSJrYfTInIQojdIJpKD0FSSi1bC5Ubjh0mGXLarfJZWNjfmAq/jeqIzh2amOBVudpvMVnYg3hx00GonlYsMyeWvW2P1jlS5FY0P5dBiRslDHxevdo9cNsQLFE4y/2kklgJ7sfi3M6RJ3wmqZRxEYrca9VvyUkxcLRCEPXES0mxoNtrmj2pmiUZbowpKpi3S+1Z6+W2lpOBDEcCogiajFAdLTa8IEvgnoJMcXlp3BvLFjK79c0Gv4B/Tr2XWh1vcYVuHNGom4ca7GiyVm1stDwTmD81nA3NK3E3epN9d5T3BjwNrWQRRl3QkFH77q6lshecqkrqFcZ3LFyGbZAcQEAh+U/UbnjmDkasXsKCd+X0ggieaZ6lEhDUFmEmkR9zSin/0Gw4k4xvC7PRkivpEYWBhoUUzMzdYtxgGk1Dx7aiBZKl6yLp27ooLz4Wy/Q8VRZCan9WXnapOx/maokalCmw3hqWFWaIijAWq6GWVK7RJ37u4HgjFyJAoOxhNTvFsKtNAduRRBkXWlMywA0iQBeaNB0QVOmpO0iFNyxQqlLzw+7zQ2oaH25ycVXuWotmPWXunkTOEH5DhbhdlolqN8vLuHV2tyjc1WJjT+ER7+tzV9KylK1HA5by41jxe3I8g0eqgTaDtAZZvs630ESbLAbUYm2lAnU9xXPiNA5iwtLpIo0/hcbfXK/Eg7BM0pcBk14gp1ZLI0EkIRsuE40I7Mh8eNOfw4UYczh3qXbzmUJ/UraLzdK2WF/dORCAEXAycnNECNxYl0sWfIGSdmH9Ikp",
-      {
-        engineLocation: engineLocation,
-        preloadEngineLibrary: false,
-        preloadCameras: false
-      }
-    );
+    configure(api.barcode, {
+      engineLocation: engineLocation,
+      preloadEngineLibrary: false,
+      preloadCameras: false
+    });
 
     const scannerContainer = document.getElementById("scandit-barcode-picker");
     const resultContainer = document.getElementById("scandit-barcode-result");
@@ -40,7 +37,9 @@ class BarcodeScanner extends Component {
     BarcodePicker.create(scannerContainer, {
       playSoundOnScan: true,
       vibrateOnScan: true,
-      guiStyle: 2
+      guiStyle: 2,
+      enableTapToFocus: true,
+      enableCameraSwitcher: true
     })
       .then(picker => {
         const scanSettings = new ScanSettings({
@@ -103,8 +102,16 @@ class BarcodeScanner extends Component {
   render() {
     return (
       <div className="bc-scanner">
+        <header className="veiw-title">
+          <h2>Barcode Scanner</h2>
+        </header>
         <div id="scandit-barcode-picker" />
-        <div id="scandit-barcode-result">No codes scanned yet</div>
+        <div id="scandit-barcode-result" />
+        <p className="scandit-barcode-desc">
+          Align barcode inside highlighted area to add the ingredient to your
+          fridge.
+        </p>
+
         {/* <button onClick={this.handleUpcSubmit}>Submit</button> */}
         <div id="scandit-item-result">{this.props.ingredient.item_name}</div>
       </div>
