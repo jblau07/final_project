@@ -542,6 +542,12 @@ input {
     height: 40px;
     width: 40px; }
 
+#scan {
+  background-color: #040303; }
+  #scan .bc-scanner {
+    color: #d8dbe2;
+    margin: 1rem; }
+
 html,
 body {
   box-sizing: border-box;
@@ -550,6 +556,7 @@ body {
   height: 100%; }
 
 * {
+  font-family: "Muli", sans-serif;
   box-sizing: inherit; }
 
 img {

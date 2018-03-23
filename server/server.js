@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const User = require("./db/models/User");
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8081;
 
 const userRoute = require('./routes/users');
 const ingredientsRoute = require('./routes/ingredients');
