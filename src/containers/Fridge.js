@@ -16,6 +16,9 @@ class Fridge extends Component {
   }
 
   componentDidMount() {
+    if(!localStorage.getItem('id')){
+      this.props.history.push("/")
+    }
     this.props.loadFridge();
   }
 
@@ -36,6 +39,7 @@ class Fridge extends Component {
     return (
       <div className="ParentFridgeClass">
         {findRecipes}
+        
         {this.props.fridgeSelect.join(" ")}
 
         <FridgeList fridge={this.props.fridge} />
