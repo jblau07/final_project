@@ -6,7 +6,7 @@ const config = require("../../src/config");
 // export const NDBNO_CODE = "https://api.nal.usda.gov/ndb/V2/reports?ndbno=";
 export const UPC_INGREDIENT = "UPC_INGREDIENT";
 
-export const getByUpc = (upc) => {
+export const getByUpc = (upc, redirectCalback) => {
   let user_id;
   if (localStorage.length > 0) {
     user_id = localStorage.getItem('id');
@@ -35,10 +35,17 @@ export const getByUpc = (upc) => {
             return axios.post('/api/fridge', {
               user_id,
               newFridgeItem
-            // })
-            // .then(() => {
-            //   redirectCallback()
             })
+            .then(data => {
+              return axios.get(`/api/fridge/${user_id}`)
+                .then(data => {
+                  dispatch({
+                    type: 'LOAD_FRIDGE',
+                    fridge: data.data
+                  })
+                })
+            })
+              redirectCallback()
           })
       })
       .catch(err => {
