@@ -298,10 +298,23 @@ template {
   display: none; }
 
 .app {
-  overflow: auto; }
+  overflow: auto;
+  height: 100vh; }
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline; }
 
 .app-header h1 {
   margin: 0 20px; }
+
+.login-container {
+  margin-right: 20px; }
+  .login-container button {
+    padding: 5px;
+    border: none;
+    background: none; }
 
 .view-title {
   margin: 0 20px; }
@@ -358,6 +371,9 @@ div.input_Container {
   /* fallback for old browsers */
   background: -webkit-linear-gradient(to bottom, #ff6a00, #ee0979);
   background: linear-gradient(to bottom, #ff6a00, #ee0979); }
+  #fridge .fridge-content {
+    display: flex;
+    flex-flow: column nowrap; }
   #fridge .big-form .new-ing-form {
     display: flex;
     flex-flow: row nowrap;
@@ -400,12 +416,34 @@ div.input_Container {
       padding: 5px 10px;
       border: none; }
   #fridge .fridge-list {
-    background-color: #f5f5f5;
-    margin: 20px;
-    padding: 20px; }
+    margin: 0;
+    padding: 0; }
     #fridge .fridge-list .fridge-list__item {
       display: flex;
-      margin: 10px 0; }
+      justify-content: space-between;
+      margin: 20px;
+      padding: 0 20px;
+      background-color: #f5f5f5; }
+      #fridge .fridge-list .fridge-list__item .select-button, #fridge .fridge-list .fridge-list__item .deselect-button {
+        margin: 0 20px 0 0;
+        padding: 0; }
+      #fridge .fridge-list .fridge-list__item .delete-button {
+        margin: 0 0 0 20px; }
+      #fridge .fridge-list .fridge-list__item .ingredient-name {
+        font-size: 18px;
+        width: 100%; }
+  #fridge .find-recipes__button {
+    background-color: #f5f5f5;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    width: 200px;
+    align-self: center; }
+  #fridge .clear {
+    align-self: center; }
+    #fridge .clear .clear-button {
+      text-decoration: underline;
+      color: #f5f5f5; }
 
 html,
 body {

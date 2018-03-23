@@ -5,6 +5,11 @@
   background: -webkit-linear-gradient(to bottom, #ff6a00, #ee0979);
   background: linear-gradient(to bottom, #ff6a00, #ee0979);
 
+  .fridge-content {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
   .big-form {
 
     .new-ing-form {
@@ -64,6 +69,7 @@
       }
       
       .add-ing {
+
       }
 
       .form-submit {
@@ -75,13 +81,52 @@
   }
 
   .fridge-list {
-    background-color: $white;
-    margin: 20px;
-    padding: 20px;
+    margin: 0;
+    padding: 0;
 
     .fridge-list__item {
       display: flex;
-      margin: 10px 0;
+      justify-content: space-between;
+      margin: 20px;
+      padding: 0 20px;
+      background-color: $white;
+
+      .select-button, .deselect-button {
+        margin: 0 20px 0 0;
+        padding: 0;
+      }
+
+      .delete-button {
+        margin: 0 0 0 20px;
+      }
+
+      .ingredient-name {
+        font-size: 18px;
+        width: 100%;
+      }
+
+      .selected {
+
+      }
     }
   }
+
+  .find-recipes__button {
+    background-color: $white;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    width: 200px;
+    align-self: center;
+  }
+
+  .clear {
+    align-self: center;
+
+    .clear-button {
+      text-decoration: underline;
+      color: $white;
+    }
+  }
+
 }
