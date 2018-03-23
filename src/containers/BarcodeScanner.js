@@ -71,8 +71,11 @@ class BarcodeScanner extends Component {
             scanResult.barcodes[0].data
           }`;
           this.setState({ scannedUpc: scanResult.barcodes[0].data });
-          this.props.getByUpc(this.state.scannedUpc);
-          console.log(this.state);
+          this.props.getByUpc(this.state.scannedUpc, () => {
+            this.props.history.push("/fridge");
+          });
+           
+            console.log(this.state);
         });
 
         picker.onScanError(error => {
@@ -120,8 +123,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getByUpc: upc => {
-      dispatch(getByUpc(upc));
+    getByUpc: (upc, redirectCallback) => {
+      dispatch(getByUpc(upc, redirectCallback()));
     }
   };
 };
