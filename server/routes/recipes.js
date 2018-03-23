@@ -5,8 +5,9 @@ const router = express.Router();
 const User = require('../db/models/User');
 const Recipe = require('../db/models/Recipe');
 const Cookbook = require('../db/models/Cookbook');
+const edamam = require('../../src/config');
 
-const api = 'https://api.edamam.com/search?app_id=4774d0c5&app_key=a56469a8e5c8652660440e595a4f5b90&from=0&to=4&q=';
+const api = `https://api.edamam.com/search?${edamam.api.edamamId}&${edamam.api.edamam}&from=0&to=4&q=`;
 
 router.route(`/:id`)
   //Get Recipe by ID
