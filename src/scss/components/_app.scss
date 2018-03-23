@@ -1,4 +1,4 @@
-@import '../partials/_variables.scss';
+@import "../partials/_variables.scss";
 
 .app {
   overflow: auto;
@@ -13,6 +13,11 @@
 
 .app-header h1 {
   margin: 0 20px;
+
+  font-family: $Pacifico;
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
 }
 
 .login-container {

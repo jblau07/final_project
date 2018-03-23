@@ -307,7 +307,11 @@ template {
   align-items: baseline; }
 
 .app-header h1 {
-  margin: 0 20px; }
+  margin: 0 20px;
+  font-family: "Pacifico", cursive;
+  color: white;
+  text-align: center;
+  padding: 1.5rem; }
 
 .login-container {
   margin-right: 20px; }
@@ -435,11 +439,16 @@ div.input_Container {
       margin: 20px;
       padding: 0 20px;
       background-color: #d8dbe2; }
-      #fridge .fridge-list .fridge-list__item .select-button, #fridge .fridge-list .fridge-list__item .deselect-button {
+      #fridge .fridge-list .fridge-list__item .select-button,
+      #fridge .fridge-list .fridge-list__item .deselect-button {
         margin: 0 20px 0 0;
-        padding: 0; }
+        padding: 0;
+        background: none;
+        border: none; }
       #fridge .fridge-list .fridge-list__item .delete-button {
-        margin: 0 0 0 20px; }
+        margin: 0 0 0 20px;
+        background: none;
+        border: none; }
       #fridge .fridge-list .fridge-list__item .ingredient-name {
         font-size: 18px;
         width: 100%; }

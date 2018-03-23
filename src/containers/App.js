@@ -28,10 +28,10 @@ class App extends Component {
     }
 
     let currentLocation = this.props.location.pathname;
-    if (currentLocation === '/') {
-      currentLocation = 'home';
+    if (currentLocation === "/") {
+      currentLocation = "home";
     } else {
-      currentLocation = currentLocation.split('/').pop();
+      currentLocation = currentLocation.split("/").pop();
     }
 
     return (
