@@ -71,7 +71,7 @@ app.get(`/`, (req, res) => {
 
 app.get('/*', (req,res)=> {
   var options = {
-    root: __dirname + '../public',
+    root: __dirname + '/../public',
   };
   res.sendFile('index.html',options);
 })
