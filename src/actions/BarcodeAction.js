@@ -6,7 +6,7 @@ const config = require("../../src/config");
 // export const NDBNO_CODE = "https://api.nal.usda.gov/ndb/V2/reports?ndbno=";
 export const UPC_INGREDIENT = "UPC_INGREDIENT";
 
-export const getByUpc = (upc, redirectCalback) => {
+export const getByUpc = (upc, redirectCallback) => {
   let user_id;
   if (localStorage.length > 0) {
     user_id = localStorage.getItem('id');
