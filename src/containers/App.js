@@ -12,6 +12,7 @@ import SuggestIngredient from "../containers/SuggestIngredient";
 import ButtonComponent from "../components/Login_RegisterButtons";
 import LogoutContainer from "../containers/LogoutContainer";
 import { Navbar } from "../components/Navbar";
+import { join } from "path";
 
 class App extends Component {
   constructor(props) {
@@ -27,21 +28,21 @@ class App extends Component {
     }
 
     let currentLocation = this.props.location.pathname;
-    if (this.props.location.pathname === "/") {
-      currentLocation = "home";
+    if (currentLocation === '/') {
+      currentLocation = 'home';
     } else {
-      currentLocation = currentLocation.split("/").pop();
+      currentLocation = currentLocation.split('/').pop();
     }
 
     return (
-      <div className="Main" id={currentLocation}>
-        <header className="App-header">
-          <h1 className="App-title">Recip-Easy</h1>
+      <main className="app" id={currentLocation}>
+        <header className="app-header">
+          <h1 className="app-title">Recip-Easy</h1>
           {logoutButton}
         </header>
         <Main />
         <Navbar />
-      </div>
+      </main>
     );
   }
 }
