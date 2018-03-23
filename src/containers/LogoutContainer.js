@@ -20,7 +20,7 @@ class Logout extends Component {
       <div className="login-container">
         <form onSubmit={this.handleLogout}>
           <button type="submit">
-            <i class="fas fa-fw fa-lg fa-sign-out-alt"></i>
+            <i className="fas fa-fw fa-lg fa-sign-out-alt"></i>
           </button>
         </form>
       </div>
