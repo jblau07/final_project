@@ -14,8 +14,10 @@
 .app-header h1 {
   margin: 20px 20px;
   font-family: $Pacifico;
-  color: white;
+  color: $primary;
   text-align: center;
+  letter-spacing: 6px;
+  font-weight: normal;
 }
 
 .login-container {
@@ -25,10 +27,16 @@
     padding: 5px;
     border: none;
     background: none;
+
+    i {
+      color: $white;
+    }
   }
 }
 
-.view-title {
+.view-title h2 {
+  color: $white;
+  letter-spacing: 2px;
 }
 
 .page-content {
