@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const SEND_IMAGE = 'SEND_IMAGE';
 export const SEND_INGREDIENT = 'SEND_INGREDIENT';
+export const CLEAR_IMAGE_RESULTS = 'CLEAR_IMAGE_RESULTS';
 
 export const sendImage = (image) => {
   return dispatch => {
@@ -50,3 +51,9 @@ export const sendIngredient = (ingredient, cb) => {
     });
   }
 }
+
+export const clearImageResults = () => {
+  return {
+    type: CLEAR_IMAGE_RESULTS
+  };
+};

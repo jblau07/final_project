@@ -22,7 +22,7 @@ export const RecipeList = ({ recipe }) => {
       return (
         <ul className="grilled-cheese">
           <header className="grilled-cheese__header">
-            <h3>Hmmm, we could'nt find a recipe using your selected ingredients!</h3>
+            <h3>Hmmm, we couldn't find a recipe using your selected ingredients!</h3>
             <h3>Might I suggest a Grilled Cheese?</h3>
           </header>
           {recipe.map(recipes => {

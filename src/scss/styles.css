@@ -334,56 +334,50 @@ template {
   height: 100vh;
   background-image: url("/assets/homeView-compressor.jpg");
   background-size: cover; }
-
-.login_Container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
-  padding: 6%;
-  margin: 0; }
-  .login_Container h1 {
+  #home .login_Container {
     display: flex;
-    color: #fafafa; }
-
-.form_Container {
-  background-color: #f6f7f8;
-  padding: 1em;
-  border-radius: 8px;
-  justify-content: center;
-  -moz-box-shadow: 3px 3px 5px 6px black;
-  -webkit-box-shadow: 3px 3px 5px 6px black;
-  box-shadow: 3px 3px 5px 6px black; }
-
-input {
-  outline: none;
-  display: block;
-  width: 100%;
-  padding: 7px;
-  border: none;
-  border-bottom: 1px solid #ddd; }
-
-div.input_Container {
-  display: flex;
-  flex-direction: column; }
-
-.buttons_login {
-  display: flex;
-  justify-content: center; }
-  .buttons_login button {
-    font-weight: 600;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    padding: 6%;
+    margin: 0; }
+    #home .login_Container a {
+      color: #fafafa;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: flex-end; }
+  #home .form_Container {
     text-align: center;
-    font-size: 19px;
-    color: #fafafa;
-    background-color: grey;
+    padding: 1em;
+    border-radius: 8px;
+    justify-content: center; }
+  #home input {
+    outline: none;
+    display: flex;
+    width: 100%;
+    padding: 7px;
     border: none;
-    border-radius: 4px;
-    padding: 0.8em;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    cursor: pointer;
-    overflow: hidden; }
+    border-bottom: 1px solid #ddd; }
+  #home div.input_Container {
+    display: flex;
+    flex-direction: column; }
+  #home .buttons_login {
+    display: flex;
+    justify-content: center; }
+    #home .buttons_login button {
+      font-weight: 600;
+      text-align: center;
+      font-size: 19px;
+      color: #6d7993;
+      background-color: #fafafa;
+      border: none;
+      border-radius: 4px;
+      padding: 0.8em;
+      margin-top: 1em;
+      margin-bottom: 1em;
+      cursor: pointer;
+      overflow: hidden; }
 
 #fridge {
   background: #000000;
@@ -489,36 +483,22 @@ div.input_Container {
 
 .register_Container {
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  flex-direction: row;
   justify-content: center;
-  align-content: center;
   padding: 6%;
-  margin: 0; }
-  .register_Container h1 {
-    display: flex;
-    color: #fafafa; }
-
-input {
-  outline: none;
-  display: block;
-  width: 100%;
-  padding: 7px;
-  border: none;
-  border-bottom: 1px solid #ddd; }
+  margin: 0;
+  border-top: 1px solid #ddd; }
 
 .form_Register {
+  width: 100%;
   display: flex;
   justify-content: center;
-  background-color: #fafafa;
+  background-color: transparent;
   padding: 1em;
-  border-radius: 8px;
-  -moz-box-shadow: 3px 3px 5px 6px #ddbdd5;
-  -webkit-box-shadow: 3px 3px 5px 6px #ddbdd5;
-  box-shadow: 3px 3px 5px 6px #ddbdd5; }
+  border-radius: 8px; }
   .form_Register div.input_register {
     display: flex;
-    flex-direction: column; }
+    flex-direction: row; }
   .form_Register .register_button {
     display: flex;
     justify-content: center; }
@@ -526,8 +506,8 @@ input {
       font-weight: 600;
       text-align: center;
       font-size: 19px;
-      color: #3e1929;
-      background-color: #ddbdd5;
+      color: #fafafa;
+      background-color: #3e1929;
       border: none;
       border-radius: 4px;
       padding: 0.8em;
@@ -684,7 +664,8 @@ input {
         font-weight: bold; }
     #image .image-capture .image-results {
       display: flex;
-      flex-flow: column nowrap; }
+      flex-flow: column nowrap;
+      justify-content: center; }
       #image .image-capture .image-results #image-results__header {
         display: none;
         margin: 20px 0;
@@ -698,7 +679,8 @@ input {
         padding: 10px 50px;
         background-color: #D3B065;
         border: none;
-        font-weight: bold; }
+        font-weight: bold;
+        width: 100%; }
       #image .image-capture .image-results li > input:hover {
         background-color: #d8b874; }
     #image .image-capture .image-capture__desc {
