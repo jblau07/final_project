@@ -29,7 +29,7 @@ export const CookbookList = ({savedRecipe}) => {
               <div className="recipe-list__container">
                 <p>{data.ingredients}</p>
                 <footer className="recipe-list__footer">
-                  <a href={data.url} target="_blank">Take Me To Recipe!</a>
+                  <a href={data.url} target="_blank">Go To Recipe</a>
                   <CookbookRecipe key={savedRecipes.id} {...data} />
                 </footer>
               </div>

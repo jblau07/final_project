@@ -7,13 +7,12 @@
     margin-bottom: 115px;
   }
 
-  .recipe-list__item {
-    // background: $white;
-    border-radius: 4px;
+  .savedRecipes .recipe-list__item {
     margin: 20px 0;
   }
 
   .recipe-list__header {
+    border-radius: 4px 4px 0 0;
     background: $orange;
     padding: 20px;
     position: relative;
@@ -25,6 +24,7 @@
   }
 
   .recipe-list__container {
+    border-radius: 0 0 4px 4px;
     background: $white;
     padding: 20px 20px;
     
@@ -43,6 +43,7 @@
       border: 2px solid $white;
       height: 150px;
       width: 150px;
+      @include shadow;
     }
   }
 
@@ -59,6 +60,7 @@
       border-radius: 4px;
       color: $white;
       cursor: pointer;
+      @include shadow;
     }
 
     .my_cookbook_container button {
