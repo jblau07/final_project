@@ -1,0 +1,85 @@
+
+
+#image {
+  @include gradient;
+
+  .image-capture {
+    margin-bottom: 115px;
+
+    .capture {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+
+      #mobile-capture__button {
+        background-color: $orange;
+        padding: 10px 20px;
+        border: none;
+        margin: 20px 0;
+        font-weight: bold;
+      }
+      
+      #input {
+        border: none;
+        background: $orange;
+        display: none;
+      }
+
+      #submit {
+        cursor: pointer;
+        padding: 10px 20px;
+        background-color: $orange;
+        border: none;
+        margin: 20px 0;
+        font-weight: bold;
+      }
+    }
+
+    .image-results {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+
+      #image-results__header {
+        display: none;
+        margin: 20px 0;
+        text-align: center;
+        color: $white;
+
+        h3 {
+          margin: 0;
+        }
+      }
+
+      li {
+        margin: 10px;
+      }
+
+      li > input {
+        padding: 10px 50px;
+        background-color: $primary;
+        border: none;
+        font-weight: bold;
+        width: 100%;
+      }
+
+      li > input:hover {
+        background-color: #d8b874;
+      }
+    }
+
+    .image-capture__desc {
+      background-color: $white;
+      border-radius: 4px;
+      padding: 20px;
+      margin: 20px 0;
+      
+      .desc-container {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+      }
+    }
+  }
+
+}

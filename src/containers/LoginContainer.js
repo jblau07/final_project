@@ -35,11 +35,10 @@ class Login extends Component {
   render() {
     return (
       <div className="login_Container">
-        <a href="/register">Register</a>
         {/* <h3>Welcome</h3> */}
         <div className="form_Container">
           <form onSubmit={this.handlelogin}>
-            <div className="input_Container">
+            {/* <div className="input_Container"> */}
               <input
                 type="text"
                 name="username"
@@ -47,7 +46,6 @@ class Login extends Component {
                 onChange={this.handleChange}
                 placeholder="Username"
               />
-              <br />
               <input
                 type="password"
                 name="password"
@@ -55,11 +53,10 @@ class Login extends Component {
                 onChange={this.handleChange}
                 placeholder="Password"
               />
-              <br />
-            </div>
-
+            {/* </div> */}
             <div className="buttons_login">
               <button type="submit">Login</button>
+              <a href="/register">Register</a>
             </div>
           </form>
         </div>

@@ -4,6 +4,17 @@
 
   .recipes {
     margin-bottom: 115px;
+
+    .list_of_selected {
+      color: $white;
+    }
+
+    .userRecipes .recipe-list__item {
+      margin: 20px 0;
+    }
+  }
+  .recipes > p {
+    color: $white;
   }
 
   .grilled-cheese__header {
