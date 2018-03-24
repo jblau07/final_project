@@ -1,4 +1,5 @@
 @import "../partials/_variables.scss";
+@import "../partials/_mixins.scss";
 
 .app {
   overflow: auto;
@@ -18,6 +19,7 @@
   text-align: center;
   letter-spacing: 6px;
   font-weight: normal;
+  @include shadow;
 }
 
 .login-container {

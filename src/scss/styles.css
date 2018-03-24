@@ -312,7 +312,10 @@ template {
   color: #D3B065;
   text-align: center;
   letter-spacing: 6px;
-  font-weight: normal; }
+  font-weight: normal;
+  -webkit-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
+  -moz-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
+  box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2); }
 
 .login-container {
   margin-right: 20px; }
@@ -333,51 +336,59 @@ template {
 #home {
   height: 100vh;
   background-image: url("/assets/homeView-compressor.jpg");
-  background-size: cover; }
-  #home .login_Container {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-    padding: 6%;
+  background-size: cover;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center; }
+  #home .app-header h1 {
+    color: #fafafa;
+    -webkit-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
+    -moz-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
+    box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2); }
+  #home .page-content {
     margin: 0; }
-    #home .login_Container a {
-      color: #fafafa;
-      border-bottom: 1px solid #ddd;
-      display: flex;
-      justify-content: flex-end; }
-  #home .form_Container {
-    text-align: center;
-    padding: 1em;
-    border-radius: 8px;
-    justify-content: center; }
-  #home input {
-    outline: none;
+  #home .form_Container > form {
     display: flex;
-    width: 100%;
-    padding: 7px;
-    border: none;
-    border-bottom: 1px solid #ddd; }
-  #home div.input_Container {
+    flex-flow: column nowrap;
+    margin: 20px;
     display: flex;
     flex-direction: column; }
-  #home .buttons_login {
-    display: flex;
-    justify-content: center; }
-    #home .buttons_login button {
-      font-weight: 600;
-      text-align: center;
-      font-size: 19px;
-      color: #6d7993;
-      background-color: #fafafa;
+    #home .form_Container > form input {
+      outline: none;
+      display: flex;
+      width: 100%;
+      padding: 10px 10px;
       border: none;
-      border-radius: 4px;
-      padding: 0.8em;
-      margin-top: 1em;
-      margin-bottom: 1em;
-      cursor: pointer;
-      overflow: hidden; }
+      margin: 10px 0;
+      -webkit-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
+      -moz-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
+      box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2); }
+    #home .form_Container > form .buttons_login {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center; }
+      #home .form_Container > form .buttons_login button {
+        font-weight: 600;
+        text-align: center;
+        font-size: 18px;
+        color: #000;
+        background-color: #D3B065;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        overflow: hidden;
+        padding: 10px 30px;
+        margin: 10px 0;
+        -webkit-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
+        -moz-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
+        box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2); }
+      #home .form_Container > form .buttons_login a {
+        text-align: center;
+        color: #000;
+        font-weight: bold;
+        text-decoration: underline;
+        cursor: pointer; }
 
 #fridge {
   background: #000000;
@@ -479,42 +490,50 @@ template {
 #register {
   height: 100vh;
   background-image: url("/assets/registerView.jpg");
-  background-size: cover; }
-
-.register_Container {
+  background-size: cover;
   display: flex;
-  flex-direction: row;
+  flex-flow: column;
   justify-content: center;
-  padding: 6%;
-  margin: 0;
-  border-top: 1px solid #ddd; }
-
-.form_Register {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background-color: transparent;
-  padding: 1em;
-  border-radius: 8px; }
-  .form_Register div.input_register {
+  align-items: center; }
+  #register .page-content {
+    margin: 0; }
+  #register .form_Register {
+    width: 100%;
     display: flex;
-    flex-direction: row; }
-  .form_Register .register_button {
-    display: flex;
-    justify-content: center; }
-    .form_Register .register_button button {
-      font-weight: 600;
-      text-align: center;
-      font-size: 19px;
-      color: #fafafa;
-      background-color: #3e1929;
-      border: none;
-      border-radius: 4px;
-      padding: 0.8em;
-      margin-top: 1em;
-      margin-bottom: 1em;
-      cursor: pointer;
-      overflow: hidden; }
+    justify-content: center;
+    background-color: transparent;
+    padding: 1em;
+    border-radius: 8px; }
+    #register .form_Register form {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: space-between; }
+    #register .form_Register form > input {
+      margin: 10px 0;
+      padding: 10px 10px;
+      -webkit-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
+      -moz-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
+      box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
+      border: none; }
+    #register .form_Register .register_button {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center; }
+      #register .form_Register .register_button button {
+        font-weight: bold;
+        text-align: center;
+        font-size: 18px;
+        color: #000;
+        background-color: #D3B065;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        overflow: hidden;
+        padding: 10px 30px;
+        margin: 10px 0;
+        -webkit-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
+        -moz-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
+        box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2); }
 
 .navbar {
   overflow: hidden;
@@ -622,6 +641,13 @@ template {
 
 #search .recipes {
   margin-bottom: 115px; }
+  #search .recipes .list_of_selected {
+    color: #fafafa; }
+  #search .recipes .userRecipes .recipe-list__item {
+    margin: 20px 0; }
+
+#search .recipes > p {
+  color: #fafafa; }
 
 #search .fav_recipe_container button {
   display: flex;
