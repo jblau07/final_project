@@ -46,7 +46,7 @@ export const RecipeList = ({ recipe }) => {
                 <div className="recipe-list__container">
                   <p>{data.ingredients}</p>
                   <footer className="recipe-list__footer">
-                    <a href={data.url} target="_blank">Take Me To Recipe!</a>
+                    <a href={data.url} target="_blank">Go To Recipe</a>
                     <FavoriteRecipe key={recipes.id} {...data} />
                   </footer>
                 </div>

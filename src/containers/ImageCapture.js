@@ -119,6 +119,7 @@ class ImageCapture extends Component {
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
     const output = document.getElementById('output');
+    const mobileButton = document.getElementById('mobile-capture__button');
 
     const reader = new FileReader();
     reader.addEventListener('load', () => {
@@ -132,6 +133,8 @@ class ImageCapture extends Component {
         context.drawImage(img, 0, 0, canvas.width, canvas.height);
       });
       output.appendChild(img);
+      mobileButton.style.display = 'none';
+      
     });
     reader.readAsDataURL(event.target.files[0]);
 
@@ -145,6 +148,11 @@ class ImageCapture extends Component {
     console.log(base64);
 
     this.props.sendImage(base64);
+    const submit = document.getElementById('submit');
+    submit.style.display = "none";
+
+    const select = document.getElementById('image-results__header');
+    select.style.display = "block";
   }
 
   selectIngredient(event) {
@@ -176,17 +184,20 @@ class ImageCapture extends Component {
             <div id="output"></div>
             <button id="submit" onClick={ this.handleSend } style={ submitStyle }>Find Ingredient</button>
           </div>
-          <div className="image-results">
+          <ul className="image-results">
+            <header id="image-results__header">
+              <h3>Please select from these ingredients:</h3>
+            </header>
               {results.map((element, idx) => {
                 return (
-                  <li key={idx}><input type="button" value={element.class} name={element.class} onClick={ this.selectIngredient } /></li>
+                  <li key={idx} className="image-results__item"><input type="button" value={element.class} name={element.class} onClick={ this.selectIngredient } /></li>
                 )
               })}
-          </div>
+          </ul>
           <div className="image-capture__desc">
-              <div class="desc-container">
+              <div className="desc-container">
                 <i className="fas fa-exclamation-circle fa-2x" />
-                <p>Click to take or upload a photo of your ingredient.</p>
+                <p>Click to upload or capture a photo of your ingredient.</p>
               </div>
           </div>
         </div>

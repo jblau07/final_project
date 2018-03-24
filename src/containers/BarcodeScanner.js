@@ -105,7 +105,7 @@ class BarcodeScanner extends Component {
   render() {
     return (
       <div className="bc-scanner">
-        <header className="veiw-title">
+        <header className="view-title">
           <h2>Barcode Scanner</h2>
         </header>
         <div id="scandit-barcode-picker" />
