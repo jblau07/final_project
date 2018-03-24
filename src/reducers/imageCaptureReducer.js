@@ -1,4 +1,4 @@
-import { SEND_IMAGE, SEND_INGREDIENT } from '../actions/ImageCaptureAction';
+import { SEND_IMAGE, SEND_INGREDIENT, CLEAR_IMAGE_RESULTS } from '../actions/ImageCaptureAction';
 
 const initialState = {
   results: [],
@@ -11,6 +11,8 @@ export default (state = initialState, action) => {
       return { ...state, results: action.results };
     case SEND_INGREDIENT:
       return { ...state, ingredient: action.ingredient };
+    case CLEAR_IMAGE_RESULTS:
+      return {...state, results: []}
     default:
       return state;
   }
