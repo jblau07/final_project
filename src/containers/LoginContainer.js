@@ -14,8 +14,8 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    if(localStorage.getItem('id')){
-      this.props.history.push("/fridge")
+    if (localStorage.getItem("id")) {
+      this.props.history.push("/fridge");
     }
   }
 
@@ -35,7 +35,8 @@ class Login extends Component {
   render() {
     return (
       <div className="login_Container">
-        <h1>Welcome</h1>
+        <a href="/register">Register</a>
+        {/* <h3>Welcome</h3> */}
         <div className="form_Container">
           <form onSubmit={this.handlelogin}>
             <div className="input_Container">
@@ -60,7 +61,6 @@ class Login extends Component {
             <div className="buttons_login">
               <button type="submit">Login</button>
             </div>
-            <a href="/register">Register</a>
           </form>
         </div>
       </div>
