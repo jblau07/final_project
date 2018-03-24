@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { sendImage, sendIngredient } from '../actions/ImageCaptureAction';
+import { sendImage, sendIngredient, clearImageResults } from '../actions/ImageCaptureAction';
 
 class ImageCapture extends Component {
   constructor(props) {
@@ -146,6 +146,7 @@ class ImageCapture extends Component {
     const history = this.props.history;
     this.setState({ selectedIngredient: event.target.value }, () => {
       this.props.sendIngredient(this.state.selectedIngredient, (redirectCallback) => {
+        this.props.clearImageResults();
         history.push('/fridge');
       });
     });
@@ -216,6 +217,9 @@ const mapDispatchToProps = dispatch => {
     },
     sendIngredient: (ingr, redirectCallback) => {
       dispatch(sendIngredient(ingr, redirectCallback));
+    },
+    clearImageResults: () => {
+      dispatch(clearImageResults());
     }
   }
 }
