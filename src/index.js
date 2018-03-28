@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import rootReducer from "./reducers";
 import { BrowserRouter as Router } from "react-router-dom";
+import WebFont from 'webfontloader';
 
 import App from "./containers/App";
 import registerServiceWorker from "./registerServiceWorker";
@@ -16,6 +17,12 @@ const store = createStore(
     ? boundCompose(window.__REDUX_DEVTOOLS_EXTENSION__())
     : boundCompose()
 );
+
+WebFont.load({
+  google: {
+    families: ['Muli', 'Pacifico']
+  }
+});
 
 ReactDOM.render(
   <Provider store={store}>
