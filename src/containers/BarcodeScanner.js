@@ -7,12 +7,15 @@ import { api } from "../config";
 class BarcodeScanner extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       scannedUpc: null,
       scannedName: []
     };
+
     this.handleUpcSubmit = this.handleUpcSubmit.bind(this);
   }
+  
   componentDidMount() {
     if (!localStorage.getItem("id")) {
       this.props.history.push("/");
@@ -94,14 +97,21 @@ class BarcodeScanner extends Component {
     //   }
     // };
   }
+
   componentDidUpdate() {
     console.log("this.state", this.state);
     console.log("this.props", this.props.ingredient);
   }
+
   handleUpcSubmit() {
     this.props.getByUpc(this.state.scannedUpc);
   }
-  //getByUpc
+
+  componentWillUnmount() {
+    const video = document.querySelector('.scandit-barcode-picker video');
+    video.srcObject.getVideoTracks().forEach(track => track.stop());
+  }
+
   render() {
     return (
       <div className="bc-scanner">
@@ -110,7 +120,6 @@ class BarcodeScanner extends Component {
         </header>
         <div id="scandit-barcode-picker" />
         <div id="scandit-barcode-result" />
-
         <div className="image-capture__desc">
           <div className="desc-container">
             <i className="fas fa-exclamation-circle fa-2x" />
