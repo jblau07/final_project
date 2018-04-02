@@ -5,6 +5,7 @@
   height: 100vh;
   background-image: url("/assets/homeView-compressor.jpg");
   background-size: cover;
+  background-position: center center;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -12,7 +13,6 @@
 
   .app-header h1 {
     color: $white;
-    @include shadow;
   }
 
   .page-content {

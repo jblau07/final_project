@@ -1,7 +1,6 @@
 
 
 #image {
-  @include gradient;
 
   .image-capture {
     margin-bottom: 115px;
@@ -24,8 +23,12 @@
         background: $orange;
         display: none;
       }
+      
+      .output #photo {
+        display: none;
+      }
 
-      #submit {
+      button {
         cursor: pointer;
         padding: 10px 20px;
         background-color: $orange;
@@ -61,6 +64,7 @@
         border: none;
         font-weight: bold;
         width: 100%;
+        cursor: pointer;
       }
 
       li > input:hover {

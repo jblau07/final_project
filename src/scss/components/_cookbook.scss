@@ -1,10 +1,9 @@
 @import '../partials/_mixins.scss';
 
 #cookbook, #search {
-  @include gradient;
 
   .cookbook {
-    margin-bottom: 115px;
+    // margin-bottom: 115px;
   }
 
   .savedRecipes .recipe-list__item {

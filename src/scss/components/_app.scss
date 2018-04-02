@@ -1,15 +1,20 @@
 @import "../partials/_variables.scss";
 @import "../partials/_mixins.scss";
 
+#root {
+  height: 100%;
+}
+
 .app {
   overflow: auto;
-  height: 100vh;
+  height: 100%;
 }
 
 .app-header {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  width: 100%;
 }
 
 .app-header h1 {
@@ -19,7 +24,18 @@
   text-align: center;
   letter-spacing: 6px;
   font-weight: normal;
-  @include shadow;
+}
+
+.header-links {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: baseline;
+  justify-content: space-between;
+
+  li a {
+    margin: 0 20px;
+    color: $white;
+  }
 }
 
 .login-container {
@@ -42,5 +58,22 @@
 }
 
 .page-content {
-  margin: 0 20px 88px;
+  margin: 0 20px;
+  width: auto;
+  display: flex;
+  flex-flow: column;
+}
+
+@media screen and (max-width: 480px) {
+  #fridge .page-content, #cookbook .page-content {
+    margin: 0 20px 88px;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .page-content {
+    width: 400px;
+    margin: 0 auto 40px;
+    // margin: 40px 20px 40px;
+  }
 }
