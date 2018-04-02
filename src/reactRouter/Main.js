@@ -9,7 +9,7 @@ import ConnectedRecipes from "../containers/RecipeContainer";
 import ConnectedCookbook from "../containers/CookbookContainer";
 
 const Main = props => (
-  <main className="page-content">
+  <div className="page-content">
     <Switch>
       <Route exact path="/fridge" component={Fridge} />
       <Route exact path="/scan" component={BarcodeScanner} />
@@ -19,6 +19,6 @@ const Main = props => (
       <Route exact path="/search" component={ConnectedRecipes} />
       <Route exact path="/cookbook" component={ConnectedCookbook}/>
     </Switch>
-  </main>
+  </div>
 );
 export default Main;
