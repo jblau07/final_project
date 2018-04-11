@@ -33,8 +33,13 @@
   justify-content: space-between;
 
   li a {
-    margin: 0 20px;
+    margin: 0 25px;
     color: $white;
+    opacity: 0.8;
+  }
+
+  li a:hover {
+    opacity: 1.0;
   }
 }
 
@@ -48,8 +53,14 @@
 
     i {
       color: $white;
+      opacity: 0.8;
     }
   }
+
+  button:hover i {
+    opacity: 1.0;
+  }
+  
 }
 
 .view-title h2 {
@@ -68,12 +79,15 @@
   #fridge .page-content, #cookbook .page-content {
     margin: 0 20px 88px;
   }
+
+  .login-container button i {
+    opacity: 1.0;
+  }
 }
 
 @media screen and (min-width: 480px) {
   .page-content {
     width: 400px;
     margin: 0 auto 40px;
-    // margin: 40px 20px 40px;
   }
 }

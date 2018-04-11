@@ -324,8 +324,11 @@ template {
   align-items: baseline;
   justify-content: space-between; }
   .header-links li a {
-    margin: 0 20px;
-    color: #fafafa; }
+    margin: 0 25px;
+    color: #fafafa;
+    opacity: 0.8; }
+  .header-links li a:hover {
+    opacity: 1.0; }
 
 .login-container {
   margin-right: 20px; }
@@ -334,7 +337,10 @@ template {
     border: none;
     background: none; }
     .login-container button i {
-      color: #fafafa; }
+      color: #fafafa;
+      opacity: 0.8; }
+  .login-container button:hover i {
+    opacity: 1.0; }
 
 .view-title h2 {
   color: #fafafa;
@@ -348,7 +354,9 @@ template {
 
 @media screen and (max-width: 480px) {
   #fridge .page-content, #cookbook .page-content {
-    margin: 0 20px 88px; } }
+    margin: 0 20px 88px; }
+  .login-container button i {
+    opacity: 1.0; } }
 
 @media screen and (min-width: 480px) {
   .page-content {
@@ -562,7 +570,7 @@ template {
   padding: 1.5rem;
   text-decoration: none;
   background-color: #ddd;
-  color: black;
+  color: #000;
   position: fixed;
   bottom: 0;
   width: 100%; }
@@ -572,7 +580,7 @@ template {
     justify-content: space-between; }
   .navbar a {
     text-decoration: none;
-    color: #040303; }
+    color: #000; }
   .navbar .navbar-icon {
     height: 40px;
     width: 40px; }
