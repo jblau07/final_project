@@ -21,15 +21,23 @@
     
   }
 
-  .fav_recipe_container button {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
-    align-items: baseline;
-    cursor: pointer;
+  .fav_recipe_container {
+  
+    button {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-around;
+      align-items: baseline;
+      cursor: pointer;
+    }
 
     p {
       margin: 0 10px;
+    }
+
+    .saved-notification {
+      display: none;
+      align-items: baseline;
     }
   }
 }
