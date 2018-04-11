@@ -4,28 +4,37 @@
   height: 100vh;
   background-image: url("/assets/registerView.jpg");
   background-size: cover;
-  background-position: center center;
+  background-position: 50% 90%;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
+
+  .app-header {
+    justify-content: center;
+  }
+
+  .app-header h1 {
+    color: $white;
+  }
 
   .page-content {
     margin: 0;
   }
 
   .form_Register {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    background-color: transparent;
-    padding: 1em;
-    border-radius: 8px;
+    // width: 100%;
+    // display: flex;
+    // justify-content: center;
+    // background-color: transparent;
+    // padding: 1em;
+    // border-radius: 8px;
 
     form {
       display: flex;
       flex-flow: column nowrap;
       justify-content: space-between;
+      margin: 20px;
     }
 
     form > input {

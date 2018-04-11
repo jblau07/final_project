@@ -34,7 +34,7 @@ class App extends Component {
       currentLocation = currentLocation.split("/").pop();
     }
 
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > 768 && currentLocation !== "home" && currentLocation !== "register") {
       return (
         <main className="app" id={currentLocation}>
         <header className="app-header">

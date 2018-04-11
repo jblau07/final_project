@@ -372,6 +372,8 @@ template {
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center; }
+  #home .app-header {
+    justify-content: center; }
   #home .app-header h1 {
     color: #fafafa; }
   #home .page-content {
@@ -517,50 +519,48 @@ template {
   height: 100vh;
   background-image: url("/assets/registerView.jpg");
   background-size: cover;
-  background-position: center center;
+  background-position: 50% 90%;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center; }
+  #register .app-header {
+    justify-content: center; }
+  #register .app-header h1 {
+    color: #fafafa; }
   #register .page-content {
     margin: 0; }
-  #register .form_Register {
-    width: 100%;
+  #register .form_Register form {
     display: flex;
-    justify-content: center;
-    background-color: transparent;
-    padding: 1em;
-    border-radius: 8px; }
-    #register .form_Register form {
-      display: flex;
-      flex-flow: column nowrap;
-      justify-content: space-between; }
-    #register .form_Register form > input {
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    margin: 20px; }
+  #register .form_Register form > input {
+    margin: 10px 0;
+    padding: 10px 10px;
+    -webkit-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
+    -moz-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
+    box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
+    border: none; }
+  #register .form_Register .register_button {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center; }
+    #register .form_Register .register_button button {
+      font-weight: bold;
+      text-align: center;
+      font-size: 18px;
+      color: #000;
+      background-color: #D3B065;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      overflow: hidden;
+      padding: 10px 30px;
       margin: 10px 0;
-      padding: 10px 10px;
       -webkit-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
       -moz-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
-      box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
-      border: none; }
-    #register .form_Register .register_button {
-      display: flex;
-      flex-flow: column nowrap;
-      justify-content: center; }
-      #register .form_Register .register_button button {
-        font-weight: bold;
-        text-align: center;
-        font-size: 18px;
-        color: #000;
-        background-color: #D3B065;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        overflow: hidden;
-        padding: 10px 30px;
-        margin: 10px 0;
-        -webkit-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
-        -moz-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
-        box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2); }
+      box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2); }
 
 .navbar {
   overflow: hidden;
