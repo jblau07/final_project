@@ -172,8 +172,12 @@ class ImageCapture extends Component {
   }
 
   componentWillUnmount() {
-    const video = document.querySelector('video');
-    video.srcObject.getVideoTracks().forEach(track => track.stop());
+    if (/Mobi/.test(navigator.userAgent)) {
+      return;
+    } else {    
+      const video = document.querySelector('video');
+      video.srcObject.getVideoTracks().forEach(track => track.stop());
+    }
   }
 
   render() {
