@@ -46,8 +46,8 @@ class App extends Component {
             <li><Link to="/scan">Barcode Scanner</Link></li>
             <li><Link to="/image">Image Capture</Link></li>
             <li><Link to="/cookbook">Cookbook</Link></li>
+            {logoutButton}
           </ul>
-          {logoutButton}
         </header>
         <Main />
       </main>
