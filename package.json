@@ -21,7 +21,8 @@
     "redux-thunk": "^2.2.0",
     "scandit-sdk": "^1.4.7",
     "tmp": "0.0.33",
-    "watson-developer-cloud": "^3.2.1"
+    "watson-developer-cloud": "^3.2.1",
+    "webfontloader": "^1.6.28"
   },
   "scripts": {
     "start-js": "react-scripts start",

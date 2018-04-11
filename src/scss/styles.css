@@ -655,8 +655,13 @@ template {
   justify-content: space-around;
   align-items: baseline;
   cursor: pointer; }
-  #search .fav_recipe_container button p {
-    margin: 0 10px; }
+
+#search .fav_recipe_container p {
+  margin: 0 10px; }
+
+#search .fav_recipe_container .saved-notification {
+  display: none;
+  align-items: baseline; }
 
 #image {
   background: #000000;
