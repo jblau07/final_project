@@ -71,7 +71,7 @@ class ImageCapture extends Component {
         console.log(err);
       });
 
-      this.clearPhoto();
+      // this.clearPhoto();
     }
   }
 
@@ -110,42 +110,47 @@ class ImageCapture extends Component {
 
     video.srcObject.getVideoTracks().forEach(track => track.stop());
     video.style.display = "none";
+    photo.style.display = "inline";
+
+    const captureButton = document.getElementById('capture-photo');
+    captureButton.style.display = "none";
 
     const submit = document.getElementById('submit');
     submit.style.display = "block";
   }
 
   handleMobile(event) {
-    const canvas = document.getElementById('canvas');
-    const context = canvas.getContext('2d');
-    const output = document.getElementById('output');
-    const mobileButton = document.getElementById('mobile-capture__button');
 
-    const reader = new FileReader();
-    reader.addEventListener('load', () => {
-      const img = new Image();
-      img.src = reader.result;
-      img.id = 'photo';
-      img.setAttribute('alt', 'Your mobile capture');
-      img.addEventListener('load', () => {
-        canvas.width = img.width;
-        canvas.height = img.height;
-        context.drawImage(img, 0, 0, canvas.width, canvas.height);
+    if (/Mobi/.test(navigator.userAgent)) {
+      const canvas = document.getElementById('canvas');
+      const context = canvas.getContext('2d');
+      const output = document.getElementById('output');
+      const mobileButton = document.getElementById('mobile-capture__button');
+
+      const reader = new FileReader();
+      reader.addEventListener('load', () => {
+        const img = new Image();
+        img.src = reader.result;
+        img.id = 'photo';
+        img.setAttribute('alt', 'Your mobile capture');
+        img.addEventListener('load', () => {
+          canvas.width = img.width;
+          canvas.height = img.height;
+          context.drawImage(img, 0, 0, canvas.width, canvas.height);
+        });
+        output.appendChild(img);
+        mobileButton.style.display = 'none';
       });
-      output.appendChild(img);
-      mobileButton.style.display = 'none';
-      
-    });
-    reader.readAsDataURL(event.target.files[0]);
+      reader.readAsDataURL(event.target.files[0]);
 
-    const submit = document.getElementById('submit');
-    submit.style.display = "block";
+      const submit = document.getElementById('submit');
+      submit.style.display = "block";
+    }
   }
 
   handleSend() {
     const image = document.getElementById('photo');
     const base64 = image.src;
-    console.log(base64);
 
     this.props.sendImage(base64);
     const submit = document.getElementById('submit');
@@ -164,6 +169,15 @@ class ImageCapture extends Component {
         history.push('/fridge');
       });
     });
+  }
+
+  componentWillUnmount() {
+    if (/Mobi/.test(navigator.userAgent)) {
+      return;
+    } else {    
+      const video = document.querySelector('video');
+      video.srcObject.getVideoTracks().forEach(track => track.stop());
+    }
   }
 
   render() {
@@ -198,7 +212,7 @@ class ImageCapture extends Component {
           <div className="image-capture__desc">
               <div className="desc-container">
                 <i className="fas fa-exclamation-circle fa-2x" />
-                <p>Click to upload or capture a photo of your ingredient.</p>
+                <p>Click to upload a photo or capture a new photo of your ingredient.</p>
               </div>
           </div>
         </div>
@@ -206,24 +220,34 @@ class ImageCapture extends Component {
     }
     else {
       return (
-        <div>
+        <div className="image-capture">
+          <header className="view-title">
+              <h2>Image Capture</h2>
+            </header>
           <div className="capture">
             <video id="video"></video>
-            <button onClick={ this.handleStartClick }>Capture</button>
+            <button id="capture-photo" onClick={ this.handleStartClick }>Capture</button>
             <canvas id="canvas" hidden></canvas>
             <div className="output">
               <img id="photo" alt="Your capture"/>
             </div>
             <button id="submit" onClick={ this.handleSend } style={ submitStyle }>Find Ingredient</button>
           </div>
-          <div className="image-results">
-            <ul>
+          <ul className="image-results">
+            <header id="image-results__header">
+              <h3>Please select from these ingredients:</h3>
+            </header>
               {results.map((element, idx) => {
                 return (
-                  <li key={idx}><input type="button" value={element.class} name={element.class} onClick={ this.selectIngredient } /></li>
+                  <li key={idx} className="image-results__item"><input type="button" value={element.class} name={element.class} onClick={ this.selectIngredient } /></li>
                 )
               })}
-            </ul>
+          </ul>
+          <div className="image-capture__desc">
+              <div className="desc-container">
+                <i className="fas fa-exclamation-circle fa-2x" />
+                <p>Click to upload a photo or capture a new photo of your ingredient.</p>
+              </div>
           </div>
         </div>
       )

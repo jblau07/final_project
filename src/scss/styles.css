@@ -297,14 +297,18 @@ template {
 [hidden] {
   display: none; }
 
+#root {
+  height: 100%; }
+
 .app {
   overflow: auto;
-  height: 100vh; }
+  height: 100%; }
 
 .app-header {
   display: flex;
   justify-content: space-between;
-  align-items: baseline; }
+  align-items: baseline;
+  width: 100%; }
 
 .app-header h1 {
   margin: 20px 20px;
@@ -312,10 +316,19 @@ template {
   color: #D3B065;
   text-align: center;
   letter-spacing: 6px;
-  font-weight: normal;
-  -webkit-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
-  -moz-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
-  box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2); }
+  font-weight: normal; }
+
+.header-links {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: baseline;
+  justify-content: space-between; }
+  .header-links li a {
+    margin: 0 25px;
+    color: #fafafa;
+    opacity: 0.8; }
+  .header-links li a:hover {
+    opacity: 1.0; }
 
 .login-container {
   margin-right: 20px; }
@@ -324,28 +337,45 @@ template {
     border: none;
     background: none; }
     .login-container button i {
-      color: #fafafa; }
+      color: #fafafa;
+      opacity: 0.8; }
+  .login-container button:hover i {
+    opacity: 1.0; }
 
 .view-title h2 {
   color: #fafafa;
   letter-spacing: 2px; }
 
 .page-content {
-  margin: 0 20px 88px; }
+  margin: 0 20px;
+  width: auto;
+  display: flex;
+  flex-flow: column; }
+
+@media screen and (max-width: 480px) {
+  #fridge .page-content, #cookbook .page-content {
+    margin: 0 20px 88px; }
+  .login-container button i {
+    opacity: 1.0; } }
+
+@media screen and (min-width: 480px) {
+  .page-content {
+    width: 400px;
+    margin: 0 auto 40px; } }
 
 #home {
   height: 100vh;
   background-image: url("/assets/homeView-compressor.jpg");
   background-size: cover;
+  background-position: center center;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center; }
+  #home .app-header {
+    justify-content: center; }
   #home .app-header h1 {
-    color: #fafafa;
-    -webkit-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
-    -moz-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
-    box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2); }
+    color: #fafafa; }
   #home .page-content {
     margin: 0; }
   #home .form_Container > form {
@@ -390,89 +420,83 @@ template {
         text-decoration: underline;
         cursor: pointer; }
 
-#fridge {
-  background: #000000;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #434343, #000000);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #434343, #000000);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
-  #fridge .fridge-content {
-    display: flex;
-    flex-flow: column nowrap; }
-  #fridge .big-form .new-ing-form {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between; }
-    #fridge .big-form .new-ing-form .react-autosuggest__container {
-      max-width: 50%; }
-    #fridge .big-form .new-ing-form input {
-      background-color: #fafafa;
-      padding: 5px 10px;
-      border: none;
-      width: 180px; }
-    #fridge .big-form .new-ing-form #react-autowhatever-1 {
-      background-color: #fafafa; }
-    #fridge .big-form .new-ing-form .react-autosuggest__input--focused {
-      outline: none; }
-    #fridge .big-form .new-ing-form .react-autosuggest__input--open {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0; }
-    #fridge .big-form .new-ing-form .react-autosuggest__suggestions-container--open {
-      display: block;
-      position: absolute;
-      width: 180px;
-      border-top: 1px solid #ddd;
-      background-color: #fafafa;
-      border-bottom-left-radius: 4px;
-      border-bottom-right-radius: 4px;
-      z-index: 2;
-      -webkit-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
-      -moz-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
-      box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2); }
-    #fridge .big-form .new-ing-form .react-autosuggest__suggestions-list {
-      margin: 0;
-      padding: 0;
-      list-style-type: none; }
-    #fridge .big-form .new-ing-form .react-autosuggest__suggestion {
-      cursor: pointer;
-      padding: 10px 10px; }
-    #fridge .big-form .new-ing-form .react-autosuggest__suggestion--highlighted {
-      background-color: #ddd; }
-    #fridge .big-form .new-ing-form .add-ing > button {
-      font-weight: bold; }
-    #fridge .big-form .new-ing-form .form-submit {
-      background-color: #D3B065;
-      color: #000;
-      padding: 5px 10px;
-      border: none; }
-  #fridge .fridge-list {
+#fridge .big-form .new-ing-form {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between; }
+  #fridge .big-form .new-ing-form .react-autosuggest__container {
+    max-width: 50%; }
+  #fridge .big-form .new-ing-form input {
+    background-color: #fafafa;
+    padding: 5px 10px;
+    border: none;
+    width: 180px; }
+  #fridge .big-form .new-ing-form #react-autowhatever-1 {
+    background-color: #fafafa; }
+  #fridge .big-form .new-ing-form .react-autosuggest__input--focused {
+    outline: none; }
+  #fridge .big-form .new-ing-form .react-autosuggest__input--open {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0; }
+  #fridge .big-form .new-ing-form .react-autosuggest__suggestions-container--open {
+    display: block;
+    position: absolute;
+    width: 180px;
+    border-top: 1px solid #ddd;
+    background-color: #fafafa;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    z-index: 2;
+    -webkit-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
+    -moz-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
+    box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2); }
+  #fridge .big-form .new-ing-form .react-autosuggest__suggestions-list {
     margin: 0;
-    padding: 0; }
-    #fridge .fridge-list .fridge-list__item {
-      display: flex;
-      justify-content: space-between;
-      margin: 20px 0;
-      padding: 0 20px;
-      background-color: #fafafa;
-      border-radius: 4px;
-      -webkit-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
-      -moz-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
-      box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2); }
-      #fridge .fridge-list .fridge-list__item .select-button,
-      #fridge .fridge-list .fridge-list__item .deselect-button {
-        margin: 0 20px 0 0;
-        padding: 0;
-        background: none;
-        border: none; }
-      #fridge .fridge-list .fridge-list__item .delete-button {
-        margin: 0 0 0 20px;
-        background: none;
-        border: none; }
-      #fridge .fridge-list .fridge-list__item .ingredient-name {
-        font-size: 18px;
-        width: 100%; }
-  #fridge .find-recipes__button {
+    padding: 0;
+    list-style-type: none; }
+  #fridge .big-form .new-ing-form .react-autosuggest__suggestion {
+    cursor: pointer;
+    padding: 10px 10px; }
+  #fridge .big-form .new-ing-form .react-autosuggest__suggestion--highlighted {
+    background-color: #ddd; }
+  #fridge .big-form .new-ing-form .add-ing > button {
+    font-weight: bold; }
+  #fridge .big-form .new-ing-form .form-submit {
+    background-color: #D3B065;
+    color: #000;
+    padding: 5px 10px;
+    border: none; }
+
+#fridge .fridge-list {
+  margin: 0;
+  padding: 0; }
+  #fridge .fridge-list .fridge-list__item {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    padding: 0 20px;
+    background-color: #fafafa;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
+    -moz-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
+    box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2); }
+    #fridge .fridge-list .fridge-list__item .select-button,
+    #fridge .fridge-list .fridge-list__item .deselect-button {
+      margin: 0 20px 0 0;
+      padding: 0;
+      background: none;
+      border: none; }
+    #fridge .fridge-list .fridge-list__item .delete-button {
+      margin: 0 0 0 20px;
+      background: none;
+      border: none; }
+    #fridge .fridge-list .fridge-list__item .ingredient-name {
+      font-size: 18px;
+      width: 100%; }
+
+#fridge .find-recipes__button {
+  text-align: center; }
+  #fridge .find-recipes__button button {
     background-color: #D3B065;
     padding: 10px 20px;
     margin: 10px;
@@ -480,60 +504,63 @@ template {
     width: 200px;
     align-self: center;
     font-weight: bold; }
-  #fridge .clear {
-    align-self: center;
-    margin: 10px 0 20px; }
-    #fridge .clear .clear-button {
-      text-decoration: underline;
-      color: #fafafa; }
+
+#fridge .clear {
+  text-align: center;
+  margin: 10px 0 20px; }
+  #fridge .clear .clear-button {
+    text-decoration: underline;
+    color: #fafafa;
+    background: none;
+    border: none;
+    cursor: pointer; }
 
 #register {
   height: 100vh;
   background-image: url("/assets/registerView.jpg");
   background-size: cover;
+  background-position: 50% 90%;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center; }
+  #register .app-header {
+    justify-content: center; }
+  #register .app-header h1 {
+    color: #fafafa; }
   #register .page-content {
     margin: 0; }
-  #register .form_Register {
-    width: 100%;
+  #register .form_Register form {
     display: flex;
-    justify-content: center;
-    background-color: transparent;
-    padding: 1em;
-    border-radius: 8px; }
-    #register .form_Register form {
-      display: flex;
-      flex-flow: column nowrap;
-      justify-content: space-between; }
-    #register .form_Register form > input {
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    margin: 20px; }
+  #register .form_Register form > input {
+    margin: 10px 0;
+    padding: 10px 10px;
+    -webkit-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
+    -moz-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
+    box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
+    border: none; }
+  #register .form_Register .register_button {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center; }
+    #register .form_Register .register_button button {
+      font-weight: bold;
+      text-align: center;
+      font-size: 18px;
+      color: #000;
+      background-color: #D3B065;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      overflow: hidden;
+      padding: 10px 30px;
       margin: 10px 0;
-      padding: 10px 10px;
       -webkit-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
       -moz-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
-      box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
-      border: none; }
-    #register .form_Register .register_button {
-      display: flex;
-      flex-flow: column nowrap;
-      justify-content: center; }
-      #register .form_Register .register_button button {
-        font-weight: bold;
-        text-align: center;
-        font-size: 18px;
-        color: #000;
-        background-color: #D3B065;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        overflow: hidden;
-        padding: 10px 30px;
-        margin: 10px 0;
-        -webkit-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
-        -moz-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
-        box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2); }
+      box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2); }
 
 .navbar {
   overflow: hidden;
@@ -543,7 +570,7 @@ template {
   padding: 1.5rem;
   text-decoration: none;
   background-color: #ddd;
-  color: black;
+  color: #000;
   position: fixed;
   bottom: 0;
   width: 100%; }
@@ -553,91 +580,79 @@ template {
     justify-content: space-between; }
   .navbar a {
     text-decoration: none;
-    color: #040303; }
+    color: #000; }
   .navbar .navbar-icon {
     height: 40px;
     width: 40px; }
 
-#scan {
-  background: #000000;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #434343, #000000);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #434343, #000000);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
-  #scan .bc-scanner {
-    display: flex;
-    flex-direction: column;
-    align-content: space-between; }
-    #scan .bc-scanner .image-capture__desc {
-      background-color: #fafafa;
-      border-radius: 4px;
-      padding: 20px;
-      margin: 40px 0; }
-      #scan .bc-scanner .image-capture__desc .desc-container {
-        display: flex;
-        flex-flow: column nowrap;
-        align-items: center; }
-
-#cookbook, #search {
-  background: #000000;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #434343, #000000);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #434343, #000000);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
-  #cookbook .cookbook, #search .cookbook {
-    margin-bottom: 115px; }
-  #cookbook .savedRecipes .recipe-list__item, #search .savedRecipes .recipe-list__item {
-    margin: 20px 0; }
-  #cookbook .recipe-list__header, #search .recipe-list__header {
-    border-radius: 4px 4px 0 0;
-    background: #D3B065;
+#scan .bc-scanner {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between; }
+  #scan .bc-scanner .image-capture__desc {
+    background-color: #fafafa;
+    border-radius: 4px;
     padding: 20px;
-    position: relative; }
-    #cookbook .recipe-list__header h3, #search .recipe-list__header h3 {
-      margin: 0; }
-  #cookbook .recipe-list__container, #search .recipe-list__container {
-    border-radius: 0 0 4px 4px;
-    background: #fafafa;
-    padding: 20px 20px; }
-    #cookbook .recipe-list__container p, #search .recipe-list__container p {
-      margin: 40px 0; }
-  #cookbook .recipe-list__image, #search .recipe-list__image {
-    position: relative;
-    bottom: -50px;
-    text-align: center; }
-    #cookbook .recipe-list__image img, #search .recipe-list__image img {
-      border-radius: 50%;
-      border: 2px solid #fafafa;
-      height: 150px;
-      width: 150px;
-      -webkit-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
-      -moz-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
-      box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2); }
-  #cookbook .recipe-list__footer, #search .recipe-list__footer {
+    margin: 40px 0; }
+    #scan .bc-scanner .image-capture__desc .desc-container {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center; }
+
+#cookbook .savedRecipes .recipe-list__item, #search .savedRecipes .recipe-list__item {
+  margin: 20px 0; }
+
+#cookbook .recipe-list__header, #search .recipe-list__header {
+  border-radius: 4px 4px 0 0;
+  background: #D3B065;
+  padding: 20px;
+  position: relative; }
+  #cookbook .recipe-list__header h3, #search .recipe-list__header h3 {
+    margin: 0; }
+
+#cookbook .recipe-list__container, #search .recipe-list__container {
+  border-radius: 0 0 4px 4px;
+  background: #fafafa;
+  padding: 20px 20px; }
+  #cookbook .recipe-list__container p, #search .recipe-list__container p {
+    margin: 40px 0; }
+
+#cookbook .recipe-list__image, #search .recipe-list__image {
+  position: relative;
+  bottom: -50px;
+  text-align: center; }
+  #cookbook .recipe-list__image img, #search .recipe-list__image img {
+    border-radius: 50%;
+    border: 2px solid #fafafa;
+    height: 150px;
+    width: 150px;
+    -webkit-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
+    -moz-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
+    box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2); }
+
+#cookbook .recipe-list__footer, #search .recipe-list__footer {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 20px; }
+  #cookbook .recipe-list__footer a, #search .recipe-list__footer a {
+    padding: 10px 20px;
+    background: #D3B065;
+    border-radius: 4px;
+    color: #fafafa;
+    cursor: pointer;
+    -webkit-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
+    -moz-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
+    box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2); }
+  #cookbook .recipe-list__footer .my_cookbook_container button, #search .recipe-list__footer .my_cookbook_container button {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: baseline;
-    margin-top: 20px; }
-    #cookbook .recipe-list__footer a, #search .recipe-list__footer a {
-      padding: 10px 20px;
-      background: #D3B065;
-      border-radius: 4px;
-      color: #fafafa;
-      cursor: pointer;
-      -webkit-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
-      -moz-box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2);
-      box-shadow: 0px 0px 15px 2px rgba(50, 50, 50, 0.2); }
-    #cookbook .recipe-list__footer .my_cookbook_container button, #search .recipe-list__footer .my_cookbook_container button {
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: space-around;
-      align-items: baseline;
-      cursor: pointer; }
-      #cookbook .recipe-list__footer .my_cookbook_container button p, #search .recipe-list__footer .my_cookbook_container button p {
-        margin: 0 10px; }
+    cursor: pointer; }
+    #cookbook .recipe-list__footer .my_cookbook_container button p, #search .recipe-list__footer .my_cookbook_container button p {
+      margin: 0 10px; }
 
 #search .recipes {
   margin-bottom: 115px; }
@@ -647,6 +662,9 @@ template {
     margin: 20px 0; }
 
 #search .recipes > p {
+  color: #fafafa; }
+
+#search .grilled-cheese__header {
   color: #fafafa; }
 
 #search .fav_recipe_container button {
@@ -663,66 +681,66 @@ template {
   display: none;
   align-items: baseline; }
 
-#image {
-  background: #000000;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #434343, #000000);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #434343, #000000);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
-  #image .image-capture {
-    margin-bottom: 115px; }
-    #image .image-capture .capture {
-      display: flex;
-      flex-flow: column;
-      align-items: center; }
-      #image .image-capture .capture #mobile-capture__button {
-        background-color: #D3B065;
-        padding: 10px 20px;
-        border: none;
-        margin: 20px 0;
-        font-weight: bold; }
-      #image .image-capture .capture #input {
-        border: none;
-        background: #D3B065;
-        display: none; }
-      #image .image-capture .capture #submit {
-        cursor: pointer;
-        padding: 10px 20px;
-        background-color: #D3B065;
-        border: none;
-        margin: 20px 0;
-        font-weight: bold; }
-    #image .image-capture .image-results {
+@media screen and (min-width: 480px) {
+  #search .recipes {
+    margin-bottom: 0; } }
+
+#image .image-capture {
+  margin-bottom: 115px; }
+  #image .image-capture .capture {
+    display: flex;
+    flex-flow: column;
+    align-items: center; }
+    #image .image-capture .capture #mobile-capture__button {
+      background-color: #D3B065;
+      padding: 10px 20px;
+      border: none;
+      margin: 20px 0;
+      font-weight: bold; }
+    #image .image-capture .capture #input {
+      border: none;
+      background: #D3B065;
+      display: none; }
+    #image .image-capture .capture .output #photo {
+      display: none; }
+    #image .image-capture .capture button {
+      cursor: pointer;
+      padding: 10px 20px;
+      background-color: #D3B065;
+      border: none;
+      margin: 20px 0;
+      font-weight: bold; }
+  #image .image-capture .image-results {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center; }
+    #image .image-capture .image-results #image-results__header {
+      display: none;
+      margin: 20px 0;
+      text-align: center;
+      color: #fafafa; }
+      #image .image-capture .image-results #image-results__header h3 {
+        margin: 0; }
+    #image .image-capture .image-results li {
+      margin: 10px; }
+    #image .image-capture .image-results li > input {
+      padding: 10px 50px;
+      background-color: #D3B065;
+      border: none;
+      font-weight: bold;
+      width: 100%;
+      cursor: pointer; }
+    #image .image-capture .image-results li > input:hover {
+      background-color: #d8b874; }
+  #image .image-capture .image-capture__desc {
+    background-color: #fafafa;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 20px 0; }
+    #image .image-capture .image-capture__desc .desc-container {
       display: flex;
       flex-flow: column nowrap;
-      justify-content: center; }
-      #image .image-capture .image-results #image-results__header {
-        display: none;
-        margin: 20px 0;
-        text-align: center;
-        color: #fafafa; }
-        #image .image-capture .image-results #image-results__header h3 {
-          margin: 0; }
-      #image .image-capture .image-results li {
-        margin: 10px; }
-      #image .image-capture .image-results li > input {
-        padding: 10px 50px;
-        background-color: #D3B065;
-        border: none;
-        font-weight: bold;
-        width: 100%; }
-      #image .image-capture .image-results li > input:hover {
-        background-color: #d8b874; }
-    #image .image-capture .image-capture__desc {
-      background-color: #fafafa;
-      border-radius: 4px;
-      padding: 20px;
-      margin: 20px 0; }
-      #image .image-capture .image-capture__desc .desc-container {
-        display: flex;
-        flex-flow: column nowrap;
-        align-items: center; }
+      align-items: center; }
 
 html,
 body {
@@ -735,6 +753,14 @@ body {
   font-family: "Muli", sans-serif;
   box-sizing: inherit; }
 
+#root {
+  background: #000000;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #434343, #000000);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #434343, #000000);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
+
 img {
   max-width: 100%; }
 
@@ -745,6 +771,11 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0; }
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none; }
 
 button:focus {
   outline: none; }

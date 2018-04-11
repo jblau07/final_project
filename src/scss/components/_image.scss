@@ -1,7 +1,6 @@
 
 
 #image {
-  @include gradient;
 
   .image-capture {
     margin-bottom: 115px;
@@ -12,7 +11,7 @@
       align-items: center;
 
       #mobile-capture__button {
-        background-color: $orange;
+        background-color: $primary;
         padding: 10px 20px;
         border: none;
         margin: 20px 0;
@@ -21,14 +20,18 @@
       
       #input {
         border: none;
-        background: $orange;
+        background: $primary;
+        display: none;
+      }
+      
+      .output #photo {
         display: none;
       }
 
-      #submit {
+      button {
         cursor: pointer;
         padding: 10px 20px;
-        background-color: $orange;
+        background-color: $primary;
         border: none;
         margin: 20px 0;
         font-weight: bold;
@@ -61,6 +64,7 @@
         border: none;
         font-weight: bold;
         width: 100%;
+        cursor: pointer;
       }
 
       li > input:hover {
