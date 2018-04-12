@@ -1,7 +1,6 @@
 @import "../partials/_variables.scss";
 
 #scan {
-  @include gradient;
   
   .bc-scanner {
     display: flex;

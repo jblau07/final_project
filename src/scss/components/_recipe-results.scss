@@ -1,5 +1,4 @@
 
-
 #search {
 
   .recipes {
@@ -18,7 +17,7 @@
   }
 
   .grilled-cheese__header {
-    
+    color: $white;
   }
 
   .fav_recipe_container {
@@ -38,6 +37,14 @@
     .saved-notification {
       display: none;
       align-items: baseline;
+    }
+  }
+}
+
+@media screen and (min-width: 480px) {
+  #search {
+    .recipes {
+      margin-bottom: 0;
     }
   }
 }

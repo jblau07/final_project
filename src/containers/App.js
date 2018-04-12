@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import "../scss/styles.css";
 
 import Main from "../reactRouter/Main";
@@ -34,16 +34,39 @@ class App extends Component {
       currentLocation = currentLocation.split("/").pop();
     }
 
-    return (
-      <main className="app" id={currentLocation}>
+    if (window.innerWidth > 768 && currentLocation !== "home" && currentLocation !== "register") {
+      return (
+        <main className="app" id={currentLocation}>
         <header className="app-header">
-          <h1 className="app-title">Recip-Easy</h1>
-          {logoutButton}
+          <Link to="/fridge">
+            <h1 className="app-title">Recip-Easy</h1>
+          </Link>
+          <ul className="header-links">
+            <li><Link to="/fridge">Fridge</Link></li>
+            <li><Link to="/scan">Barcode Scanner</Link></li>
+            <li><Link to="/image">Image Capture</Link></li>
+            <li><Link to="/cookbook">Cookbook</Link></li>
+            {logoutButton}
+          </ul>
         </header>
         <Main />
-        <Navbar />
       </main>
-    );
+      )
+    }
+    else {
+      return (
+        <main className="app" id={currentLocation}>
+          <header className="app-header">
+            <Link to="/fridge">
+              <h1 className="app-title">Recip-Easy</h1>
+            </Link>
+            {logoutButton}
+          </header>
+          <Main />
+          <Navbar />
+        </main>
+      );
+    }
   }
 }
 

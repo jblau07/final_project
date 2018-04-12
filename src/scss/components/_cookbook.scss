@@ -1,11 +1,6 @@
 @import '../partials/_mixins.scss';
 
 #cookbook, #search {
-  @include gradient;
-
-  .cookbook {
-    margin-bottom: 115px;
-  }
 
   .savedRecipes .recipe-list__item {
     margin: 20px 0;
@@ -13,10 +8,9 @@
 
   .recipe-list__header {
     border-radius: 4px 4px 0 0;
-    background: $orange;
+    background: $primary;
     padding: 20px;
     position: relative;
-    // height: 200px;
 
     h3 {
       margin: 0;
@@ -56,7 +50,7 @@
 
     a {
       padding: 10px 20px;
-      background: $orange;
+      background: $primary;
       border-radius: 4px;
       color: $white;
       cursor: pointer;

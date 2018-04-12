@@ -1,15 +1,20 @@
 @import "../partials/_variables.scss";
 @import "../partials/_mixins.scss";
 
+#root {
+  height: 100%;
+}
+
 .app {
   overflow: auto;
-  height: 100vh;
+  height: 100%;
 }
 
 .app-header {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  width: 100%;
 }
 
 .app-header h1 {
@@ -19,7 +24,23 @@
   text-align: center;
   letter-spacing: 6px;
   font-weight: normal;
-  @include shadow;
+}
+
+.header-links {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: baseline;
+  justify-content: space-between;
+
+  li a {
+    margin: 0 25px;
+    color: $white;
+    opacity: 0.8;
+  }
+
+  li a:hover {
+    opacity: 1.0;
+  }
 }
 
 .login-container {
@@ -32,8 +53,14 @@
 
     i {
       color: $white;
+      opacity: 0.8;
     }
   }
+
+  button:hover i {
+    opacity: 1.0;
+  }
+  
 }
 
 .view-title h2 {
@@ -42,5 +69,25 @@
 }
 
 .page-content {
-  margin: 0 20px 88px;
+  margin: 0 20px;
+  width: auto;
+  display: flex;
+  flex-flow: column;
+}
+
+@media screen and (max-width: 480px) {
+  #fridge .page-content, #cookbook .page-content {
+    margin: 0 20px 88px;
+  }
+
+  .login-container button i {
+    opacity: 1.0;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .page-content {
+    width: 400px;
+    margin: 0 auto 40px;
+  }
 }

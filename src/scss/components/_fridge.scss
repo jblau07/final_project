@@ -2,11 +2,11 @@
 @import "../partials/_mixins.scss";
 
 #fridge {
-  @include gradient;
+  // @include gradient;
 
   .fridge-content {
-    display: flex;
-    flex-flow: column nowrap;
+    // display: flex;
+    // flex-flow: column nowrap;
   }
 
   .big-form {
@@ -117,22 +117,35 @@
   }
 
   .find-recipes__button {
-    background-color: $primary;
-    padding: 10px 20px;
-    margin: 10px;
-    border: none;
-    width: 200px;
-    align-self: center;
-    font-weight: bold;
+    text-align: center;
+
+    button {
+      background-color: $primary;
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      width: 200px;
+      align-self: center;
+      font-weight: bold;
+    }
   }
 
   .clear {
-    align-self: center;
+    text-align: center;
     margin: 10px 0 20px;
 
     .clear-button {
       text-decoration: underline;
       color: $white;
+      background: none;
+      border: none;
+      cursor: pointer;
     }
+  }
+}
+
+@media screen and (min-width: 480px) {
+  #fridge {
+    
   }
 }
